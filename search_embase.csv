@@ -1,0 +1,8 @@
+﻿Search step,Search terms and operators,Records
+1,sleep discrepancy or paradoxical insomnia or subjective insomnia or (sleep adj2 misperception),488
+2,(self report* or diary or subjective*) and (objective* or actigraph* or polysomnograph* or polygraph*) ,193243
+3,(exp polysomnography/ or exp actimetry/) and exp self report/ ,1676
+4,"sleep* and (""over estimat*"" or ""over report*"" or ""under estimat*"" or ""under report*"" or overestimat* or overreport* or underestimat* or underreport* or discrepan* or concordan* or agreement or disagreement or discordan* or congruen* or incongruen*)",9362
+5,2 or 3 ,193302
+6,4 and 5 ,1234
+7,1 or 6 ,1569

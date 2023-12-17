@@ -1,0 +1,23 @@
+﻿variable_name,full_name,abbreviation,calculation,other_terms
+TST,Total sleep time,TST,"Varied (Objective, Self-report)",
+SOL,Sleep onset latency,SOL,Varied (Objective),Sleep latency (SL)
+WASO,Wake after sleep onset,WASO,Varied (Self-report),
+SE,Sleep efficiency,SE,"Varied (Self-report, Objective)",Sleep efficiency index (SEI)
+TIB,Time in bed,TIB,BT - RT,
+Awakenings,Number of awakenings,NWAK,,
+TWT,Total wake time,TWT,SOL + WASO + terminal wakefulness (TWAK),
+SPT,Sleep period time,SPT,BT - FWT,
+SOT,Sleep onset time,SOT,Time at sleep onset,Sleep onset (actigraphy)
+FWT,Final wake time,FWT,Time at final awakening,
+BT,Bed time,BT,Time where participant is in bed trying to sleep,Lights off (PSG)
+RT,Rise time,RT,Time getting out of bed,"Sleep offset (actigraphy), lights on (PSG)"
+sleep_midpoint,Sleep midpoint,,(FWT - BT)/2,
+binary_sw_I,Sleep wake agreement (one possible objective sleep state),,,
+binary_sw_II,Sleep wake agreement (two possible objective sleep states),,,
+SOL_LPS,Latency to persistent sleep,LPS,Latency to 10 minutes of uninterrupted sleep,
+obj_SDSL,Sleep during subjective latency,SDSL,Minutes of objective sleep during period defined by self-report sleep latency,
+LATST,Latency-adjusted total sleep time,LA-TST,Objective total sleep time following the point of subjective sleep onset,
+EST,Effective sleep time,EST,TST - WASO - SOL,
+SWT,Subjective wake time,SWT,WASO + SOL,
+,Terminal wakefulness,TWAK,RT - FWT,Wake after sleep offset (WASF)
+IWT,Intermittent wake time,IWT,No definition reported,
