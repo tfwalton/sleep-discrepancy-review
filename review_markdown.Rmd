@@ -15,7 +15,7 @@ always_allow_html: yes
 
 # Load packages
 pacman::p_load("tidyselect",
-               "dplyr",
+               "tidyverse",
                "magrittr",
                "stringr",
                "bookdown",
@@ -270,36 +270,40 @@ A total of `r nrow(screen)` studies were identified from `r catg("fulltext_inclu
 sample_size <- as.numeric(screen$sample_size)
 ```
 
-Sample sizes for studies ranged from `r min(sample_size, na.rm=TRUE)` to `r max(sample_size, na.rm=TRUE)` (median = `r median(sample_size, na.rm=TRUE)`, IQR = `r IQR(sample_size, na.rm=TRUE)`). Most studies included both sexes in their samples (n = `r length(which(is.na(screen$sample_sex)))`), whereas `r  length(which(screen$sample_sex == "men"))` and `r length(which(screen$sample_sex == "women"))` comprised only males or females, respectively. Most studies contained samples of adults of all ages `r length(which(screen$sample_age == "adults"))`. Others reported specific age groups: older adults (n = `r length(which(screen$sample_age == "older adults"))`), younger adults (n = `r length(which(screen$sample_age == "young adults"))`), adolescents (n = `r length(which(screen$sample_age == "adolescents"))`), and children (n = `r length(which(screen$sample_age == "children"))`). Samples varied across clinical populations and included:
-```{r clinical populations, results = 'asis', collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE}
+Sample sizes for studies ranged from `r min(sample_size, na.rm=TRUE)` to `r max(sample_size, na.rm=TRUE)` (median = `r median(sample_size, na.rm=TRUE)`, IQR = `r IQR(sample_size, na.rm=TRUE)`). Most studies included both sexes in their samples (n = `r length(which(is.na(screen$sample_sex)))`), whereas `r  length(which(screen$sample_sex == "men"))` and `r length(which(screen$sample_sex == "women"))` comprised only males or females, respectively. Most studies contained samples of adults of all ages `r length(which(screen$sample_age == "adults"))`. Others reported specific age groups: older adults (n = `r length(which(screen$sample_age == "older adults"))`), younger adults (n = `r length(which(screen$sample_age == "young adults"))`), adolescents (n = `r length(which(screen$sample_age == "adolescents"))`), and children (n = `r length(which(screen$sample_age == "children"))`). Sample characteristics for studies are included in Figure \@ref(fig:samplechar).
+```{r samplechar, results = 'asis', collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sample characteristics", fig.height = 8}
 
-# create vector of strings, turn into freq table, create data frame to work with
-clinical <- c(screen$sample_clinical,
-              screen$sample_clinical2,
-              screen$sample_clinical3) %>%
-  table() %>%
-  as.data.frame()
+# generate a frequency table for the three columnns
+samplechar <- c(screen$sample_clinical, screen$sample_clinical2, screen$sample_clinical3)
 
-# remove the top row of blank values
-clinical <- clinical[-1,]
+# remove the row that counted blank spaces
+samplechar <- samplechar[-which(samplechar=="")] %>% as.data.frame()
 
-# change column names
-colnames(clinical) <- c("clinical population", "studies")
+# assign a name to the single column
+colnames(samplechar) <- "sample"
 
-# reorder dataframe in descending order
-clinical <- clinical[order (clinical[,2], decreasing=TRUE),] 
+# Generate graph
+ggplot(data = samplechar, aes(x = fct_infreq(sample) %>% fct_rev())) +
+  geom_bar() +
+  scale_fill_grey() +
+  labs(x = "Sample characteristics", y = "Number of studies") +
+  geom_text(
+    aes(label = after_stat(count)),
+    stat = "count",
+    position=position_dodge(width=0.9),
+    hjust=-0.5,
+    size=3.25
+  ) +
+  theme(
+    legend.position = "none",
+    panel.background = element_rect(fill = "transparent", colour = "grey"),
+    panel.border = element_rect(fill = NA, colour = "grey"),
+    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted"),
+    strip.placement = "outside"
+  ) +
+  coord_flip()
 
-# assign vector length -1 to variable for the loop
-penultimate <- length(clinical$"clinical population")-1
-
-# loop through contents of data frame
-for (i in 1:penultimate) {
-  
-  cat(paste0(clinical[i,1], " (n = ", clinical[i,2], "), "))
-  
-}
 ```
-and `r paste0(clinical[length(clinical[ ,2]),1], " (n = ", clinical[length(clinical[ ,2]) ,2], ")." )`
 
 ## Methodological features
 
