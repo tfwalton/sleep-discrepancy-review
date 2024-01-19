@@ -100,7 +100,7 @@ To date, there have been few systematic attempts to synthesise the available res
 
 # Method
 
-A review protocol was registered before the review was conducted and is available at <!-- (OSF: link) -->. Deviations from the protocol are listed below <!--where?-->. <!--Two reviewers necessary for charting the data?--> The review was conducted according to up-to-date guidelines provided by the JBI scoping review methodology group [@Peters2020].
+A review protocol was registered before the review was conducted and is available at https://osf.io/bcjnq/. Deviations from the protocol are listed below <!--where?-->. <!--Two reviewers necessary for charting the data?--> The review was conducted according to up-to-date guidelines provided by the JBI scoping review methodology group [@Peters2020].
 
 ## Identifying studies
 
