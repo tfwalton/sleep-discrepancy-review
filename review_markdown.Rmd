@@ -7,6 +7,7 @@ output:
 bibliography: ["references_body.bib", "references_review.bib", "references_acti.bib"]
 # csl: american-medical-association-10th-edition.csl
 always_allow_html: yes
+nocite: '@*'
 ---
 
 ```{r initial code, echo = FALSE}
@@ -72,9 +73,9 @@ total_records <- 6190
 
 # Abstract
 
-## Background
+## Study Objectives 
 
-Sleep discrepancy, the discordance between self-report and objective measures of sleep is a common and important feature of insomnia disorder and a central issue for the measurement of sleep. Sleep discrepancy has been investigated in diverse ways in the literature and comprehensive discussions of conceptual implications and methodology are lacking. We conducted a scoping review to examine how sleep discrepancy has been conceptualised in the literature and identify what methods have been used to investigate it. The objectives, inclusion criteria, and methods for this scoping review were specified in advance and documented in a protocol [@Walton2022].
+To examine how sleep discrepancy has been conceptualised and identify and evaluate the methods used to investigate it.
 
 ## Method
 
@@ -82,29 +83,60 @@ We searched MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed,
 
 ## Results
 
-`r nrow(screen) %>% english() %>% str_to_sentence` studies were included in this review. Studies varied according to objective sleep measure, actigraphy algorithm, software, and rest interval, polysomnography setting and scoring criteria, sleep variables, self-report sleep measure, number of nights of objective recording, timeframe of self-report measure, self-report sleep variable definition, sleep discrepancy composite index, presence and handling of repeated measurements, and statistical method for measure comparison. The conceptual implications for these methodological parameters were discussed.
+`r nrow(screen) %>% english() %>% str_to_sentence` studies were included in this review. Studies varied according to objective sleep measure, actigraphy algorithm, software, and rest interval, polysomnography setting and scoring criteria, sleep variables, self-report sleep measure, number of nights of objective recording, timeframe of self-report measure, self-report sleep variable definition, sleep discrepancy composite index, presence and handling of repeated measurements, and statistical method for measure comparison. The conceptual implications for these methodological parameters are discussed.
 
 ## Conclusions
 
-<!-- paragraph unfinished -->
+Methods of measurement and operational definitions for sleep discrepancy varied considerably across identified studies. Many of these approaches have varying implications
 
-Three major forms of sleep discrepancy were identified, according to the breadth of their definition. <!-- Which are? --> Overall, there is considerable conceptual and methodological diversity in the sleep discrepancy literature, the size of and breadth of which has been underestimated to date. <!-- which has implications for?. -->
+of sleep discrepancy and are associated with potential issues for which there has been little discussion available in the literature to date. 
 
 # Introduction
 
-Sleep is measured in two principal ways: objectively through polysomnography or actigraphy, and by self-report through questionnaires or sleep diaries. The discordance that can exist between these two forms of measurement is known as subjective-objective sleep discrepancy, or more simply, sleep discrepancy. Sleep discrepancy is a common feature of insomnia disorder, where it is also referred to as sleep misperception or paradoxical insomnia. Individuals with insomnia tend to underestimate total sleep time (TST), and overestimate sleep onset latency (SOL) and wake after sleep onset (WASO) relative to objective measures [@Baglioni2014; @Edinger1995; @Means2003].\
+Sleep is measured in two principal ways: objectively through polysomnography or actigraphy, and by self-report through questionnaires or sleep diaries. The discordance that can exist between these two forms of measurement is known as subjective-objective sleep discrepancy, or more simply, sleep discrepancy. Sleep discrepancy is a common feature of insomnia disorder, where it is also referred to as sleep misperception or paradoxical insomnia. Individuals with insomnia tend to underestimate total sleep time (TST), and overestimate sleep onset latency (SOL) and wake after sleep onset (WASO) relative to objective measures [@Baglioni2014; @Edinger1995; @Means2003].\ 
 
-Research in sleep discrepancy is marked by considerable conceptual and methodological diversity. Sleep discrepancy may be conceptualised as a spectrum [e.g, @Trajanovic2007], ranging from positive (self-report exceeds objective) to negative (objective exceeds self-report), or as an absolute measurement [e.g., @Baillet2016]. Sleep discrepancy may be found in a range of sleep variables including TST, SOL, WASO, or number of awakenings. Considered broadly, sleep discrepancy can also be extended beyond these sleep time-based measures and may represent discordance in self-report and objective sleep patterns [e.g., @AlLawati2021], or sleep quality. Sleep discrepancy research also varies in its primary objective. Whilst some research aims to compare self-report and objective sleep within a particular sample (e.g., using intra-class correlations or Bland-Altman plots), other studies aim to characterise the relationship between sleep discrepancy and another variables. Research of the latter variety usually involves deriving variables to define sleep discrepancy quantitatively, for example, subtracting self-report TST from objective TST to form a difference score [e.g., @Cronlein2019]. There are a range of different ways these derived variables are composed, each with their own conceptual and methodological implications.\
+<!-- Melissa suggests mentioning SD resolution following tx of insomnia (Spina) -->
 
-To date, there have been few systematic attempts to synthesise the available research and compare and evaluate the varied approaches to investigating sleep discrepancy. Two reviews have been conducted in this area. @Castelnovo2019 conducted a systematic review of quantitative definitions of paradoxical insomnia, an insomnia subvariant defined, in part, by the presence of sleep discrepancy. The scope of the review, however, was restricted to paradoxical insomnia only and excluded studies where sleep discrepancy was not used to form diagnostic criteria. A second review was conducted by @Rezaie2018 ---a literature review of the clinical features, aetiology, correlates, and treatment of sleep discrepancy and paradoxical insomnia. Whilst an informative discussion of research findings, this study eschewed a focus on methodological approaches and conceptualisations of sleep discrepancy and did not incorporate a systematic search, therefore likely underrepresenting the breadth of the literature. Interpretation of the findings of sleep discrepancy research is largely contingent upon the ways that sleep discrepancy has been operationalised and a review with a focus on such a consideration would be timely. A scoping review is a method of research synthesis that aims to map existing literature in a field of interest and identify types of evidence available in a given topic [@Arksey2005]. We used a scoping review strategy to examine how sleep discrepancy has been conceptualised in the literature and identify the methods used to investigate it. A preliminary search of Medline (Ovid), the Cochrane Library, Embase (Ovid), and PsycInfo (Ovid) was conducted to identify existing or in-progress systematic or scoping reviews on the topic. Except for the two reviews mentioned above, no records were identified.
+There are diverse ways to conceptualise and measure sleep discrepancy. It may be considered as a spectrum [e.g, @trajanovic2007], ranging from positive (self-report exceeds objective) to negative (objective exceeds self-report), or as a measure of absolute sleep agreement [e.g., @Baillet2016]. Any number of sleep variables such as TST, SOL, or WASO may used to operationalise sleep discrepancy, each differing conceptually and carrying varying theoretical implications. Sleep discrepancy may even be considered beyond these sleep time-based metrics and represent discordance in self-report and objective sleep patterns [e.g., @AlLawati2021], or sleep quality. Sleep discrepancy may be characterised in a sample by directly comparing self-report and objective sleep with a range of statistical techniques. Other studies may derive variables to define sleep discrepancy quantitatively to measure its relationship with other variables, for example using a difference score of self-report TST - objective TST. There appear to be a variety of ways to derive these variables each of which, again, are likely to hold varying conceptual implications. 
 
-# Method
+To date, there have been few systematic attempts to synthesise or evaluate the varied approaches to investigating sleep discrepancy. Two reviews have been conducted in this area. @Castelnovo2019 conducted a systematic review of quantitative definitions of paradoxical insomnia, an insomnia subvariant defined, in part, by the presence of sleep discrepancy. This excluded studies where sleep discrepancy was not used to form diagnostic criteria. A second review was conducted by @Rezaie2018 ---a literature review of the clinical features, aetiology, correlates, and treatment of sleep discrepancy and paradoxical insomnia. Whilst an informative discussion of research findings, this study eschewed a methodological focus and did not incorporate a systematic search, potentially underrepresenting the breadth of the literature.
 
-A review protocol was registered before the review was conducted and is available at https://osf.io/bcjnq/. Deviations from the protocol are listed below <!--where?-->. <!--Two reviewers necessary for charting the data?--> The review was conducted according to up-to-date guidelines provided by the JBI scoping review methodology group [@Peters2020].
+Presently, it isn't clear how sleep discrepancy should best be defined and the diversity in its measurement and conceptualisation may present a challenge to theory-building for research in insomnia and other areas. A scoping review is a method of research synthesis that aims to map existing literature in a field of interest and identify types of evidence available in a given topic [@Arksey2005]. We used a scoping review strategy to examine how sleep discrepancy has been conceptualised in the literature and identify the methods used to investigate it. A preliminary search of Medline (Ovid), the Cochrane Library, Embase (Ovid), and PsycInfo (Ovid) was conducted to identify existing or in-progress systematic or scoping reviews on the topic. Except for the two reviews mentioned above, no records were identified.
 
-## Identifying studies
+# Methods
 
-The search strategy aimed to identify articles published in peer-reviewed journals in addition to grey literature including theses, dissertations, and conference abstracts. Due to the large number of records returned by initial searches, grey literature was excluded from full text extraction (see PRISMA flowchart in Figure 1 for details). The following databases were searched: MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed, Scopus, Web of Science, ProQuest Theses and Dissertations, and OSF Preprints. The search strategy included keywords, index terms, and search operators adapted for each database. Searches across all databases were conducted on the 24th April 2022. The full search strategy for Embase (Ovid) is provided as an example in Table \@ref(tab:embase) below. See supplemental materials for search terms for the other databases.\
+## Protocol and registration
+
+The review was conducted according to guidelines provided by the JBI scoping review methodology group [@Peters2020] and reported according to the Preferred Reporting Items for Systematic reviews and Meta-Analyses
+extension for Scoping Reviews (PRISMA-ScR) Checklist [@tricco2018]. A review protocol was registered with the Open Science Framework on April 4, 2022 (doi: 10.17605/OSF.IO/BCJNQ), prior to conducting searches. Deviations from the protocol are outlined in Appendix B.
+
+## Eligibility criteria
+
+Participants of all age groups and clinical populations were included in the review. To adequately map the boundaries of sleep discrepancy as a concept, we included any study that compared an objective measure of sleep (e.g., polysomnography, actigraphy) with an equivalent self-report measure of sleep (e.g., sleep diaries, questionnaires), through statistical analysis or composite index scores. For measures of self-report and objective sleep, we included traditional indices of sleep time such as TST, SOL, and WASO, in addition to measures of sleep quality, sleep patterns, or any other sleep-related experience or behaviour.
+
+## Exclusion criteria
+
+Studies were excluded that (i) made no direct comparisons between equivalent self-report and objective sleep measures, (ii) included informant, rather than self-report measures, (iii) were case reports or review articles, (iv) included self-report or objective measures that were not related to sleep, (v) contained no empirical data, (vi) omitted either a self-report or equivalent objective measure of sleep, (vii) were a grey literature source including theses, dissertations, and conference abstracts. No records were excluded on the basis of geographic location, cultural factors, or any other contextual feature.
+
+## Search strategy
+
+The search strategy aimed to identify articles published in peer-reviewed journals in addition to grey literature including theses, dissertations, and conference abstracts. Due to the large number of records returned by initial searches, grey literature was excluded at the full text extraction stage. The following databases were searched: MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed, Scopus, Web of Science, ProQuest Theses and Dissertations, and OSF Preprints. The search strategy included keywords, index terms, and search operators adapted for each database. Searches across all databases were conducted on the 24th April 2022. The full search strategy for Embase (Ovid) is provided as an example in Table \@ref(tab:embase) below. See supplemental materials for search terms for the other databases.
+
+## Information sources 
+
+Records identified from searches were exported to EndNote 20 [@EndNote20] for collation and then uploaded to Rayyan [@Ouzzani2016] for deduplication and title and abstract screening.
+
+## Sources of evidence seelction
+
+Two independent reviewers (TW and SF) screened titles and abstracts to identify studies for full-text retrieval using the inclusion criteria. Percentage of agreement between reviewers was 87.6% and conflicts were resolved via discussion. The full texts of articles passing title and abstract screening were screened independently by the first author with reasons for exclusion reported. Due to the unanticipated size of the literature, articles from sources other than peer-reviewed journals were added to exclusion criteria post-hoc.
+
+## Charting the data
+
+Data extraction was performed by a single author (TW). Methodological features of included articles were selected on their potential influence on the measurement or operational definition of sleep discrepancy and included the following: objective sleep measure, actigraphy algorithm, software, and rest interval, polysomnography setting and scoring criteria, self-report sleep measure, sleep variables and definitions thereof, methods of handling repeated measurements, methods of comparing self-report and objective sleep within groups, and methods for operationalising sleep discrepancy at the construct level including the use of derived scores.
+
+## Data items
+
+Extracted data items are available from the master charting table (github link).
 
 ```{r embase, echo = FALSE, warning = FALSE, message = FALSE}
 
@@ -118,21 +150,15 @@ kable(embasetbl,
   kable_styling(font_size = 11, full_width = F)
 ```
 
-## Study selection
+## Synthesis of results
 
-Participants of all age groups and clinical populations were included in the review. We included any study that compared an objective measure of sleep (e.g., polysomnography, actigraphy) with an equivalent self-report measure of sleep (e.g., sleep diaries, questionnaires), through statistical analysis or composite index scores. Measures of sleep discrepancy include traditional indices of sleep time such as TST, SOL, and WASO, in addition to measures of sleep quality, sleep patterns, or any other sleep-related experience or behaviour. No records were excluded on the basis of geographic location, cultural factors, or any other contextual feature.\
+This manuscript, including all tables and figures summarising data were generated using computationally reproducible methods from master charting table available at (githublink) [@piccolo2016; @lindsay2023].
 
-## Charting the data
-
-Methodological features of included articles were selected on their potential influence on the measurement or operational definition of sleep discrepancy and included the following: objective sleep measure, actigraphy algorithm, software, and rest interval, polysomnography setting and scoring criteria, self-report sleep measure, sleep variables and definitions thereofe, methods of handling repeated measurements, methods of comparing self-report and objective sleep within groups, and methods for operationalising sleep discrepancy at the construct level including the use of derived scores.
-
-## Collating, summarising and reporting the results
-
-All tables and figures summarising data were generated using computationally reproducible methods from master charting table available at (link:here). <!-- now describe how you organised the studies categories-->
+<!-- now describe how you organised the studies categories-->
 
 # Results
 
-The initial search of databases returned `r total_records` records that were exported to EndNote 20 [@EndNote20] where they were collated and uploaded to Rayyan [@Ouzzani2016] for deduplication and title and abstract screening. A total of `r duplicates` duplicate articles were removed. Following deduplication, two independent reviewers screened titles and abstracts to identify studies for full-text retrieval using the inclusion criteria provided above. Percentage of agreement between reviewers was 87.6% and conflicts were resolved via discussion. The full texts of articles passing title and abstract screening were screened independently by the first author with reasons for exclusion reported. Due to the unanticipated size of the literature, articles from sources other than peer-reviewed journals were added to exclusion criteria post-hoc. Studies were excluded that (i) made no direct comparisons between equivalent self-report and objective sleep measures, (ii) included informant, rather than self-report measures, (iii) were case reports or review articles, (iv) included self-report or objective measures that were not related to sleep, (v) contained no empirical data, (vi) omitted either a self-report or equivalent objective measure of sleep, (vii) were a grey literature source including theses, dissertations, and conference abstracts. Details of the review process from article identification, screening, and selection are available in the PRISMA flowchart depicted in \@ref(fig:PRISMA) below.\
+The initial search of databases returned `r total_records` from which `r duplicates` duplicate articles were removed. Details of the review process from article identification, screening, and selection are available in the PRISMA flowchart depicted in \@ref(fig:PRISMA) below.
 
 ```{r PRISMA, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PRISMA flowchart"}
 ###############################################################################
@@ -270,7 +296,7 @@ A total of `r nrow(screen)` studies were identified from `r catg("fulltext_inclu
 sample_size <- as.numeric(screen$sample_size)
 ```
 
-Sample sizes for studies ranged from `r min(sample_size, na.rm=TRUE)` to `r max(sample_size, na.rm=TRUE)` (median = `r median(sample_size, na.rm=TRUE)`, IQR = `r IQR(sample_size, na.rm=TRUE)`). Most studies included both sexes in their samples (n = `r length(which(is.na(screen$sample_sex)))`), whereas `r  length(which(screen$sample_sex == "men"))` and `r length(which(screen$sample_sex == "women"))` comprised only males or females, respectively. Most studies contained samples of adults of all ages `r length(which(screen$sample_age == "adults"))`. Others reported specific age groups: older adults (n = `r length(which(screen$sample_age == "older adults"))`), younger adults (n = `r length(which(screen$sample_age == "young adults"))`), adolescents (n = `r length(which(screen$sample_age == "adolescents"))`), and children (n = `r length(which(screen$sample_age == "children"))`). Sample characteristics for studies are included in Figure \@ref(fig:samplechar).
+Sample sizes for studies ranged from `r min(sample_size, na.rm=TRUE)` to `r max(sample_size, na.rm=TRUE)` (median = `r median(sample_size, na.rm=TRUE)`, IQR = `r IQR(sample_size, na.rm=TRUE)`). Most studies included both sexes in their samples (n = `r length(which(screen$sample_sex == ""))`), whereas `r  length(which(screen$sample_sex == "men"))` and `r length(which(screen$sample_sex == "women"))` comprised only males or females, respectively. Most studies contained samples of adults of all ages `r length(which(screen$sample_age == "adults"))`. Others reported specific age groups: older adults (n = `r length(which(screen$sample_age == "older adults"))`), younger adults (n = `r length(which(screen$sample_age == "young adults"))`), adolescents (n = `r length(which(screen$sample_age == "adolescents"))`), and children (n = `r length(which(screen$sample_age == "children"))`). Sample characteristics for studies are included in Figure \@ref(fig:samplechar).
 ```{r samplechar, results = 'asis', collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sample characteristics", fig.height = 8}
 
 # generate a frequency table for the three columnns
@@ -488,7 +514,7 @@ ggplot(data = interval, mapping = aes(x = interval, y = studies)) +
   coord_flip()
 ```
 
-The precise combinations or orders of priority of methods in each study varied markedly. See supplemental materials for qualitative descriptions of rest interval approaches across reviewed studies.
+The precise combinations or orders of priority of methods in each study varied markedly. See master data file (github link) for qualitative descriptions of rest interval approaches across reviewed studies.
 
 ### Measures of self-report sleep
 
@@ -849,7 +875,7 @@ Derived variables was overwhelmingly the most common way of operationalising sle
 
 ## Averaging sleep variables across multiple nights is problematic in most cases
 
-In the studies identified in this review, the most common way of handling repeated measurements of sleep variables was by averaging across multiple instances of recording. This technique is problematic when applied to concurrent nightly or episodic measurements of self-report and objective sleep as it relies on the assumption that patterns of sleep over/ underestimation are consistent across nights. Extreme positive and negative sleep discrepancy occurring alternately on successive nights could result in averages denoting negligible discrepancy. This may be a realistic concern for research in sleep discrepancy and insomnia, for example. Although most individuals with insomnia tend to underestimate sleep, high inter-night variability is observed and some individuals will overestimate sleep [@Trajanovic2007, @lindert_actigraphic_2020]. An exception to this problem exists in the case of comparing aggregated objective sleep against a habitual measure of self-report sleep, such as the PSQI. Here, using means or medians to determine habitual measures of objective sleep is necessary to define sleep discrepancy at the habitual, rather than the nightly level. In other cases, linear mixed models, generalised estimating equations, and structural equation models were methods identified in this review that do not inherit the same problems with averaging across repeated measures.
+In the studies identified in this review, the most common way of handling repeated measurements of sleep variables was by averaging across multiple instances of recording. This technique is problematic when applied to concurrent nightly or episodic measurements of self-report and objective sleep as it relies on the assumption that patterns of sleep over/ underestimation are consistent across nights. Extreme positive and negative sleep discrepancy occurring alternately on successive nights could result in averages denoting negligible discrepancy. This may be a realistic concern for research in sleep discrepancy and insomnia, for example. Although most individuals with insomnia tend to underestimate sleep, high inter-night variability is observed and some individuals will overestimate sleep [@trajanovic2007, @lindert_actigraphic_2020]. An exception to this problem exists in the case of comparing aggregated objective sleep against a habitual measure of self-report sleep, such as the PSQI. Here, using means or medians to determine habitual measures of objective sleep is necessary to define sleep discrepancy at the habitual, rather than the nightly level. In other cases, linear mixed models, generalised estimating equations, and structural equation models were methods identified in this review that do not inherit the same problems with averaging across repeated measures.
 
 ## Correlation is not a meaure of concordance
 
@@ -888,19 +914,3 @@ Approaches to measuring and operationalising sleep discrepancy have varied consi
 <!-- # Appendix A. Supplementary data -->
 
 <!-- Supplementary data to this article may be found online at xxx. -->
-
-# Body
-
-::: {#refs-body}
-:::
-
-
-# Review
-
-::: {#refs-review}
-:::
-
-# Acti
-
-::: {#refs-acti}
-:::
