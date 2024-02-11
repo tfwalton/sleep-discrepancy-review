@@ -75,21 +75,23 @@ total_records <- 6190
 
 ## Study Objectives 
 
-To examine how sleep discrepancy has been conceptualised and identify and evaluate the methods used to investigate it.
+This scoping review examines how sleep discrepancy has been conceptualised and identifies and evaluates methods that have been used to investigate it.
 
 ## Method
 
-We searched MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed, Scopus, and Web of Science for relevant studies. Titles and abstracts, and then full text records of searched studies were screened. Methodological information was extracted including measures of self-report and objective sleep, sleep variables, discrepancy indices, handling of repeated measurements, and method of measure comparison.
+We searched MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed, Scopus, and Web of Science for relevant studies. Titles and abstracts, and then full text records of searched studies were screened. Methodological information was extracted including measures of self-report and objective sleep, sleep variables, discrepancy indices, handling of repeated measurements, and methods of measure comparison.
 
 ## Results
 
-`r nrow(screen) %>% english() %>% str_to_sentence` studies were included in this review. Studies varied according to objective sleep measure, actigraphy algorithm, software, and rest interval, polysomnography setting and scoring criteria, sleep variables, self-report sleep measure, number of nights of objective recording, timeframe of self-report measure, self-report sleep variable definition, sleep discrepancy composite index, presence and handling of repeated measurements, and statistical method for measure comparison. The conceptual implications for these methodological parameters are discussed.
+`r nrow(screen) %>% english() %>% str_to_sentence` studies were included in this review. Studies varied according to objective sleep measure; actigraphy algorithm, software, and rest interval; polysomnography setting and scoring criteria; sleep variables; self-report sleep measure; number of nights of objective recording; time frame of self-report measure; self-report sleep variable definition; sleep discrepancy derived index; presence and handling of repeated measurements; and statistical method for measure comparison.
 
 ## Conclusions
 
-Methods of measurement and operational definitions for sleep discrepancy varied considerably across identified studies. Many of these approaches have varying implications
+Methods of measurement and operational definitions for sleep discrepancy varied considerably across identified studies. The conceptual and theoretical implications of these methodological differences are discussed in the context of research in insomnia and other areas.
 
-of sleep discrepancy and are associated with potential issues for which there has been little discussion available in the literature to date. 
+## Key words
+
+Sleep discrepancy; sleep misperception; scoping review
 
 # Introduction
 
@@ -120,13 +122,22 @@ Studies were excluded that (i) made no direct comparisons between equivalent sel
 
 ## Search strategy
 
-The search strategy aimed to identify articles published in peer-reviewed journals and, initially, grey literature including theses, dissertations, and conference abstracts. Due to the large number of records returned by initial searches, grey literature was excluded at the full text extraction stage. The following databases were searched: MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed, Scopus, Web of Science, ProQuest Theses and Dissertations, and OSF Preprints. The search strategy included keywords, index terms, and search operators adapted for each database. Searches across all databases were conducted on the 24th April 2022. The full search strategy for Embase (Ovid) is provided as an example in Table \@ref(tab:embase) below. See Appendix A for full search strategies for other databases.
+The search strategy aimed to identify articles published in peer-reviewed journals and, initially, grey literature including theses, dissertations, and conference abstracts. Due to the large number of records returned by initial searches, grey literature was excluded at the full text extraction stage. The following databases were searched: MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed, Scopus, Web of Science, ProQuest Theses and Dissertations, and OSF Preprints. The search strategy included keywords, index terms, and search operators adapted for each database. Searches across all databases were conducted on the 24th April 2022. The full search strategy for Embase (Ovid) is provided as an example in Table \@ref(tab:egsearch) below. See Appendix A for full search strategies for other databases.
 
-```{r embase, echo = FALSE, warning = FALSE, message = FALSE}
+```{r egsearch, echo = FALSE, warning = FALSE, message = FALSE}
+col1 <- seq(1:7)
+col2 <- c('sleep discrepancy or paradoxical insomnia or subjective insomnia or (sleep adj2 misperception).mp',
+          '((self report* or diary or subjective*) and (objective* or actigraph* or polysomnograph* or polygraph*)).mp.',
+          '(exp polysomnography/ or exp actimetry/) and exp self report/ ',
+          '(sleep* and ("over estimat*" or "over report*" or "under estimat*" or "under report*" or overestimat* or overreport* or underestimat* or underreport* or discrepan* or concordan* or agreement or disagreement or discordan* or congruen* or incongruen*)).mp.',
+          '2 or 3',
+          '4 and 5',
+          '1 or 6'
+          )
+col3 <- c(488, 193243, 1676, 9362, 193302, 1234, 1569)
+df <- data.frame("Step" = col1, "Terms and operators" = col2, "Records" = col3)
 
-embasetbl <- read.csv("C:/Users/tfioc/Documents/sleep-discrepancy-review/search_embase.csv")
-
-kable(embasetbl,
+kable(df,
       format = "html",
       col.names = c("Step","Terms and Operators", "Records"),
       caption = "Search strategy for Embase (Ovid)"
@@ -802,57 +813,27 @@ Lastly, we recorded some other methodological features of studies that appeared 
 
 # Discussion
 
-This systematically reviewed concepts and methods in the area of sleep discrepancy research. We found considerable methodological diversity across a vast literature and identified important conceptual and methodological issues across a range of areas. These are discussed below with recommendations for further research where appropriate.
+This systematically reviewed concepts and methods in the area of sleep discrepancy research. We found considerable methodological diversity across a vast literature and identified important conceptual and methodological issues in a range of areas. These are discussed below with recommendations for further research where appropriate.
 
 ## PSG and actigraphy are best used to measure different forms of sleep discrepancy
 
-As the gold-standard for measuring objective sleep, PSG may be considered generally preferable to actigraphy for the measurement of sleep discrepancy. In comparison with PSG, actigraphy generally overestimates sleep and underestimates wake time, and can have trouble distinguishing sleep from quiescent periods of wakefulness [@marino2013]. These trends have been observed to be greater for samples experiencing chronic medical or psychiatric conditions [@conley2019agreement] and are likely to have a greater influence on the parameters of SOL and WASO than TST. Actigraphy is not without its advantages, however, and remains more cost-effective, more useful for obtaining multiple nights of data, and less invasive, compared with PSG. For these reasons, actigraphy is recommended for measuring naturalistic sleep and sleep patterns over time [@morgenthaler2007practice], and may be preferable to PSG where external validity of sleep discrepancy is a concern. A case where actigraphy clearly preferable is when aggregate (e.g., mean weekly) objective measures are compared to habitual measures of self-report sleep. 
-
-
-it has been emphasised that the differences between PSG and actigraphy on these metrics are systematic rather than random, 
+As the gold-standard for measuring objective sleep, PSG may be considered generally preferable to actigraphy for the measurement of sleep discrepancy. In comparison with PSG, actigraphy generally overestimates sleep and underestimates wake time, and can have trouble distinguishing sleep from quiescent periods of wakefulness [@marino2013]. These trends have been observed to be greater for samples experiencing chronic medical or psychiatric conditions [@conley2019agreement]. Actigraphy is not without its advantages, however, and remains more cost-effective, more useful for obtaining multiple nights of data, and less invasive, compared with PSG. For these reasons, actigraphy is recommended for measuring naturalistic sleep and sleep patterns over time [@morgenthaler2007practice], and may be preferable to PSG where external validity of sleep discrepancy is a concern. Another case where actigraphy is clearly preferable is when aggregate (e.g., mean weekly) objective measures are compared to habitual measures of self-report sleep (see \@ref(dvar) for further discussion of this). It has been emphasised that the differences between PSG and actigraphy on these metrics are systematic rather than random ()
 
 
 mentioned...that differences between PSG and actigraphy for variables such as TST, SOL, and WASO, are systematic and, excepting some circumstances, can mostly be attributable to differences in 
 
 
-
-
-The advantages of actigraphy include cost-effectiveness, ease of obtaining multiple nights of recording, and reduced invasiveness relative to PSG.  
-
-
-
-<!-- Above will depend on sleep parameter and other things--not true--disagree--need to rephrase this section -->
-
-Sleep onset has been emphasised as a gradual process (Tryon 2004) different phases of the process of sleep onset
-
-That PSG and actigraphy tend to be systematically discrepant themselves indicates that they may represent different forms of sleep discrepancy
-
-
-
-
-
-
-<!-- whilst PSG remains preferable for comparisons over a nightly or episodic basis. -->
-
-<!-- Sleep discrepancy measures using PSG will hence contain less error than actigraphy, especially where self-report and objective sleep parameters are compared on a per night or per sleep episode basis.  -->
-
-<!-- In these cases, the reliability of actigraphy estimates can be maximised by recording for over seven nights [@vansomeren2007].  -->
-
 ## Choice of actigraphy algorithm matters {#algo}
 
-Estimation of actigraphic sleep can vary substantially according to scoring algorithm and, considered in relation to PSG, selection of algorithm will account for some error variance within sleep discrepancy. The concordance of actigraphy to PSG by algorithm tends to depend on the sample in question. For example, actiware algorithms with the medium threshold may perform better than Cole-Kripke in healthy young adults [@gao2022actigraphy]. Also, the Sadeh algorithm has demonstrated higher specificity than UCSD and Cole-Kripke [@deSouza2003further; @quante2018actigraphy; @haghayegh2019performance] but may be less appropriate for assessment of sleep in those with severe obstructive sleep apnoea [@kim2013comparison]. Further complicating the picture is the fact that algorithm performance will also differ according to the actigraph device used [@kripke2010wrist]. New algorithms identified in the review included machine learning algorithms by @john2019open and calculations of non-wear time using respiratory information by @barouni2020ambulatory and correspondence of actigraphy to PSG may be improved for these approaches. <!-- Romola: which and why?--> We noted considerable inconsistency in the reporting of actigraphy methods and algorithms were not reported in many studies. In the absence of a standardised, consensus approach to actigraphy we would like to echo the recommendations of [@ancoli2015sbsm] to report device manufacturer, device model, name and version of software, parameters of data collection including epoch length and sampling rate, and algorithms used.
+Estimation of actigraphic sleep can vary substantially according to scoring algorithm and, considered in relation to PSG, selection of algorithm will account for some error variance within sleep discrepancy. The concordance of actigraphy to PSG by algorithm tends to depend on the sample in question. For example, actiware algorithms with the medium threshold may perform better than Cole-Kripke in healthy young adults [@gao2022actigraphy]. Also, the Sadeh algorithm has demonstrated higher specificity than UCSD and Cole-Kripke [@deSouza2003further; @quante2018actigraphy; @haghayegh2019performance] but may be less appropriate for assessment of sleep in those with severe obstructive sleep apnoea [@kim2013comparison]. Further complicating the picture is the fact that algorithm performance will also differ according to the actigraph device used [@kripke2010wrist]. New algorithms identified in the review included machine learning algorithms by @john2019open and calculations of non-wear time using respiratory information by @barouni2020ambulatory. We noted considerable inconsistency in the reporting of actigraphy methods and algorithms were not reported in many studies. In the absence of a standardised, consensus approach to actigraphy we would like to echo the recommendations of [@ancoli2015sbsm] to report device manufacturer, device model, name and version of software, parameters of data collection including epoch length and sampling rate, and algorithms used.
 
 ## Sleep diaries should not be used to define rest intervals in sleep discrepancy research
 
-Sleep diaries were the most commonly identified method of rest interval definition in this review. A sleep diary is a self-report measure of sleep. By using sleep diaries to define actigraphic rest intervals, self-report sleep is being used to partially define an objective sleep measure. In this case, the measured discrepancy between the two forms of sleep measurement will not be an accurate representation of their actual incongruence. The high frequency at which sleep diaries are back-filled or misreported [@clegg2023real] should be well enough to address the doubts of anyone about the significance of this issue . We noted that a single study in the present review, @krahn_assessing_1997, ensured that manual scorers of the rest intervals for their actigraphy data were blinded to the sleep diary. We recommend that for sleep discrepancy research, alternatives such as these are sought for defining rest interval periods.
-
-Tryon--sleep switches 
-
-<!-- @zibrandtsen2020 : compliance isn't great for event marker presses -->
+Sleep diaries were the most commonly identified method of rest interval definition in this review. A sleep diary is a self-report measure of sleep. By using sleep diaries to define actigraphic rest intervals, self-report sleep is being used to partially define an objective sleep measure. In this case, the measured discrepancy between the two forms of sleep measurement will not be an accurate representation of their actual incongruence. The high frequency at which sleep diaries are back-filled or misreported [@clegg2023real] should be well enough to address the doubts of anyone about the significance of this issue. We noted that a single study in the present review, @krahn_assessing_1997, ensured that manual scorers of the rest intervals for their actigraphy data were blinded to the sleep diary. We recommend that for sleep discrepancy research, alternatives such as these are sought for defining rest interval periods.
 
 ## Method of calculation of self-report sleep time matters
 
-We identified two principal ways of calculating self-report TST from diaries and sleep questionnaires: querying participants directly about how much sleep they had (e.g., "how many hours did you sleep last night?") and calculating TST from other parameters that were queried directly (e.g., TST = TIB - SOL - WASO - TWAK). The latter method is recommended by @buysse2006 and is the usual practice when using the Consensus Sleep Diary [@Carney2012], a questionnaire that does not contain a direct query for TST in its standard version. @alameddine2015sleep compared direct and indirect (i.e., calculated) self-report measures of TST and found that the direct estimates tended to exceed indirect estimates. Sleep discrepancy was overall negative across the sample for those with and without insomnia so it is possible that indirect queries produce self-report TST that is closer to objective estimates (i.e., reduced sleep discrepancy).
+We identified two principal ways of calculating self-report TST from diaries and sleep questionnaires: querying participants directly about how much sleep they had (e.g., "how many hours did you sleep last night?") and calculating TST from other parameters that were queried directly (e.g., TST = TIB - SOL - WASO - TWAK). The latter method is recommended by @buysse2006 and is the usual practice when using the Consensus Sleep Diary [@Carney2012], a questionnaire that does not contain a direct query for TST in its standard version. @alameddine2015sleep compared direct and indirect (i.e., calculated) self-report measures of TST and found that the direct estimates tended to exceed indirect estimates. In this study, sleep discrepancy was overall negative across the sample for those with and without insomnia so it is possible that indirect queries produce self-report TST that is closer to objective estimates (i.e., reduced sleep discrepancy). 
 
 <!--Romola: And what is the implication of all of the above? Tom: I don't know what more to say-->
 
@@ -900,7 +881,7 @@ In the studies identified in this review, the most common way of handling repeat
 
 Despite being the most common approach to comparing self-report and objective sleep measures, Pearson or Spearman correlations are broadly inappropriate for the characterisation of agreement or discrepancy. Correlation is strictly a measure of association between two variables and is insensitive to systematic error between measures [@jinyuan2016]. For example, the same correlation coefficient may equally describe a sample where self-report and objective estimates of sleep tend to be equal as one where (i), objective estimates tend to exceed self-report estimates by a given constant (e.g., two hours) or (ii), the value of objective sleep varies proportional to the level of self-report sleep. Measures of agreement including Bland-Altman analyses, intra-class correlation, and Lin's concordance coefficient are preferable for the measurement of discrepancy in equivalent parameters.
 
-## Sleep discrepancy varies in its conceptual distance to sleep misperception
+## Sleep discrepancy varies in its conceptual distance to sleep misperception {#misp}
 
 Sleep discrepancy is a term often used interchangeably with sleep misperception. It has been noted by a number of authors [@Moul2004; @tryon2004] that sleep is a complex process for which there no one perfectly valid measure and accordingly *sleep discrepancy* is a preferable term to *sleep misperception* which in this context may be a misnomer. The status of visually-scored EEG as a clear objective standard of sleep continues to be challenged by the presence of local sleep [@krueger2019local], subtle EEG changes (e.g., the cyclic alternating pattern [@Parrino2012]), and dissociation identified between the EEG and other sleep-related physiological processes, under some conditions [@krueger2013sleep]. Whilst it may not be possible to directly measure sleep misperception for these reasons, sleep discrepancy can be closer or further to sleep misperception conceptually depending on its operational definition. Closest are studies measuring sleep/wake agreement or classification using EEG under laboratory conditions. In a case where a participant who, being asleep for 5 minutes, is woken by a technician and reports complete wakefulness for the preceding period, only the fallibility of objective recording can account for a conceptual distinction between sleep discrepancy and true sleep-state misperception.
 
@@ -920,19 +901,119 @@ This study represents the largest systematic approach to investigating methodolo
 
 ## Summary
 
-Approaches to measuring and operationalising sleep discrepancy have varied considerably in the literature, often with substantial effects on what sleep discrepancy means as a concept and sometimes associated with problems that may not be immediately obvious. Measuring discrepancy or congruence is often a complex undertaking and we hope that this scoping review will prove helpful and informative to those interested in designing or interpreting sleep discrepancy studies.
+Approaches to measuring and operationalising sleep discrepancy have varied considerably in the literature, often with substantial effects on what sleep discrepancy means as a concept and sometimes associated with problems that may not be immediately clear. Measuring discrepancy or congruence is often a complex undertaking and we hope that this scoping review will prove helpful and informative to those interested in designing or interpreting sleep discrepancy studies.
 
 <!-- it may be more effective or simpler to not measure sleep discrepancy at all -->
 
+# Acknowledgements
 
-<!-- # Funding -->
+We would like to thank the librarians at the Unversity of Western Australia library for their assistance with the development of the search strategy.
 
-<!-- This work was part of a PhD project funded by the Australian Government Research Training Program. -->
+# Financial disclosure statement
 
-<!-- # Declaratation of competing interest -->
+None.
 
-<!-- The authors declared that they had no conflicts of interest with respect to their authorship or the publication of this article. -->
+# Funding
 
-<!-- # Appendix A. Supplementary data -->
+This work was part of a PhD project funded by the Australian Government Research Training Program.
 
-<!-- Supplementary data to this article may be found online at xxx. -->
+# Declaratation of competing interest
+
+The authors declared that they had no conflicts of interest with respect to their authorship or the publication of this article.
+
+# Appendix. Search strategies
+
+Search strategies for databases searched using the Ovid system are available in Table \@ref(tab:ovid). Search strategies for other databases are listed in Table \@ref(tab:databases).
+
+``` {r ovid, echo = FALSE, warning = FALSE, message = FALSE}
+col1 <- c(seq(1:7), seq(1:7), seq(1:7))
+col2 <- c('sleep discrepancy or paradoxical insomnia or subjective insomnia or (sleep adj2 misperception).mp',
+          '((self report* or diary or subjective*) and (objective* or actigraph* or polysomnograph* or polygraph*)).mp.',
+          '(exp polysomnography/ or exp actimetry/) and exp self report/ ',
+          '(sleep* and ("over estimat*" or "over report*" or "under estimat*" or "under report*" or overestimat* or overreport* or underestimat* or underreport* or discrepan* or concordan* or agreement or disagreement or discordan* or congruen* or incongruen*)).mp.',
+          '2 or 3',
+          '4 and 5',
+          '1 or 6',
+          'sleep discrepancy or paradoxical insomnia or subjective insomnia or (sleep adj2 misperception).mp',
+          '((self report* or diary or subjective*) and (objective* or actigraph* or polysomnograph* or polygraph*)).mp.',
+          '(exp polysomnography/ or exp actigraphy/) and exp self report/ ',
+          '(sleep* and ("over estimat*" or "over report*" or "under estimat*" or "under report*" or overestimat* or overreport* or underestimat* or underreport* or discrepan* or concordan* or agreement or disagreement or discordan* or congruen* or incongruen*)).mp.',
+          '2 or 3',
+          '4 and 5',
+          '1 or 6',
+          'sleep discrepancy or paradoxical insomnia or subjective insomnia or (sleep adj2 misperception).mp',
+          '((self report* or diary or subjective*) and (objective* or actigraph* or polysomnograph* or polygraph*)).mp.',
+          '(exp polysomnography/ or exp actigraphy/) and exp self report/ ',
+          '(sleep* and ("over estimat*" or "over report*" or "under estimat*" or "under report*" or overestimat* or overreport* or underestimat* or underreport* or discrepan* or concordan* or agreement or disagreement or discordan* or congruen* or incongruen*)).mp.',
+          '2 or 3',
+          '4 and 5',
+          '1 or 6'
+)
+col3 <- c(488, 193243, 1676, 9362, 193302, 1234, 1569, 175, 57592, 59, 2112, 57592, 346, 471, 260, 139088, 561, 5280, 139088, 692, 875)
+df <- data.frame("step" = col1, "terms" = col2, "records" = col3)
+colnames(df) <- c("Step", "Terms and operators", "Records")
+
+kable(df,
+      format = "html",
+      caption = "Search strategy for Ovid databases"
+) %>%
+  kable_styling(font_size = 11, full_width = F) %>%
+  pack_rows("Embase", 1,7) %>%
+  pack_rows("PsycINFO", 8,14) %>%
+  pack_rows("Medline", 15,21)
+
+```
+
+``` {r databases, echo = FALSE, warning = FALSE, message = FALSE}
+
+col1 <- c(
+'("sleep discrepancy" OR "paradoxical insomnia" OR "subjective insomnia") OR (sleep AND misperception) OR
+(("self report*" or diary or subjective*) AND (objective* or actigraph* or polysomnograph* or polygraph*)) OR (("Polysomnography/methods"[MAJR] OR "Actigraphy/methods"[MAJR]) AND "Self Report"[MeSH])
+AND (sleep* AND ("over estimat*" OR "over report*" OR "under estimat*" OR "under report*" OR overestimat* OR overreport* OR underestimat* OR underreport* OR discrepan* OR concordan* OR agreement OR disagreement OR discordan* OR congruen* OR incongruen*))',
+
+'("sleep discrepancy" OR "paradoxical insomnia" OR "subjective insomnia") OR (sleep AND misperception) OR
+(("self report*" or diary or subjective*) AND (objective* or actigraph* or polysomnograph* or polygraph*))
+AND (sleep* AND ("over estimat*" OR "over report*" OR "under estimat*" OR "under report*" OR overestimat* OR overreport* OR underestimat* OR underreport* OR discrepan* OR concordan* OR agreement OR disagreement OR discordan* OR congruen* OR incongruen*))',
+
+'TITLE-ABS-KEY ( ( "sleep discrepancy"  OR  "paradoxical insomnia"  OR  "subjective insomnia" )  OR  ( sleep  AND  misperception )  OR  ( ( "self report*"  OR  diary  OR  subjective* )  AND  ( objective*  OR  actigraph*  OR  polysomnograph*  OR  polygraph* ) )  AND  ( sleep*  AND  ( "over estimat*"  OR  "over report*"  OR  "under estimat*"  OR  "under report*"  OR  overestimat*  OR  overreport*  OR  underestimat*  OR  underreport*  OR  discrepan*  OR  concordan*  OR  agreement  OR  disagreement  OR  discordan*  OR  congruen*  OR  incongruen* ) ) ) ',
+
+'("sleep discrepancy" OR "paradoxical insomnia" OR "subjective insomnia") OR (sleep AND misperception) OR
+(("self report*" or diary or subjective*) AND (objective* or actigraph* or polysomnograph* or polygraph*))
+AND (sleep* AND ("over estimat*" OR "over report*" OR "under estimat*" OR "under report*" OR overestimat* OR overreport* OR underestimat* OR underreport* OR discrepan* OR concordan* OR agreement OR disagreement OR discordan* OR congruen* OR incongruen*))',
+
+'noft(("sleep discrepancy" OR "paradoxical insomnia" OR "subjective insomnia") OR (sleep AND misperception) OR
+((("self report*" or diary or subjective*) AND (objective* or actigraph* or polysomnograph* or polygraph*))
+AND (sleep* AND ("over estimat*" OR "over report*" OR "under estimat*" OR "under report*" OR overestimat* OR overreport* OR underestimat* OR underreport* 
+OR discrepan* OR concordan* OR agreement OR disagreement OR discordan* OR congruen* OR incongruen*))))'
+)
+
+col2 <- c(761, 310, 826, 1288, 90)
+df <- data.frame("terms" = col1, "records" = col2)
+colnames(df) <- c("Terms and operators", "Records")
+
+kable(df,
+      format = "html",
+      caption = "Search strategy for other databases"
+      ) %>%
+  kable_styling(font_size = 11, full_width = F) %>%
+  pack_rows("Pubmed", 1,1) %>%
+  pack_rows("CINAHL Plus", 2,2) %>%
+  pack_rows("Scopus", 3,3) %>%
+  pack_rows("Web of Science", 4,4) %>%
+  pack_rows("Proquest Theses and Dissertations Global", 5,5)
+
+```
+
+# Appendix. List of deviations from protocol
+
+The following are a list of deviations from the scoping review protocol registered on the Open Science Framework (doi: 10.17605/OSF.IO/BCJNQ).
+
+1. The term actimetry in Medline and PSYCinfo searches was changed to actigraphy
+2. The scoping review protocol listed an incorrect number of duplicates records following searches
+2. All records that were not peer reviewed journal articles were excluded at the full-text screening stage in the final review
+3. Other items were added to the exclusion criteria at the full-text screening stage including:
+ + study measured informant-report rather than strictly self-report sleep
+ + study did not include statistical comparison of self-report and objective sleep (e.g., numerical comparisons only, single-case design)
+4. Reference lists were not searched for additional citations as planned in the protocol
+
+# References
