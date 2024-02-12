@@ -71,7 +71,7 @@ duplicates <- 3903
 total_records <- 6190
 ```
 
-# Abstract
+# Abstract {#abstract}
 
 ## Study Objectives 
 
@@ -93,7 +93,7 @@ Methods of measurement and operational definitions for sleep discrepancy varied 
 
 Sleep discrepancy; sleep misperception; scoping review
 
-# Introduction
+# Introduction {#introduction}
 
 Sleep is measured in two principal ways: objectively through polysomnography or actigraphy, and by self-report through questionnaires or sleep diaries. The discordance that can exist between these two forms of measurement is known as subjective-objective sleep discrepancy, or more simply, sleep discrepancy. Sleep discrepancy is a common feature of insomnia disorder, where it is also referred to as sleep misperception or paradoxical insomnia. Individuals with insomnia tend to underestimate total sleep time (TST), and overestimate sleep onset latency (SOL) and wake after sleep onset (WASO) relative to objective measures [@Baglioni2014; @Edinger1995; @Means2003].\ 
 
@@ -103,16 +103,18 @@ There are diverse ways to conceptualise and measure sleep discrepancy. It may be
 
 To date, there have been few systematic attempts to synthesise or evaluate the varied approaches to investigating sleep discrepancy. Two reviews have been conducted in this area. @Castelnovo2019 conducted a systematic review of quantitative definitions of paradoxical insomnia, an insomnia subvariant defined, in part, by the presence of sleep discrepancy. This excluded studies where sleep discrepancy was not used to form diagnostic criteria. A second review was conducted by @Rezaie2018 ---a literature review of the clinical features, aetiology, correlates, and treatment of sleep discrepancy and paradoxical insomnia. Whilst an informative discussion of research findings, this study eschewed a methodological focus and did not incorporate a systematic search, potentially underrepresenting the breadth of the literature.
 
-Presently, it isn't clear how sleep discrepancy should best be defined and the diversity in its measurement and conceptualisation may present a challenge to theory-building for research in insomnia and other areas. A scoping review is a method of research synthesis that aims to map existing literature in a field of interest and identify types of evidence available in a given topic [@Arksey2005]. We used a scoping review strategy to examine how sleep discrepancy has been conceptualised in the literature and identify the methods used to investigate it. A preliminary search of Medline (Ovid), the Cochrane Library, Embase (Ovid), and PsycInfo (Ovid) was conducted to identify existing or in-progress systematic or scoping reviews on the topic. Except for the two reviews mentioned above, no records were identified.
+Presently, it isn't clear how sleep discrepancy should best be defined and the diversity in its measurement and conceptualisation may present a challenge to theory-building for research in insomnia and other areas. A scoping review is a method of research synthesis that aims to map existing literature in a field of interest and identify types of evidence available in a given topic [@Arksey2005]. We used a scoping review strategy to examine how sleep discrepancy has been conceptualised in the literature and identify and evaluate the methods used to investigate it. 
+
+A preliminary search of Medline (Ovid), the Cochrane Library, Embase (Ovid), and PsycInfo (Ovid) was conducted to identify existing or in-progress systematic or scoping reviews on the topic. Except for the two reviews mentioned above, no records were identified.
 
 # Methods
 
-## Protocol and registration
+## Protocol and registration {#protocol}
 
 The review was conducted according to guidelines provided by the JBI scoping review methodology group [@Peters2020] and reported according to the Preferred Reporting Items for Systematic reviews and Meta-Analyses
 extension for Scoping Reviews (PRISMA-ScR) Checklist [@tricco2018]. A review protocol was registered with the Open Science Framework on April 4, 2022 (doi: 10.17605/OSF.IO/BCJNQ), prior to conducting searches. Deviations from the protocol are outlined in Appendix B.
 
-## Eligibility criteria
+## Eligibility criteria {#item6}
 
 Participants of all age groups and clinical populations were included in the review. To adequately map the boundaries of sleep discrepancy as a concept, we included any study that compared an objective measure of sleep (e.g., polysomnography, actigraphy) with an equivalent self-report measure of sleep (e.g., sleep diaries, questionnaires), through statistical analysis or composite index scores. For measures of self-report and objective sleep, we included traditional indices of sleep time such as TST, SOL, and WASO, in addition to measures of sleep quality, sleep patterns, or any other sleep-related experience or behaviour.
 
@@ -120,9 +122,11 @@ Participants of all age groups and clinical populations were included in the rev
 
 Studies were excluded that (i) made no direct comparisons between equivalent self-report and objective sleep measures, (ii) included informant, rather than self-report measures, (iii) were case reports or review articles, (iv) included self-report or objective measures that were not related to sleep, (v) contained no empirical data, (vi) omitted either a self-report or equivalent objective measure of sleep, (vii) were a grey literature source including theses, dissertations, and conference abstracts. No records were excluded on the basis of geographic location, cultural factors, or any other contextual feature.
 
-## Search strategy
+## Search strategy {#item7}
 
 The search strategy aimed to identify articles published in peer-reviewed journals and, initially, grey literature including theses, dissertations, and conference abstracts. Due to the large number of records returned by initial searches, grey literature was excluded at the full text extraction stage. The following databases were searched: MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed, Scopus, Web of Science, ProQuest Theses and Dissertations, and OSF Preprints. The search strategy included keywords, index terms, and search operators adapted for each database. Searches across all databases were conducted on the 24th April 2022. The full search strategy for Embase (Ovid) is provided as an example in Table \@ref(tab:egsearch) below. See Appendix A for full search strategies for other databases.
+
+## {#item8}
 
 ```{r egsearch, echo = FALSE, warning = FALSE, message = FALSE}
 col1 <- seq(1:7)
@@ -145,25 +149,26 @@ kable(df,
   kable_styling(font_size = 11, full_width = F)
 ```
 
-## Sources of evidence selection
+## Sources of evidence selection {#item9}
 
 Records identified from searches were exported to EndNote 20 [@EndNote20] for collation and then uploaded to Rayyan [@Ouzzani2016] for deduplication and title and abstract screening. Two independent reviewers (TW and SF) screened titles and abstracts to identify studies for full-text retrieval using the inclusion criteria. Percentage of agreement between reviewers was 87.6% and conflicts were resolved via discussion. The full texts of articles passing title and abstract screening were screened independently by the first author with reasons for exclusion reported. Due to the unanticipated size of the literature, articles from sources other than peer-reviewed journals were added to exclusion criteria post-hoc.
 
-## Charting the data
+## Charting the data {#item10}
 
 Data extraction was performed by a single author (TW). Methodological features of included articles were selected on their potential influence on the measurement or operational definition of sleep discrepancy and included the following: objective sleep measure type/hardware, actigraphy algorithm, software, and rest interval, polysomnography setting and scoring criteria, self-report sleep measure, sleep variables (e.g., TST, WASO etc...) and definitions thereof, methods of handling repeated measurements, methods of comparing self-report and objective sleep within groups, and methods for operationalising sleep discrepancy at the construct level including the use of derived scores.
 
-## Data items
+## Data items {#item11}
 
-Extracted data items are available from the master charting table (github link).
+Extracted data items are described in the codebook available at: githublink.
 
-## Synthesis of results
+## Synthesis of results {#item13}
 
-This manuscript, including all tables and figures summarising data were generated using computationally reproducible methods from master charting table available at (github link) [@piccolo2016; @lindsay2023].
+This manuscript, including all tables and figures summarising data were generated using computationally reproducible methods from the master charting table available at (github link) [@piccolo2016; @lindsay2023].
 
 <!-- now describe how you organised the studies categories-->
+<!-- Tom: I have this in the codebook, I think that there is too much information to include in the text of the review -->
 
-# Results
+# Results {#item14}
 
 The initial search of databases returned `r total_records` from which `r duplicates` duplicate articles were removed. Details of the review process from article identification, screening, and selection are available in the PRISMA flowchart depicted in \@ref(fig:PRISMA) below.
 
@@ -235,7 +240,7 @@ list_assessed <- c(paste0("(n = ", assessed, ")"))
 list_ftexcluded <- c(paste0("(n = ", ftexcluded, ")"),
                      paste0("No direct comparisons between equivalent parameters ","(n = ", excluded1, ")"),
                      paste0("Informant report only ","(n = ", excluded2, ")"),
-                     paste0("Duplicate ","(n = ", excluded3, ")"),
+                     paste0("Duplicate (missed at title and abstract screening; n = ", excluded3, ")"),
                      paste0("Case report ","(n = ", excluded4, ")"),
                      paste0("Self-report or objective measures not related to sleep ","(n = ", excluded5, ")"),
                      paste0("Review article ","(n = ", excluded6, ")"),
@@ -295,9 +300,8 @@ assessed -> total
 ", height = "100%")
 ```
 
-## Article characteristics
-
-A total of `r nrow(screen)` studies were identified from `r catg("fulltext_include", "Yes")` records, with `r catg("fulltext_include", "Second study")` records reporting two studies or experiments within a single text. Records spanned `r unique(c(screen$country, screen$country2)) %>% length()` countries, with the majority originating from the USA (n = `r length(which(screen$country == "USA" | screen$country2 == "USA"))`). A full list of countries is available in the supplemental materials.
+## Article characteristics {#item15}
+For a full list of article characteristics for which data were charted, see the master table available at: github link. A total of `r nrow(screen)` studies were identified from `r catg("fulltext_include", "Yes")` records, with `r catg("fulltext_include", "Second study")` records reporting two studies or experiments within a single text. Records spanned `r unique(c(screen$country, screen$country2)) %>% length()` countries, with the majority originating from the USA (n = `r length(which(screen$country == "USA" | screen$country2 == "USA"))`). A full list of countries is available in the supplemental materials.
 
 ```{r sample sizes, echo = FALSE, warning = FALSE, message = FALSE}
 sample_size <- as.numeric(screen$sample_size)
@@ -338,7 +342,7 @@ ggplot(data = samplechar, aes(x = fct_infreq(sample) %>% fct_rev())) +
 
 ```
 
-## Methodological features
+## Methodological features {#resultsandsynthesis}
 
 ### Measures of objective sleep
 
@@ -564,8 +568,6 @@ colnames(sleep_variables) <- c("Variable name", "Abbreviation", "Calculation", "
 # Add superscript to TWAK for footnote
 sleep_variables[which(sleep_variables[ ,2] == "TWAK"),5] <- paste0(sleep_variables[which(sleep_variables[ ,2] == "TWAK"),5], footnote_marker_symbol(1))
 
-                                                                   
-                                                                   
 # Generate table
 kable(sleep_variables,
       caption = "Sleep variables used for operationalising sleep discrepancy",
@@ -811,7 +813,7 @@ A number of other ways to characterise the relationship of sleep discrepancy wit
 
 Lastly, we recorded some other methodological features of studies that appeared pertinent to the study of sleep discrepancy. `r onehot("misc_cbti", brackets = FALSE)` studies investigated sleep discrepancy during, as a predictor of response to, or as an outcome of, cognitive behaviour therapy for insomnia (CBT-I). `r onehot("misc_exp_awakenings", brackets = FALSE)` studies used an experimental awakening paradigm where participants were monitored in-lab and woken by sound probes or technician interventions.
 
-# Discussion
+# Discussion {#item19}
 
 This systematically reviewed concepts and methods in the area of sleep discrepancy research. We found considerable methodological diversity across a vast literature and identified important conceptual and methodological issues in a range of areas. These are discussed below with recommendations for further research where appropriate.
 
@@ -895,25 +897,27 @@ Where habitual self-report sleep is compared to objective estimates spanning one
 
 The scope of the literature on sleep discrepancy has been considerably underestimated to date. We intended to identify a broad range of studies in this review that may have captured the concept of sleep discrepancy without necessarily referring to this or related terms. A search across full texts of all studies included in this review returned `r (grepl("discrepancy", screen$abstract, ignore.case = TRUE) & grepl("sleep", screen$abstract, ignore.case = TRUE)) %>% sum()` records making explicit mention of "sleep" and "discrepancy", leaving `r nrow(screen) - (grepl("discrepancy", screen$abstract, ignore.case = TRUE) & grepl("sleep", screen$abstract, ignore.case = TRUE)) %>% sum()` that would have otherwise been unidentifiable through simple keyword searching of this concept. A prior review of paradoxical insomnia and subjective-objective sleep discrepancy [@Rezaie2018] identified a total of 40 records. Although conducted four years prior, this review used broader inclusion criteria extending to paradoxical insomnia, the parameters for which do not typically involve direct comparisons of self-report and objective sleep. A corollary to the presence of this underestimation of breadth is that existing sleep discrepancy research across domains may be excessively siloed into respective research areas. Looking at the clinical populations encompassed in this review, there appear to be small but distinguishable sleep discrepancy research programmes in post-traumatic stress disorder, bipolar disorder, pregnancy, traumatic brain injury, and fibromyalgia, to name just a few. Whilst sleep discrepancy is best understood in the context of insomnia, it is possible similar processes underlie the presence of sleep discrepancy in these groups. For example, the role of sleep disturbance as a transdiagnostic factor across psychiatric disorders has been emphasised [@harvey2011sleep] and a mechanistic role for sleep misperception has been suggested for disorders outside of insomnia [@richardson2016].
 
-## Strengths and limitations
+## Strengths and limitations {#item20}
 
 This study represents the largest systematic approach to investigating methodology in the area of sleep discrepancy research. We reported a broad range of methodological features across a large number of studies and provided meaningful syntheses of research methods in a field marked by considerable methodological diversity. Two major changes were made to our own methods during the screening process and following registration of the scoping review protocol that may be viewed as limitations. These changes were both made in response to the unanticipated number of records returned following title and abstract screening and in view of limited resources available for charting and synthesis. First, grey literature was removed from inclusion criteria. Although the issues and recommendations discussed in this paper were limited to published research, our findings remain broadly applicable and no syntheses of empirical findings have been made that could be influenced by publication bias. Second, reference lists were not screened for additional studies and the extent to which this review may be considered an exhaustive representation of the literature may be reduced as a result. 
 
-## Summary
+## Summary {#item21}
 
 Approaches to measuring and operationalising sleep discrepancy have varied considerably in the literature, often with substantial effects on what sleep discrepancy means as a concept and sometimes associated with problems that may not be immediately clear. Measuring discrepancy or congruence is often a complex undertaking and we hope that this scoping review will prove helpful and informative to those interested in designing or interpreting sleep discrepancy studies.
 
 <!-- it may be more effective or simpler to not measure sleep discrepancy at all -->
 
+<!-- Provide a general interpretation of the results with respect to the review questions and objectives, as well as potential implications and/or next steps. -->
+
 # Acknowledgements
 
-We would like to thank the librarians at the Unversity of Western Australia library for their assistance with the development of the search strategy.
+We would like to thank the librarians at the University of Western Australia library for their assistance with the development of the search strategy.
 
 # Financial disclosure statement
 
 None.
 
-# Funding
+# Funding {#item22}
 
 This work was part of a PhD project funded by the Australian Government Research Training Program.
 
@@ -921,7 +925,9 @@ This work was part of a PhD project funded by the Australian Government Research
 
 The authors declared that they had no conflicts of interest with respect to their authorship or the publication of this article.
 
-# Appendix. Search strategies
+# Appendices
+
+## Search strategies
 
 Search strategies for databases searched using the Ovid system are available in Table \@ref(tab:ovid). Search strategies for other databases are listed in Table \@ref(tab:databases).
 
@@ -1004,7 +1010,7 @@ kable(df,
 
 ```
 
-# Appendix. List of deviations from protocol
+## List of deviations from protocol
 
 The following are a list of deviations from the scoping review protocol registered on the Open Science Framework (doi: 10.17605/OSF.IO/BCJNQ).
 
@@ -1015,5 +1021,85 @@ The following are a list of deviations from the scoping review protocol register
  + study measured informant-report rather than strictly self-report sleep
  + study did not include statistical comparison of self-report and objective sleep (e.g., numerical comparisons only, single-case design)
 4. Reference lists were not searched for additional citations as planned in the protocol
+
+## PRISMA-ScR checklist
+
+``` {r checklist, echo = FALSE, warning = FALSE, message = FALSE}
+
+col1 <- c(
+  "Title", "Structured summary", "Rationale", "Objectives", "Protocol and registrations", "Eligibility criteria", "Information sources", "Search", "Selection of sources of evidence", "Data charting process", "Data items", "Critical appraisal of individual sources of evidence", "Synthesis of results", "Selection of sources of evidence", "Characteristics of sources of evidence", "Critical appraisal within sources of evidence", "Results of individual sources of evidence", "Synthesis of results", "Summary of evidence", "Limitations", "Conclusions", "Funding"
+)
+
+col2 <- seq(1:22)
+
+col3 <- c(
+  "Identify the report as a scoping review.",
+  "Provide a structure summary that includes (as applicable): background, objectives, eligibility criteria, sources of evidence, charting methods, results, and conclusions that relate to the review questions and objectives.",
+  "Describe the rationale for the review in the context of what is already known. Explain why the review questions/ objectives lend themselves to a scoping review approach",
+  "Provide an explicit statement of the questions and objectives being addressed with reference to their key elements (e.g., population or participants, concepts, and context) or other relevant key elements used to conceptualise the review questions and/or objectives.",
+  "Indicate whether a review protocol exists; state if and where it can be accessed (e.g., a Web address); and if available, provide registration information, including the registration number.",
+  "Specify characteristics of the sources of evidence used as eligibility criteria (e.g., years considered, language, and publication status), and provide a rationale.",
+  "Describe all information sources in the search (e.g., databases with dates of coverage and contact with authors to identify additional sources), as well as the date the most recent search was executed.",
+  "Present the full electronic search strategy for at least 1 database, including any limits used, such that it could be repeated.",
+"State the process for selecting sources of evidence (i.e., screening and eligibility) included in the scoping review.",
+"Describe the methods of charting data from the included sources of evidence (e.g., calibrated forms or forms that have been tested by the team before their use, and whether data charting was done independently or in duplicate) and any processes for obtaining and confirming data from investigators.",
+"List and define all variables for which data were sought and any assumptions and simplifications made",
+"If done, provide a rationale for conducting a critical appraisal of included sources of evidence; describe the methods used and how this information was used in any data synthesis (if appropriate).",
+"Describe the methods of handling and summarizing the data that were charted",
+"Give numbers of sources of evidence screen, assessed for eligibility, and included in the review, with reasons for exclusions at each stage, ideally using a flow diagram.",
+"For each source of evidence, present characteristics for which data were charted and provide the citations.",
+"If done, present data on critical appraisal of included sources of evidence (see item 12).",
+"For each included source of evidence, present the relevant data that were charted that relate to the review questions and objectives.",
+"Summarize and/or present the charting results as they relate to the review questions and objectives.",
+"Summarize the main results (including an overview of concepts, themes, and types of evidence available), link to the review questions and objectives, and consider the relevance to key groups",
+"Discuss the limitations of the scoping review process.",
+"Provide a general interpretation of the results with respect to the review questions and objectives, as well as potential implications and/or next steps.",
+"Describe sources of funding for the included sources of evidence, as well as sources of funding for the scoping review. Describe the role of the funders of the scoping review."
+)
+
+# Double backslash so rmarkdown doesn't read it as an escape
+
+col4 <- c("\\@ref(abstract)", #item1
+          "\\@ref(abstract)", #item2
+          "\\@ref(introduction)", #item3
+          "\\@ref(introduction)", #item4
+          "\\@ref(protocol)", #item5
+          "\\@ref(item6)",
+          "\\@ref(item7)",
+          "\\@ref(item8)",
+          "\\@ref(item9)",
+          "\\@ref(item10)",
+          "\\@ref(item11)",
+          "Formal quality assessment was not conducted", #item12
+          "\\@ref(item13)",
+          "\\@ref(item14)",
+          "\\@ref(item15)",
+          "Formal quality assessment was not conducted", #item16
+          "\\@ref(resultsandsynthesis)", #item17
+          "\\@ref(resultsandsynthesis)", #item18
+          "\\@ref(item19)",
+          "\\@ref(item20)",
+          "\\@ref(item21)",
+          "\\@ref(item22)"
+          )
+
+df <- data.frame("section" = col1, "item_no" = col2, "item" = col3, "page" = col4)
+colnames(df) <- c("Section", "Item", "PRISMA-ScR Checklist Item", "Location reported")
+
+kable(df,
+      format = "html",
+      caption = "Preferred Reporting Items for Systematic reviews and Meta-Analyses extension for Scoping Reviews (PRISMA-ScR) Checklist."
+) %>%
+  kable_styling(font_size = 11, full_width = F) %>%
+  pack_rows("Title", 1,1) %>%
+  pack_rows("Abstract", 2,2) %>%
+  pack_rows("Introduction", 3,4) %>%
+  pack_rows("Methods", 5, 13) %>%
+  pack_rows("Results", 14, 18) %>%
+  pack_rows("Discussion", 19, 21) %>%
+  pack_rows("Funding", 22, 22)
+
+
+```
 
 # References
