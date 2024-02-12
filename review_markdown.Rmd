@@ -103,9 +103,7 @@ There are diverse ways to conceptualise and measure sleep discrepancy. It may be
 
 To date, there have been few systematic attempts to synthesise or evaluate the varied approaches to investigating sleep discrepancy. Two reviews have been conducted in this area. @Castelnovo2019 conducted a systematic review of quantitative definitions of paradoxical insomnia, an insomnia subvariant defined, in part, by the presence of sleep discrepancy. This excluded studies where sleep discrepancy was not used to form diagnostic criteria. A second review was conducted by @Rezaie2018 ---a literature review of the clinical features, aetiology, correlates, and treatment of sleep discrepancy and paradoxical insomnia. Whilst an informative discussion of research findings, this study eschewed a methodological focus and did not incorporate a systematic search, potentially underrepresenting the breadth of the literature.
 
-Presently, it isn't clear how sleep discrepancy should best be defined and the diversity in its measurement and conceptualisation may present a challenge to theory-building for research in insomnia and other areas. A scoping review is a method of research synthesis that aims to map existing literature in a field of interest and identify types of evidence available in a given topic [@Arksey2005]. We used a scoping review strategy to examine how sleep discrepancy has been conceptualised in the literature and identify and evaluate the methods used to investigate it. 
-
-A preliminary search of Medline (Ovid), the Cochrane Library, Embase (Ovid), and PsycInfo (Ovid) was conducted to identify existing or in-progress systematic or scoping reviews on the topic. Except for the two reviews mentioned above, no records were identified.
+Presently, it isn't clear how sleep discrepancy should best be defined and the diversity in its measurement and conceptualisation may present a challenge to theory-building for research in insomnia and other areas. A scoping review is a method of research synthesis that aims to map existing literature in a field of interest and identify types of evidence available in a given topic [@Arksey2005]. We used a scoping review strategy to examine how sleep discrepancy has been conceptualised in the literature and identify and evaluate the methods used to investigate it. A preliminary search of Medline (Ovid), the Cochrane Library, Embase (Ovid), and PsycInfo (Ovid) was conducted to identify existing or in-progress systematic or scoping reviews on the topic. Except for the two reviews mentioned above, no records were identified.
 
 # Methods
 
@@ -1102,4 +1100,24 @@ kable(df,
 
 ```
 
+## Test
+``` {r test, echo = FALSE, warning = FALSE, message = FALSE}
+df <- subset(screen, select = c(bibkey,
+                                sample_characteristics,
+                                sample_size,
+                                aim_agreement,
+                                aim_construct,
+                                aim_validation))
+
+# add an '@' sign in front of each key 
+df$bibkey <- paste0("@",df$bibkey)
+
+df$study_no <- seq(1:nrow(df))
+
+kable(df, format = "html") %>%
+kable_styling(font_size = 11, full_width = F)
+
+
+
+```
 # References
