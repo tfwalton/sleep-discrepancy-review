@@ -7,7 +7,6 @@ output:
 bibliography: ["references_body.bib", "references_review.bib", "references_acti.bib"]
 # csl: american-medical-association-10th-edition.csl
 always_allow_html: yes
-nocite: '@*'
 ---
 
 ```{r initial code, echo = FALSE}
@@ -367,6 +366,9 @@ graph <- apply(graph, c(1,2), collapseActiware)
 
 # Collapse data frame into single vector, generate frequency table, then data frame
 graph <- c(graph[,1], graph[,2], graph[,3]) %>% unlist() %>% table() %>% as.data.frame(stringsAsFactors = FALSE)
+
+# Remove the count of blank spaces
+graph <- graph[-1, ]
 
 # Replace column names
 colnames(graph) <- c("algo", "freq")
@@ -1100,7 +1102,7 @@ kable(df,
 
 ```
 
-## Test
+## Characteristics of studies table
 ``` {r test, echo = FALSE, warning = FALSE, message = FALSE}
 df <- subset(screen, select = c(bibkey,
                                 sample_characteristics,
