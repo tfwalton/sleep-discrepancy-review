@@ -25,10 +25,10 @@ pacman::p_load("tidyselect",
                "english")
 
 # Read data set into data frame
-screen <- read.csv("C:/Users/tfioc/Documents/sleep-discrepancy-review/review_data.csv")
+full_screen <- read.csv("C:/Users/tfioc/Documents/sleep-discrepancy-review/review_data.csv")
 
 # Trim excluded studies from the data frame
-screen <- filter(screen, fulltext_include=="Yes" | fulltext_include=="Second study")
+screen <- filter(full_screen, fulltext_include=="Yes" | fulltext_include=="Second study")
 
 #========  Functions to make inline code easier to read (enclose arguments in "")  =========
 
@@ -182,25 +182,40 @@ SCOPUS <- 826
 WOS <- 1288
 Proquest <- 90
 
-duplicates <- 3903
-screened <- 2290
-excluded <- 1640
-sought <- 650
-assessed <- 648
-ftexcluded <- 121
+gross_records <- 6190
 
-excluded1 <- 42       # No direct comparisons between equivalent parameters
-excluded2 <- 36       # Informant report only
-excluded3 <- 7        # Duplicate
-excluded4 <- 9        # Case report
-excluded5 <- 1        # Self-report or objective measures not related to sleep
-excluded6 <- 5        # Review article
-excluded7 <- 10       # Not empirical study
-excluded8 <- 19       # Article in language other than English
-excluded9 <- 1        # Either self-report or objective measure not included
-excluded10 <- 270     # Grey literature source
+duplicates <- 3894
+screened <- 2296
+excluded <- 1641
+sought <- 655
+assessed <- 655
 
-total <- 245
+# No direct comparisons between equivalent parameters
+excluded1 <- length(which(full_screen$exclusion_code == 1))        
+# Informant report only
+excluded2 <- length(which(full_screen$exclusion_code == 2))        
+# Duplicate
+excluded3 <- length(which(full_screen$exclusion_code == 3))         
+# Case report
+excluded4 <- length(which(full_screen$exclusion_code == 4))         
+# Self-report or objective measures not related to sleep
+excluded5 <- length(which(full_screen$exclusion_code == 5))         
+# Review article
+excluded6 <- length(which(full_screen$exclusion_code == 6))         
+# Not empirical study
+excluded7 <- length(which(full_screen$exclusion_code == 7))        
+# Article in language other than English
+excluded8 <- length(which(full_screen$exclusion_code == 8))        
+ # Either self-report or objective measure not included
+excluded9 <- length(which(full_screen$exclusion_code == 9)) 
+# Grey literature source
+excluded10 <- length(which(full_screen$exclusion_code == 10))     
+
+
+ftexcluded <- excluded1 + excluded2 + excluded3 + excluded4 + excluded5 + excluded6 +
+  excluded7 + excluded8 + excluded9 + excluded10
+
+final_total <- length(which(full_screen$fulltext_include == "Yes"))
 
 #------------------------------------------------------------------------------#    
 ###################   Prepare vectors for GraphViz   ###########################
@@ -245,7 +260,7 @@ list_ftexcluded <- c(paste0("(n = ", ftexcluded, ")"),
                      paste0("Grey literature source ","(n = ", excluded10, ")")
 )
 
-list_total <- c(paste0("(n = ", total, ")"))
+list_total <- c(paste0("(n = ", final_total, ")"))
 
 #------------------------------------------------------------------------------#    
 ######################     Generate flow chart     #############################
