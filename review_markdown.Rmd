@@ -14,6 +14,7 @@ output:
   bookdown::html_document2:
 bibliography: ["references_body.bib", "references_review.bib", "references_acti.bib"]
 always_allow_html: yes
+csl: apa.csl
 ---
 
 ```{r initial code, echo = FALSE}
