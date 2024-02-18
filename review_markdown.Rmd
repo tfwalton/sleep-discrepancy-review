@@ -1230,7 +1230,8 @@ df$acti_interval_description <- paste0(toupper(substring(df$acti_interval_descri
 colnames(df) <- c("Study", "Actigraph device", "Software", "Algorithm", "Algorithm reference", "Rest interval definition")
 
 kable(df, format = "html", caption = "Qualitative actigraphy characteristics") %>%
-  kable_styling(font_size = 11, full_width = F)
+  kable_styling(font_size = 11, full_width = F) %>% 
+  footnote(general = "The --> arrow designates the priority given to methods of calculating the rest interval. For example, event markers –> activity, sleep diary, indicates that event marker presses were first used to calculate rest intervals, followed by sleep diary and activity when event marker presses were not available.")
 
 ```
 
