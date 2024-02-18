@@ -1,11 +1,18 @@
 ---
 title: 'Approaches to Measuring and Conceptualising Sleep Discrepancy: A Scoping Review'
-author: "Tom Walton^1^, Melissa Ree^1^, Romola S. Bucks^1^"
+author:
+  - name: Tom F. Walton
+    affiliation: School of Psychological Science, The University of Western Australia
+  - name: Melissa Ree
+    affiliation: Centre for Sleep Science, The University of Western Australia
+  - name: Simone Fueggle
+    affiliation: Simone academic affiliation
+  - name: Romola S. Bucks
+    affiliation: School of Psychological Science, The University of Western Australia
 date: "2023-07-18"
 output:
   bookdown::html_document2:
 bibliography: ["references_body.bib", "references_review.bib", "references_acti.bib"]
-# csl: american-medical-association-10th-edition.csl
 always_allow_html: yes
 ---
 
@@ -182,7 +189,7 @@ SCOPUS <- 826
 WOS <- 1288
 Proquest <- 90
 
-gross_records <- 6190
+# Total from all databases 6190
 
 duplicates <- 3894
 screened <- 2296
@@ -856,7 +863,7 @@ Definitions of objective SOL vary considerably in the sleep discrepancy literatu
 
 Definitions for objective sleep latency are essentially arbitrary and sleep onset is a continuous process for which it is difficult to identify a clear start-point [@tryon2004]. For example, with PSG scored by AASM criteria, 50% of a 30-second epoch is needed to exhibit sleep for the scoring of a first sleep stage. This means sleep latency is defined as the number of epochs preceding the first uninterrupted \~16 seconds of an EEG depicting activity consistent with sleep. An individual could conceivably achieve this 16-second threshold within two minutes, wake up, and not return for another two hours (SOL = 2 minutes). Equally, an individual could spend a two hour period getting 14-second blocks of sleep before achieving a consolidated bout of sleep (SOL = 120 minutes).
 
-In light of these issues, three options are recommended in the context of sleep discrepancy research. The first is to proceed with defining objective SOL using latency to persistent sleep (LPS)--the first 20 consecutive epochs of sleep. Due to the considerable time it takes to perceive a bout of sleep (see @hermans_sleep_2020) and the rarity and limited magnitude of SOL underestimation (see @saline_sleep_2016) it makes sense to use a longer criterion than a shorter one. LPS also has the advantage of being simpler than some alternatives (see \@ref(fig:SOL)). The second option is to use SDSL for the reasons described in the previous paragraph. It should be noted, however, positive discrepancy (i.e., SOL underestimation) is not measurable with this method. The third option is to avoid SOL as a sleep variable and to model sleep perception parameters during the sleep onset period according to @hermans_sleep_2020. The latter two options have the added advantage of operationalising sleep discrepancy without the use of derived scores--the problems with which are discussed in a later paragraph (\@ref(dvar)) .
+In light of these issues, three options are recommended in the context of sleep discrepancy research. The first is to proceed with defining objective SOL using latency to persistent sleep (LPS)--the first 20 consecutive epochs of sleep. Due to the considerable time it takes to perceive a bout of sleep (see @hermans_sleep_2020) and the rarity and limited magnitude of SOL underestimation (see @saline_sleep_2016) it makes sense to use a longer criterion than a shorter one. LPS also has the advantage of being simpler than some alternatives (see \@ref(fig:SOL)). The second option is to use SDSL for the reasons described in the previous paragraph. It should be noted, however, positive discrepancy (i.e., SOL underestimation) is not measurable with this method. The third option is to avoid SOL as a sleep variable and to model sleep perception parameters during the sleep onset period according to @hermans_sleep_2020. The latter two options have the added advantage of operationalising sleep discrepancy without the use of derived scores--the problems with which are discussed in a later paragraph (see \@ref(dvar)).
 
 ## Sleep quality discrepancy is conceptually unclear
 
@@ -1109,6 +1116,7 @@ kable(df,
 
 
 ```
+## Additional tables
 
 Full descriptions of study characteristics are available in Table \@ref(tab:studychar).
 ``` {r studychar, echo = FALSE, warning = FALSE, message = FALSE}
@@ -1128,6 +1136,9 @@ df$bibkey <- paste0("@",df$bibkey)
 
 # capitalise first letter of sample characteristics column
 df$sample_characteristics <- paste0(toupper(substring(df$sample_characteristics,1,1)), substring(df$sample_characteristics,2,last = 1000L))
+
+# change column names
+colnames(df) <- c("Study", "Country of origin", "Sample characteristics", "Sample size")
 
 kable(df, format = "html", caption = "Characteristics of included studies") %>%
   kable_styling(font_size = 11, full_width = F)
