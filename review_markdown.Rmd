@@ -6,7 +6,7 @@ author:
   - name: Melissa Ree
     affiliation: Centre for Sleep Science, The University of Western Australia
   - name: Simone Fueggle
-    affiliation: Simone academic affiliation
+    affiliation: Royal Adelaide Hospital, SA Health
   - name: Romola S. Bucks
     affiliation: School of Psychological Science, The University of Western Australia
 date: "2023-07-18"
