@@ -159,15 +159,11 @@ Data extraction was performed by a single author (TW). Methodological features o
 
 ## Data items {#item11}
 
-Extracted data items are described in the codebook available at: githublink.
+Extracted data items numbered in the hundreds and are described comprehensively in the codebook available at: https://github.com/tfwalton/sleep-discrepancy-review/raw/main/codebook.xlsx.
 
 ## Synthesis of results {#item13}
 
-This manuscript, including all tables and figures summarising data were generated using computationally reproducible methods from the master charting table available at (github link) [@piccolo2016; @lindsay2023].
-
-<!-- now describe how you organised the studies categories-->
-<!-- Tom: I have this in the codebook, I think that there is too much information to include in the text of the review -->
-
+This manuscript, including all tables and figures summarising data were generated using computationally reproducible methods [@piccolo2016; @lindsay2023]. All code and data are publicly available and accessible through the github repository: https://github.com/tfwalton/sleep-discrepancy-review.
 # Results {#item14}
 
 The initial search of databases returned `r total_records` from which `r duplicates` duplicate articles were removed. Details of the review process from article identification, screening, and selection are available in the PRISMA flowchart depicted in \@ref(fig:PRISMA) below.
@@ -316,13 +312,11 @@ assessed -> total
 ```
 
 ## Article characteristics {#item15}
-For a full list of article characteristics for which data were charted, see the master table available at: github link. A total of `r nrow(screen)` studies were identified from `r catg("fulltext_include", "Yes")` records, with `r catg("fulltext_include", "Second study")` records reporting two studies or experiments within a single text. Records spanned `r unique(c(screen$country, screen$country2)) %>% length()` countries, with the majority originating from the USA (n = `r length(which(screen$country == "USA" | screen$country2 == "USA"))`). A full list of countries is available in the appendices.
-
+A total of `r nrow(screen)` studies were identified from `r catg("fulltext_include", "Yes")` records, with `r catg("fulltext_include", "Second study")` records reporting two studies or experiments within a single text. Records spanned `r unique(c(screen$country, screen$country2)) %>% length()` countries, with the majority originating from the USA (n = `r length(which(screen$country == "USA" | screen$country2 == "USA"))`).
 ```{r sample sizes, echo = FALSE, warning = FALSE, message = FALSE}
 sample_size <- as.numeric(screen$sample_size)
 ```
-
-Sample sizes for studies ranged from `r min(sample_size, na.rm=TRUE)` to `r max(sample_size, na.rm=TRUE)` (median = `r median(sample_size, na.rm=TRUE)`, IQR = `r IQR(sample_size, na.rm=TRUE)`). Most studies included both sexes in their samples (n = `r length(which(screen$sample_sex == ""))`), whereas `r  length(which(screen$sample_sex == "men"))` and `r length(which(screen$sample_sex == "women"))` comprised only males or females, respectively. Most studies contained samples of adults of all ages `r length(which(screen$sample_age == "adults"))`. Others reported specific age groups: older adults (n = `r length(which(screen$sample_age == "older adults"))`), younger adults (n = `r length(which(screen$sample_age == "young adults"))`), adolescents (n = `r length(which(screen$sample_age == "adolescents"))`), and children (n = `r length(which(screen$sample_age == "children"))`). Sample characteristics for studies are included in Figure \@ref(fig:samplechar).
+Sample sizes for studies ranged from `r min(sample_size, na.rm=TRUE)` to `r max(sample_size, na.rm=TRUE)` (median = `r median(sample_size, na.rm=TRUE)`, IQR = `r IQR(sample_size, na.rm=TRUE)`). Most studies included both sexes in their samples (n = `r length(which(screen$sample_sex == ""))`), whereas `r  length(which(screen$sample_sex == "men"))` and `r length(which(screen$sample_sex == "women"))` comprised only males or females, respectively. Most studies contained samples of adults of all ages `r length(which(screen$sample_age == "adults"))`. Others reported specific age groups: older adults (n = `r length(which(screen$sample_age == "older adults"))`), younger adults (n = `r length(which(screen$sample_age == "young adults"))`), adolescents (n = `r length(which(screen$sample_age == "adolescents"))`), and children (n = `r length(which(screen$sample_age == "children"))`). Sample characteristics for studies are included in Figure \@ref(fig:samplechar). For a full list of article characteristics, see the appendices (\@ref(tab:studychar))
 ```{r samplechar, results = 'asis', collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sample characteristics", fig.height = 8}
 
 # generate a frequency table for the three columnns
@@ -369,7 +363,7 @@ Methodological features charted for PSG included scoring criteria, setting, and 
 
 #### Actigraphy
 
-We recorded features of actigraphy that included device name, scoring algorithm, software, and rest interval definition. See appendices for full tabulations of actigraphy characateristics. Actigraphy scoring algorithms are responsible for determining wakefulness and sleep from accelerometer-derived motor activity. Use of scoring algorithms varied across studies and are listed below in Figure \@ref(fig:algorithms).
+We recorded features of actigraphy that included device name, scoring algorithm, software, and rest interval definition. See Table \@ref(bigacti) in the appendices for full tabulations of actigraphy characateristics. Actigraphy scoring algorithms are responsible for determining wakefulness and sleep from accelerometer-derived motor activity. Use of scoring algorithms varied across studies and are listed below in Figure \@ref(fig:algorithms).
 
 ```{r algorithms, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Actigraphy and accelerometer algorithms"}
 
@@ -543,7 +537,7 @@ ggplot(data = interval, mapping = aes(x = interval, y = studies)) +
   coord_flip()
 ```
 
-The precise combinations or orders of priority of methods in each study varied markedly. See master data file (github link) for qualitative descriptions of rest interval approaches across reviewed studies. Discrepancies queried indicates that discrepant sleep diary and actigraphy bed and wake times were queried directly with participants and adjusted following discussion.
+The precise combinations or orders of priority of methods in each study varied markedly. See Table \@ref(bigacti) in the appendices for qualitative descriptions of rest interval approaches across reviewed studies. "Discrepancies queried" indicates that discrepant sleep diary and actigraphy bed and wake times were queried directly with participants and adjusted following discussion.
 
 ### Measures of self-report sleep
 
@@ -867,8 +861,11 @@ Despite being the most common approach to comparing self-report and objective sl
 
 ## Conceptual/ Methodological Issues
 
-What is sleep discrepancy?
-  studies for the most part used sleep time metrics
+### What is sleep discrepancy?
+
+Sleep time-related metrics (e.g., TST, SOL, WASO) preonderated 
+
+
   experimental paradigms were also used
   
   sleep quality discrepancy
@@ -937,7 +934,7 @@ The term *researcher degrees of freedom* has been used to refer to the range of 
 
 Sleep discrepancy is a term often used interchangeably with sleep misperception. It has been noted by a number of authors [@Moul2004; @tryon2004] that sleep is a complex process for which there no one perfectly valid measure and accordingly *sleep discrepancy* is a preferable term to *sleep misperception* which in this context may be a misnomer. The status of visually-scored EEG as a clear objective standard of sleep continues to be challenged by the presence of local sleep [@krueger2019local], subtle EEG changes [e.g., the cyclic alternating pattern; @Parrino2012], and dissociation identified between the EEG and other sleep-related physiological processes, under some conditions [@krueger2013sleep]. Whilst it may not be possible to directly measure sleep misperception for these reasons, sleep discrepancy can be closer or further to sleep misperception conceptually depending on its operational definition. Closest are studies measuring sleep/wake agreement or classification using EEG under laboratory conditions. In a case where a participant who, being asleep for 5 minutes, is woken by a technician and reports complete wakefulness for the preceding period, only the fallibility of objective recording can account for a conceptual distinction between sleep discrepancy and true sleep-state misperception.
 
-This fundamental sleep discrepancy represented by sleep-wake agreement can be contrasted with sleep discrepancy represented by sleep time variables (e.g., TST, SOL). Moving from sleep-wake agreement to sleep time variables introduces additional factors that may account for the incongruence between self-report and objective sleep and hence provides a broader definition of sleep discrepancy. On the objective side, PSG potentially introduces artefact from transient (e.g., \<15 second) awakenings [@smith2000] and the somewhat arbitrary nature of SOL definitions (see section \@ref(sol). Actigraphy introduces the potential for immobile wake to be scored as sleep [@desouza2003,@paquet2007] and variance contributed by differences in scoring algorithms (see section \@ref(algo)). On the self-report side, sleep diaries and questionnaires introduce memory or reporting biases [@clegg2023real] as potential factors contributing to sleep discrepancy. See Harvey & Tang 2012 for a discussion of these factors in the context of insomnia.
+This fundamental sleep discrepancy represented by sleep-wake agreement can be contrasted with sleep discrepancy represented by sleep time variables (e.g., TST, SOL). Moving from sleep-wake agreement to sleep time variables introduces additional factors that may account for the incongruence between self-report and objective sleep and hence provides a broader definition of sleep discrepancy. On the objective side, PSG potentially introduces artefact from transient (e.g., \<15 second) awakenings [@smith2000] and the arbitrary nature of SOL definitions (see section \@ref(sol). Actigraphy introduces the potential for immobile wake to be scored as sleep [@desouza2003; @paquet2007] and variance contributed by differences in scoring algorithms (see section \@ref(algo)). On the self-report side, sleep diaries and questionnaires introduce memory or reporting biases [@clegg2023real] as potential factors contributing to sleep discrepancy. See Harvey & Tang 2012 for a discussion of these factors in the context of insomnia.
 
 In the present review, we reported a key distinction between *habitual* and *episodic* measures of self-report sleep. Moving from episodic to habitual measures broadens the concept of yet sleep discrepancy further. A more global sleep discrepancy may be represented by comparisons of habitual self-report sleep with aggregated objective sleep (e.g., mean sleep variables values across 14 nights of actigraphy), the underlying processes for which are likely different to those of individual nights.
 
@@ -972,7 +969,7 @@ None.
 
 # Funding {#item22}
 
-This work was part of a PhD project funded by the Australian Government Research Training Program.
+This work forms part of PhD project funded by the Australian Government Research Training Program.
 
 # Declaratation of competing interest
 
