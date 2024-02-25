@@ -871,6 +871,10 @@ What is sleep discrepancy?
   studies for the most part used sleep time metrics
   experimental paradigms were also used
   
+  sleep quality discrepancy
+  
+  
+
 
   
 Methodological variability?
@@ -878,9 +882,12 @@ Methodological variability?
   very many kinds of sleep discrepancy  
   such and such sample does not accurately estimate sleep was is it?
   can be overlooked--measuring different things
+  important sources of variation that shouldn't be overlooked
+      ACTIGRAPHY ALGORITHM
+      Direct versus indirect TST
+      Selection of sleep variable?
+  discussion about abundance of arbitrary methodological choices
   
-
-
 
 
 
