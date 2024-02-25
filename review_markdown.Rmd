@@ -33,7 +33,7 @@ pacman::p_load("tidyselect",
                "english")
 
 # Read data set into data frame
-full_screen <- read.csv("C:/Users/tfioc/Documents/sleep-discrepancy-review/review_data.csv")
+full_screen <- read.csv("https://github.com/tfwalton/sleep-discrepancy-review/raw/main/review_data.csv")
 
 # Trim excluded studies from the data frame
 screen <- filter(full_screen, fulltext_include=="Yes" | fulltext_include=="Second study")
@@ -82,15 +82,15 @@ total_records <- 6190
 
 ## Study Objectives 
 
-This scoping review examines how sleep discrepancy has been conceptualised and identifies and evaluates methods that have been used to investigate it.
+To examine how past studies have conceptualised sleep discrepancy and identify and evaluate the methods used.
 
 ## Method
 
-We searched MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed, Scopus, and Web of Science for relevant studies. Titles and abstracts, and then full text records of searched studies were screened. Methodological information was extracted including measures of self-report and objective sleep, sleep variables, discrepancy indices, handling of repeated measurements, and methods of measure comparison.
+We searched MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed, Scopus, and Web of Science for relevant studies. Titles and abstracts, and then full text records of searched studies were screened. Methodological information was extracted including measures of self-report and objective sleep, sleep variables, dervied discrepancy indices, handling of repeated measurements, and methods of measure comparison.
 
 ## Results
 
-`r nrow(screen) %>% english() %>% str_to_sentence` studies were included in this review. Studies varied according to objective sleep measure; actigraphy algorithm, software, and rest interval; polysomnography setting and scoring criteria; sleep variables; self-report sleep measure; number of nights of objective recording; time frame of self-report measure; self-report sleep variable definition; sleep discrepancy derived index; presence and handling of repeated measurements; and statistical method for measure comparison.
+`r length(which(full_screen$fulltext_include == "Yes")) %>% english() %>% str_to_sentence` relevant records were identified. Studies varied according to objective sleep measure; actigraphy algorithm, software, and rest interval; polysomnography setting and scoring criteria; sleep variables; self-report sleep measure; number of nights of objective recording; time frame of self-report measure; self-report sleep variable definition; sleep discrepancy derived index; presence and handling of repeated measurements; and statistical method for measure comparison.
 
 ## Conclusions
 
@@ -116,8 +116,7 @@ Presently, it isn't clear how sleep discrepancy should best be defined and the d
 
 ## Protocol and registration {#protocol}
 
-The review was conducted according to guidelines provided by the JBI scoping review methodology group [@Peters2020] and reported according to the Preferred Reporting Items for Systematic reviews and Meta-Analyses
-extension for Scoping Reviews (PRISMA-ScR) Checklist [@tricco2018]. A review protocol was registered with the Open Science Framework on April 4, 2022 (doi: 10.17605/OSF.IO/BCJNQ), prior to conducting searches. Deviations from the protocol are outlined in Appendix B.
+The review was conducted according to guidelines provided by the JBI scoping review methodology group [@Peters2020] and reported according to the Preferred Reporting Items for Systematic reviews and Meta-Analyses extension for Scoping Reviews (PRISMA-ScR) Checklist [@tricco2018]. A review protocol was registered with the Open Science Framework on April 4, 2022 (doi: 10.17605/OSF.IO/BCJNQ), prior to conducting searches. Deviations from the protocol are outlined in the appendices (\@ref(deviations)).
 
 ## Eligibility criteria {#item6}
 
@@ -158,7 +157,7 @@ Records identified from searches were exported to EndNote 20 [@EndNote20] for co
 
 ## Charting the data {#item10}
 
-Data extraction was performed by a single author (TW). Methodological features of included articles were selected on their potential influence on the measurement or operational definition of sleep discrepancy and included the following: objective sleep measure type/hardware, actigraphy algorithm, software, and rest interval, polysomnography setting and scoring criteria, self-report sleep measure, sleep variables (e.g., TST, WASO etc...) and definitions thereof, methods of handling repeated measurements, methods of comparing self-report and objective sleep within groups, and methods for operationalising sleep discrepancy at the construct level including the use of derived scores.
+Data extraction was performed by a single author (TW). Methodological features of included articles were selected on their potential influence on the measurement or operational definition of sleep discrepancy and included the following: objective sleep measure type/hardware, actigraphy algorithm, software, and rest interval, polysomnography setting and scoring criteria, self-report sleep measure, sleep variables (e.g., TST, WASO etc...) and definitions thereof, methods of handling repeated measurements, methods of comparing self-report and objective sleep within groups, and methods for operationalising sleep discrepancy to investigate its relationship with other variables.
 
 ## Data items {#item11}
 
@@ -396,7 +395,7 @@ graph <- graph[-1, ]
 # Replace column names
 colnames(graph) <- c("algo", "freq")
 
-algo_citations <- read.csv("C:/Users/tfioc/Documents/sleep-discrepancy-review/algorithm_citations.csv")
+algo_citations <- read.csv("https://github.com/tfwalton/sleep-discrepancy-review/raw/main/algorithm_citations.csv")
 
 # Search the table for a citation that matches the algorithm and paste it into each cell
 for (x in graph[ ,1]) {
@@ -558,7 +557,7 @@ A range of variables were used to measure sleep discrepancy. These are depicted 
 
 ```{r variables, echo = FALSE}
 # Read template table from folder
-sleep_variables <- read.csv("C:/Users/tfioc/Documents/sleep-discrepancy-review/sleep_variables.csv")
+sleep_variables <- read.csv("https://github.com/tfwalton/sleep-discrepancy-review/raw/main/sleep_variables.csv")
 
 # Assign 0 to index variable for upcoming loop
 q = 0
@@ -707,7 +706,7 @@ A total of `r onehot("aim_agreement", brackets=FALSE)` studies measured sleep di
 
 ```{r group, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Statistical methods for comparing self-report and objective sleep"}
 
-group_variables <- read.csv("C:/Users/tfioc/Documents/sleep-discrepancy-review/group_variables.csv")
+group_variables <- read.csv("https://github.com/tfwalton/sleep-discrepancy-review/raw/main/group_variables.csv")
 
 # Assign 0 to index variable for upcoming loop
 q = 0
@@ -763,7 +762,7 @@ Approximately half `r onehot("index_present")` of included studies calculated a 
 
 #------------------------   Derived indices plot   ----------------------------|
 
-codebook <- read.csv("C:/Users/tfioc/Documents/sleep-discrepancy-review/derived_variables.csv")
+codebook <- read.csv("https://github.com/tfwalton/sleep-discrepancy-review/raw/main/derived_variables.csv")
 
 derived <- c(screen$index1,
              screen$index2,
@@ -1029,7 +1028,7 @@ kable(df,
 
 ```
 
-## List of deviations from protocol
+## List of deviations from protocol {#deviations}
 
 The following are a list of deviations from the scoping review protocol registered on the Open Science Framework (doi: 10.17605/OSF.IO/BCJNQ).
 
