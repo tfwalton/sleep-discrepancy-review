@@ -919,7 +919,10 @@ This study represents the largest systematic approach to investigating methodolo
 
 ## Summary {#item21}
 
-Approaches to measuring and operationalising sleep discrepancy have varied considerably in the literature, often with substantial effects on what sleep discrepancy means as a concept and sometimes associated with problems that may not be immediately clear. Measuring discrepancy or congruence is often a complex undertaking and we hope that this scoping review will prove helpful and informative to those interested in designing or interpreting sleep discrepancy studies.
+Approaches to measuring and operationalising sleep discrepancy have varied considerably in the literature, often with substantial effects on what sleep discrepancy means as a concept and sometimes associated with problems that may not be immediately clear. 
+
+
+Measuring discrepancy or congruence is often a complex undertaking and we hope that this scoping review will prove helpful and informative to those interested in designing or interpreting sleep discrepancy studies.
 
 <!-- it may be more effective or simpler to not measure sleep discrepancy at all -->
 
