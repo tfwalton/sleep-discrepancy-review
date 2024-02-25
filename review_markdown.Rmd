@@ -12,7 +12,7 @@ author:
 date: "2023-07-18"
 output:
   bookdown::html_document2:
-bibliography: ["references_body.bib", "references_review.bib", "references_acti.bib"]
+bibliography: ["references_body.bib", "references_review.bib", "references_acti.bib", "references_packages.bib"]
 always_allow_html: yes
 csl: apa.csl
 ---
@@ -22,14 +22,10 @@ csl: apa.csl
 ################################ Initial code ##################################
 
 # Load packages
-pacman::p_load("tidyselect",
-               "tidyverse",
-               "magrittr",
-               "stringr",
+pacman::p_load("tidyverse",
                "bookdown",
                "knitr",
                "kableExtra",
-                "ggplot2",
                "english")
 
 # Read data set into data frame
@@ -163,7 +159,8 @@ Extracted data items numbered in the hundreds and are described comprehensively 
 
 ## Synthesis of results {#item13}
 
-This manuscript, including all tables and figures summarising data were generated using computationally reproducible methods [@piccolo2016; @lindsay2023]. All code and data are publicly available and accessible through the github repository: https://github.com/tfwalton/sleep-discrepancy-review.
+This manuscript, including all tables and figures summarising data were generated using computationally reproducible methods [@piccolo2016; @lindsay2023] in R version 4.3.2 [@r], with R Studio [@rstudio] and R Markdown [@rmarkdown]. Packages used in the code for this manuscript include tidyverse [@tidyverse], bookdown [@bookdown], knitr [@knitr], kableExtra [@kableextra], english [@english], and DiagrammeR [@diagrammer]. All code and data are available through the github repository: https://github.com/tfwalton/sleep-discrepancy-review.
+
 # Results {#item14}
 
 The initial search of databases returned `r total_records` from which `r duplicates` duplicate articles were removed. Details of the review process from article identification, screening, and selection are available in the PRISMA flowchart depicted in \@ref(fig:PRISMA) below.
@@ -267,7 +264,7 @@ list_total <- c(paste0("(n = ", final_total, ")"))
 ######################     Generate flow chart     #############################
 #------------------------------------------------------------------------------# 
 
-pacman::p_load("DiagrammeR", "tidyverse")
+pacman::p_load("DiagrammeR")
 
 grViz("
 digraph { 
