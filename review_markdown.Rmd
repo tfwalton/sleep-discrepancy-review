@@ -82,7 +82,7 @@ To examine how past studies have conceptualised sleep discrepancy and identify a
 
 ## Method
 
-We searched MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed, Scopus, and Web of Science for relevant studies. Titles and abstracts, and then full text records of searched studies were screened. Methodological information was extracted including measures of self-report and objective sleep, sleep variables, dervied discrepancy indices, handling of repeated measurements, and methods of measure comparison.
+We searched MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed, Scopus, and Web of Science in April 2022 for relevant studies. Titles and abstracts, and then full text records of searched studies were screened. Methodological information was extracted including measures of self-report and objective sleep, sleep variables, derived discrepancy indices (e.g., difference scores), handling of repeated measurements, and methods of measure comparison (e.g., Bland-Altman analyses).
 
 ## Results
 
@@ -248,7 +248,7 @@ list_assessed <- c(paste0("(n = ", assessed, ")"))
 list_ftexcluded <- c(paste0("(n = ", ftexcluded, ")"),
                      paste0("No direct comparisons between equivalent parameters ","(n = ", excluded1, ")"),
                      paste0("Informant report only ","(n = ", excluded2, ")"),
-                     paste0("Duplicate (missed at title and abstract screening; n = ", excluded3, ")"),
+                     paste0("Duplicate (missed at deplication stage; n = ", excluded3, ")"),
                      paste0("Case report ","(n = ", excluded4, ")"),
                      paste0("Self-report or objective measures not related to sleep ","(n = ", excluded5, ")"),
                      paste0("Review article ","(n = ", excluded6, ")"),
@@ -585,7 +585,9 @@ kable(sleep_variables,
   kable_styling(font_size = 11, full_width = F) %>% footnote(general = "Sleep wake agreement (one possible objective sleep state) involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, sleep wake agreement (two possible sleep states) involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The former approach produces a binary outcome whereas the latter produces a confusion matrix.", symbol = "TWAK was not used to define sleep discrepancy directly by any of the included studies but is included in the table for clarity")
 
 ```
-Discrepancy was also investigated in variables outside of conventional sleep time parameters. @allawati_2021 compared self-report and actigraphic measures of sleep patterns including monophasic, biphasic dawn, biphasic siesta, and polyphasic. @lockley_comparison_1999, @dautovich_subjective_2008, @hanisch_sleep_2011, and @nguyen-michel_underperception_2015 reported discrepancy for naps specifically, including variables such as number of naps, number of days napped, mean duration of naps, and total nap time. @baek_2020 and @chan_sleep_2018 compared self-report and actigraphic assessments of variability in TST and other sleep parameters. @thun_actigraphic_2012 compared self-report and actigraphic measures of morningness-eveningness. Finally, @mcintyre_2016 investigated subjective-objective discrepancy across a range of sleep behaviours including position at sleep onset, position at wake, number of positional changes, and the presence of leg twitches or jerks.
+Sleep time variables including TST, SOL, WASO, SE, and TIB preponderated in the identified studies. Direct sleep-wake agreement 
+
+Discrepancy was also investigated in variables outside of conventional sleep time parameters. @allawati_2021 compared self-report and actigraphic measures of sleep patterns including monophasic, biphasic dawn, biphasic siesta, and polyphasic. @lockley_comparison_1999, @dautovich_subjective_2008, @hanisch_sleep_2011, and @nguyen-michel_underperception_2015 reported discrepancy for naps specifically, including variables such as number of naps, number of days napped, mean duration of naps, and total nap time. @baek_2020 and @chan_sleep_2018 compared self-report and actigraphic assessments of variability in TST and other sleep parameters. @thun_actigraphic_2012 compared self-report and actigraphic measures of morningness-eveningness. Finally, @mcintyre_2016 investigated self-report-objective discrepancy across a range of sleep behaviours including position at sleep onset, position at wake, number of positional changes, and the presence of leg twitches or jerks. 
 
 ### Self-report sleep variable definitions
 
@@ -820,11 +822,73 @@ A number of other ways to characterise the relationship of sleep discrepancy wit
 
 ## Miscellaneous methodological features
 
-Lastly, we recorded some other methodological features of studies that appeared pertinent to the study of sleep discrepancy. `r onehot("misc_cbti", brackets = FALSE)` studies investigated sleep discrepancy during, as a predictor of response to, or as an outcome of, cognitive behaviour therapy for insomnia (CBT-I). `r onehot("misc_exp_awakenings", brackets = FALSE)` studies used an experimental awakening paradigm where participants were monitored in-lab and woken by sound probes or technician interventions.
+Lastly, we recorded some other methodological features of studies that appeared pertinent to the study of sleep discrepancy. `r onehot("misc_cbti", brackets = FALSE)` studies investigated sleep discrepancy during, as a predictor of response to, or as an outcome of, cognitive behaviour therapy for insomnia (CBT-I). `r onehot("misc_exp_awakenings", brackets = FALSE)` studies used an experimental awakening paradigm where participants were monitored in-lab and woken by sound probes or technician interventions. A total of `r onehot("aim_validation", brackets = FALSE)` studies were conducted with the aim of validating or assessing a particular sleep instrument.
+
+<!-- ========================================================================================================================================== -->
+<!-- ===========================================================     DISCUSSION     =========================================================== -->
+<!-- ========================================================================================================================================== -->
 
 # Discussion {#item19}
 
-This study systematically reviewed ways of measuring, conceptualising, and analysing sleep discrepancy. Studies varied considerably across the broad range of recorded methodological characteristics and the number of studies identified indicated a vast literature. Our findings are accordingly numerous, and are organised below into methodological problems, broader conceptual/methodological issues and considerations, and other findings. 
+This study systematically reviewed ways of measuring, conceptualising, and analysing sleep discrepancy. Studies varied considerably across the broad range of recorded methodological characteristics and the number of studies identified indicated a vast literature. At the level of measurement, objective sleep mostly consisted of polysomnography and actigraphy, whilst self-report sleep spanned a range of questionnaires and diaries of varying response formats. Within objective sleep measures, approaches varied according to setting, equipment, and algorithms and procedures to process data. Sleep time-related metrics (e.g., TST, SOL, WASO) preponderated in the identified studies, with a only small minority measuring direct sleep-wake agreement and a handful of studies measuring other sleep-related features or behaviours. Sleep quality was also investigated by a small number of studies. Definitions for sleep variables themselves did vary across studies although mainly on the self-report side and principally for the variables TST and TIB. An exception to this general rule on the objective side was SOL, which varied considerably. At the level of data processing and analysis, a range of strategies were employed to accommodate repeated measurements but for many studies, too, there was a single instance of recording. Direct comparisons were commonly made between self-report and objective sleep and these spanned a number of statistical approaches. Many studies went further than comparing self-report and objective sleep directly and attempted to investigate the relationship between sleep discrepancy and other variables. This was achieved most often with derived indices (e.g., self-report TST - objective TST), although other strategies were also employed.
+
+## Methodological diversity
+
+We found considerable methodological diversity across the stages of measurement, data processing, and data analysis. This is unsurprising--after all, there are many ways to measure and analyse sleep-- but it does have some interesting consequences for how we view sleep discrepancy. In attempting to measure the discrepancy between two things it is first useful to know the discrepancy within the things in themselves. It would appear that "self-report sleep" or "objective sleep" are not monolithic entities but extremely variegated 
+
+variability represented by diverse methods is random rather than systematic--i.e., random error
+
+
+
+
+  experimental paradigms were also used
+  
+  sleep quality discrepancy
+  
+
+
+
+  
+Methodological variability?
+  why is this important?
+  very many kinds of sleep discrepancy  
+  such and such sample does not accurately estimate sleep was is it?
+  can be overlooked--measuring different things
+  important sources of variation that shouldn't be overlooked
+      ACTIGRAPHY ALGORITHM
+      Direct versus indirect TST
+      Selection of sleep variable?
+  discussion about abundance of arbitrary methodological choices
+
+
+
+## Choice of actigraphy algorithm matters {#algo}
+
+Estimation of actigraphic sleep can vary substantially according to scoring algorithm and, considered in relation to PSG, selection of algorithm will account for some error variance within sleep discrepancy. The concordance of actigraphy to PSG by algorithm tends to depend on the sample in question. For example, actiware algorithms with the medium threshold may perform better than Cole-Kripke in healthy young adults [@gao2022actigraphy]. Also, the Sadeh algorithm has demonstrated higher specificity than UCSD and Cole-Kripke [@desouza2003; @quante2018actigraphy; @haghayegh2019] but may be less appropriate for assessment of sleep in those with severe obstructive sleep apnoea [@kim2013comparison]. Further complicating the picture is the fact that algorithm performance will also differ according to the actigraph device used [@kripke2010wrist]. We noted considerable inconsistency in the reporting of actigraphy methods and algorithms were not reported in many studies. In the absence of a standardised, consensus approach to actigraphy we would like to echo the recommendations of [@ancoli2015sbsm] to report device manufacturer, device model, name and version of software, parameters of data collection including epoch length and sampling rate, and algorithms used.
+
+
+
+## Method of calculation of self-report sleep time matters
+
+We identified two principal ways of calculating self-report TST from diaries and sleep questionnaires: querying participants directly about how much sleep they had (e.g., "how many hours did you sleep last night?") and calculating TST from other parameters that were queried directly (e.g., TST = TIB - SOL - WASO - TWAK). The latter method is recommended by @buysse2006 and is the usual practice when using the Consensus Sleep Diary [@Carney2012], a questionnaire that does not contain a direct query for TST in its standard version. @alameddine_2015 compared direct and indirect (i.e., calculated) self-report measures of TST and found that indirect estimates tended to exceed direct estimates. In this study, sleep discrepancy was overall negative across the sample for those with and without insomnia and so it is possible that indirect queries produce self-report TST that is closer to objective estimates (i.e., reduced sleep discrepancy). For studies addressing theory in sleep discrepancy, for example, investigating mechanisms underpinning sleep discrepancy in insomnia 
+
+
+
+## The abundance of arbitrary methodological choices in sleep discrepancy may represent a problem
+
+The term *researcher degrees of freedom* has been used to refer to the range of possible decisions throughout the data collection and analysis process that can be exploited to yield tests that reach statistical significance [@simmons2011]. As evidenced by the methodological diversity highlighted in this review, the amount of researcher degrees of freedom in sleep discrepancy research is considerable, particularly at the data analysis stage, and especially for sleep variable definition and selection. Any combination of the large number of sleep variables in Table \@ref(tab:variables) may be chosen as an alternative analytic decisions during analysis. When the different possible definitions of each of these variables are also enumerated, the number of possible decisions seems endless. Note, this issue extends beyond the case of a researcher deliberately exploring analytical alternatives following a null result. In a problem referred to as the garden of forking paths [@gelman2013], any methodological decision made in response to an observed feature of the data increases the likelihood that findings will be misleading. An example of this would be selecting SE over TST for a subsequent analysis after observing that SE discrepancy best discriminated individuals with and without insomnia. Even though the eventual result is at this point unknown, the decision of sleep variable is contingent on the data, and ultimately, p-values will not reflect what would have happened had TST been chosen instead. As a solution to this, for studies aimed at investigating the relationship of sleep discrepancy with other constructs, we recommend the preregistration of hypotheses and plans for data collection and analysis [@nosek2018].
+
+<!-- Often, theoretical justification is not provided for the selection or definition of sleep variables to define operationalise sleep discrepancy. This is understandable, given the sheer number of ways to measures sleep and the lack of available evidence to clarify their conceptual differences (is this too much of an assertion?). To return to the previous example of selecting TST versus SE, and putting the issue of false positives aside, if both sleep variables were assessed what would it mean to obtain a significant result from SE but not TST?  -->
+
+<!-- Is to think less about sleep discrepancy as a monolithic entity and more in terms of the conceptual bases of its components. -->
+<!-- Discrepancy in a particular construct drastically increases conceptual and methodological complexity -->
+
+
+
+
+
+
+Our findings are accordingly numerous, and are organised below into methodological problems, broader conceptual/methodological issues and considerations, and other findings. 
 
 <!-- These are discussed below with recommendations for further research where appropriate. -->
 
@@ -858,30 +922,10 @@ Despite being the most common approach to comparing self-report and objective sl
 
 ## Conceptual/ Methodological Issues
 
-### What is sleep discrepancy?
-
-Sleep time-related metrics (e.g., TST, SOL, WASO) preonderated 
 
 
-  experimental paradigms were also used
-  
-  sleep quality discrepancy
-  
-  
 
 
-  
-Methodological variability?
-  why is this important?
-  very many kinds of sleep discrepancy  
-  such and such sample does not accurately estimate sleep was is it?
-  can be overlooked--measuring different things
-  important sources of variation that shouldn't be overlooked
-      ACTIGRAPHY ALGORITHM
-      Direct versus indirect TST
-      Selection of sleep variable?
-  discussion about abundance of arbitrary methodological choices
-  
 
 
 
@@ -889,16 +933,6 @@ Methodological variability?
 ## PSG and actigraphy are best used to measure different forms of sleep discrepancy
 
 PSG may be considered preferable to actigraphy for the measurement of sleep discrepancy in most cases. In comparison with PSG, actigraphy generally overestimates sleep and underestimates wake time, and can have trouble distinguishing sleep from quiescent periods of wakefulness [@marino2013]. These trends have been observed to be greater for samples experiencing chronic medical or psychiatric conditions [@conley2019agreement]. Furthermore, the common practice of using sleep diaries to define rest intervals confounds sleep discrepancy measurement (see \@ref(actidiary)), and a universal standardised approach to actigraphy is lacking (see \@ref(#algo)). Actigraphy is not without its advantages, however, and remains more cost-effective, more useful for obtaining multiple nights of data, and less invasive, compared with PSG. For these reasons, actigraphy is recommended for measuring naturalistic sleep and sleep patterns over time [@morgenthaler2007practice], and may be preferable to PSG where external validity of sleep discrepancy is a concern. Actigraphy may also be preferable for comparing objective aggregate (e.g., mean weekly) objective measures to habitual measures of self-report sleep to derive a "global" form of sleep discrepancy (see \@ref(dvar) for further discussion of this).
-
-## Choice of actigraphy algorithm matters {#algo}
-
-Estimation of actigraphic sleep can vary substantially according to scoring algorithm and, considered in relation to PSG, selection of algorithm will account for some error variance within sleep discrepancy. The concordance of actigraphy to PSG by algorithm tends to depend on the sample in question. For example, actiware algorithms with the medium threshold may perform better than Cole-Kripke in healthy young adults [@gao2022actigraphy]. Also, the Sadeh algorithm has demonstrated higher specificity than UCSD and Cole-Kripke [@desouza2003; @quante2018actigraphy; @haghayegh2019] but may be less appropriate for assessment of sleep in those with severe obstructive sleep apnoea [@kim2013comparison]. Further complicating the picture is the fact that algorithm performance will also differ according to the actigraph device used [@kripke2010wrist]. We noted considerable inconsistency in the reporting of actigraphy methods and algorithms were not reported in many studies. In the absence of a standardised, consensus approach to actigraphy we would like to echo the recommendations of [@ancoli2015sbsm] to report device manufacturer, device model, name and version of software, parameters of data collection including epoch length and sampling rate, and algorithms used.
-
-
-
-## Method of calculation of self-report sleep time matters
-
-We identified two principal ways of calculating self-report TST from diaries and sleep questionnaires: querying participants directly about how much sleep they had (e.g., "how many hours did you sleep last night?") and calculating TST from other parameters that were queried directly (e.g., TST = TIB - SOL - WASO - TWAK). The latter method is recommended by @buysse2006 and is the usual practice when using the Consensus Sleep Diary [@Carney2012], a questionnaire that does not contain a direct query for TST in its standard version. @alameddine_2015 compared direct and indirect (i.e., calculated) self-report measures of TST and found that indirect estimates tended to exceed direct estimates. In this study, sleep discrepancy was overall negative across the sample for those with and without insomnia and so it is possible that indirect queries produce self-report TST that is closer to objective estimates (i.e., reduced sleep discrepancy). For studies addressing theory in sleep discrepancy, for example, investigating mechanisms underpinning sleep discrepancy in insomnia 
 
 <!--Romola: And what is the implication of all of the above? Tom: I don't know what more to say-->
 
@@ -916,14 +950,7 @@ Sleep quality discrepancy was measured by a small number of studies in this revi
 <!-- comparing holistic measures of sleep quality e.g., PSQI not appropriate to compare with nightly objective sleep -->
 <!-- Sleep questionnaires such as the PSQI that provide a more global measure of sleep quality -->
 
-## The abundance of arbitrary methodological choices in sleep discrepancy may represent a problem
 
-The term *researcher degrees of freedom* has been used to refer to the range of possible decisions throughout the data collection and analysis process that can be exploited to yield tests that reach statistical significance [@simmons2011]. As evidenced by the methodological diversity highlighted in this review, the amount of researcher degrees of freedom in sleep discrepancy research is considerable, particularly at the data analysis stage, and especially for sleep variable definition and selection. Any combination of the large number of sleep variables in Table \@ref(tab:variables) may be chosen as an alternative analytic decisions during analysis. When the different possible definitions of each of these variables are also enumerated, the number of possible decisions seems endless. Note, this issue extends beyond the case of a researcher deliberately exploring analytical alternatives following a null result. In a problem referred to as the garden of forking paths [@gelman2013], any methodological decision made in response to an observed feature of the data increases the likelihood that findings will be misleading. An example of this would be selecting SE over TST for a subsequent analysis after observing that SE discrepancy best discriminated individuals with and without insomnia. Even though the eventual result is at this point unknown, the decision of sleep variable is contingent on the data, and ultimately, p-values will not reflect what would have happened had TST been chosen instead. As a solution to this, for studies aimed at investigating the relationship of sleep discrepancy with other constructs, we recommend the preregistration of hypotheses and plans for data collection and analysis [@nosek2018].
-
-<!-- Often, theoretical justification is not provided for the selection or definition of sleep variables to define operationalise sleep discrepancy. This is understandable, given the sheer number of ways to measures sleep and the lack of available evidence to clarify their conceptual differences (is this too much of an assertion?). To return to the previous example of selecting TST versus SE, and putting the issue of false positives aside, if both sleep variables were assessed what would it mean to obtain a significant result from SE but not TST?  -->
-
-<!-- Is to think less about sleep discrepancy as a monolithic entity and more in terms of the conceptual bases of its components. -->
-<!-- Discrepancy in a particular construct drastically increases conceptual and methodological complexity -->
 
 
 
