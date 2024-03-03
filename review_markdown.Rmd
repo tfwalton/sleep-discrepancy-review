@@ -1232,4 +1232,30 @@ kable(df, format = "html", caption = "Qualitative actigraphy characteristics") %
 
 ```
 
+``` {r sleepwake, echo = FALSE, warning = FALSE, message = FALSE}
+
+# create dataframe of relevant variables
+df <- subset(screen, binary_sw_I == 1 | binary_sw_II == 1, select = c(bibkey,
+                                                                      sample_characteristics,
+                                                                      binary_sw_I,
+                                                                      binary_sw_II,
+                                                                      sleepvar_list,
+                                                                      psg_setting
+                                ))
+
+# recoding the two sleep-wake variables (they were mutually exclusive)
+df$sleep_wake <- ifelse(df$binary_sw_I %>% is.na(), "Quaternary", "Binary")
+
+# remove binary_sw columsn
+df <- df[ ,-c(3,4)]
+
+df <- df %>% relocate(sleep_wake, .after = sleepvar_list)
+
+colnames(df) <- c("Study", "Sample characteristics", "Sleep variables", "Sleep-wake agreement type", "PSG setting")
+
+kable(df, format = "html", caption = "Direct sleep-wake agreement studies") %>%
+  kable_styling(font_size = 11, full_width = F) %>% 
+  footnote(general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, quaternary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states are called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.")
+```
+
 # References
