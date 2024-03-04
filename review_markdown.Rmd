@@ -897,6 +897,9 @@ Sleep diaries were the most commonly identified method of rest interval definiti
 
 Sleep discrepancy is a term often used interchangeably with sleep misperception. It has been noted by a number of authors [@Moul2004; @tryon2004] that sleep is a complex process for which there no one perfectly valid measure and accordingly *sleep discrepancy* is a preferable term to *sleep misperception* which in this context may be a misnomer. The status of visually-scored EEG as a clear objective standard of sleep continues to be challenged by the presence of local sleep [@krueger2019local], subtle EEG changes [e.g., the cyclic alternating pattern; @Parrino2012], and dissociation identified between the EEG and other sleep-related physiological processes, under some conditions [@krueger2013sleep]. Whilst it may not be possible to directly measure sleep misperception for these reasons, sleep discrepancy can be closer or further to sleep misperception conceptually depending on its operational definition. Closest are studies measuring sleep/wake agreement or classification using EEG under laboratory conditions. In a case where a participant who, being asleep for 5 minutes, is woken by a technician and reports complete wakefulness for the preceding period, only the fallibility of objective recording can account for a conceptual distinction between sleep discrepancy and true sleep-state misperception.
 
+See Hermans review 2022 for a list of alternatives
+
+
 This fundamental sleep discrepancy represented by sleep-wake agreement can be contrasted with sleep discrepancy represented by sleep time variables (e.g., TST, SOL). Moving from sleep-wake agreement to sleep time variables introduces additional factors that may account for the incongruence between self-report and objective sleep and hence provides a broader definition of sleep discrepancy. On the objective side, PSG potentially introduces artefact from transient (e.g., \<15 second) awakenings [@smith2000] and the arbitrary nature of SOL definitions (see section \@ref(sol). Actigraphy introduces the potential for immobile wake to be scored as sleep [@desouza2003; @paquet2007] and variance contributed by differences in scoring algorithms (see section \@ref(algo)). On the self-report side, sleep diaries and questionnaires introduce memory or reporting biases [@clegg2023real] as potential factors contributing to sleep discrepancy. See Harvey & Tang 2012 for a discussion of these factors in the context of insomnia.
 
 In the present review, we reported a key distinction between *habitual* and *episodic* measures of self-report sleep. Moving from episodic to habitual measures broadens the concept of yet sleep discrepancy further. A more global sleep discrepancy may be represented by comparisons of habitual self-report sleep with aggregated objective sleep (e.g., mean sleep variables values across 14 nights of actigraphy), the underlying processes for which are likely different to those of individual nights.
@@ -1246,7 +1249,7 @@ df <- subset(screen, binary_sw_I == 1 | binary_sw_II == 1, select = c(bibkey,
 # recoding the two sleep-wake variables (they were mutually exclusive)
 df$sleep_wake <- ifelse(df$binary_sw_I %>% is.na(), "Quaternary", "Binary")
 
-# remove binary_sw columsn
+# remove binary_sw colums
 df <- df[ ,-c(3,4)]
 
 df <- df %>% relocate(sleep_wake, .after = sleepvar_list)
