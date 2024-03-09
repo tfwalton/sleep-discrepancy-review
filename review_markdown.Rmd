@@ -89,13 +89,7 @@ We searched MEDLINE (Ovid), Embase (Ovid), PsycInfo (Ovid), CINAHL Plus, PubMed,
 `r length(which(full_screen$fulltext_include == "Yes")) %>% english() %>% str_to_sentence` relevant records were identified. Studies varied according to objective sleep measure; actigraphy algorithm, software, and rest interval; polysomnography setting and scoring criteria; sleep variables; self-report sleep measure; number of nights of objective recording; time frame of self-report measure; self-report sleep variable definition; sleep discrepancy derived index; presence and handling of repeated measurements; and statistical method for measure comparison.
 
 ## Conclusions
-
-Approaches to investigating sleep discrepancy vary considerably across areas of study design, measurement, data processing, and data analysis. This variability may exceed the size of effects looked for in relationships with other constructs and may pose difficulties in the pragmatics of research in this area. A number of different general forms of sleep discrepancy were identified that each differ in their conceptual distance to sleep misperception, clarifying the 
-
-and are associated with some conceptual implications and methodological issues. 
-
-
-Methods of measurement and operational definitions for sleep discrepancy varied considerably across identified studies. The conceptual and theoretical implications of these methodological differences are discussed in the context of research in insomnia and other areas.
+Conceptually, sleep discrepancy was mostly restricted to discordance in sleep states and sleep time variables, and some forms of sleep discrepancy differ in their similarity to sleep misperception. Methodologically, approaches to sleep discrepancy varied considerably across areas of study design, measurement, data processing, and data analysis. This variability may exceed the size of effects looked for in relationships with other constructs and may pose difficulties in the pragmatics of research in this area. Additional issues are discussed relating to the use of derived indices for operationalising sleep discrepancy, objective sleep onset latency definitions, calculation of actigraphy rest intervals, differences between correlation and concordance, averaging of sleep variables across nights, the conceptual status of sleep quality discrepancy, and the scope of the sleep discrepancy literature.
 
 ## Key words
 
