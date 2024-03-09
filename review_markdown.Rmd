@@ -3,9 +3,9 @@ title: 'Approaches to Measuring and Conceptualising Sleep Discrepancy: A Scoping
 author:
   - name: Tom F. Walton
     affiliation: School of Psychological Science, The University of Western Australia
-  - name: Melissa Ree
+  - name: Melissa J. Ree
     affiliation: Centre for Sleep Science, The University of Western Australia
-  - name: Simone Fueggle
+  - name: Simone N. Fueggle
     affiliation: Royal Adelaide Hospital, SA Health
   - name: Romola S. Bucks
     affiliation: School of Psychological Science, The University of Western Australia
