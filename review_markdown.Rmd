@@ -1013,11 +1013,11 @@ The following are a list of deviations from the scoping review protocol register
 
 1. The term actimetry in Medline and PSYCinfo searches was changed to actigraphy
 2. The scoping review protocol listed an incorrect number of duplicates records following searches
-2. All records that were not peer reviewed journal articles were excluded at the full-text screening stage in the final review
-3. Other items were added to the exclusion criteria at the full-text screening stage including:
+3. All records that were not peer reviewed journal articles were excluded at the full-text screening stage in the final review
+4. Other items were added to the exclusion criteria at the full-text screening stage including:
  + study measured informant-report rather than strictly self-report sleep
  + study did not include statistical comparison of self-report and objective sleep (e.g., numerical comparisons only, single-case design)
-4. Reference lists were not searched for additional citations as planned in the protocol
+5. Reference lists were not searched for additional citations as planned in the protocol
 
 ## PRISMA-ScR checklist
 
@@ -1121,6 +1121,9 @@ df$sample_characteristics <- paste0(toupper(substring(df$sample_characteristics,
 
 # change column names
 colnames(df) <- c("Study", "Country of origin", "Sample characteristics", "Sample size")
+
+# reorder rows
+df <- arrange(df, Study)
 
 kable(df, format = "html", caption = "Characteristics of included studies") %>%
   kable_styling(font_size = 11, full_width = F)
