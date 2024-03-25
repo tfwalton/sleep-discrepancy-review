@@ -906,6 +906,10 @@ This study represents the largest systematic approach to investigating methodolo
 
 Methods for investigating sleep discrepancy have varied considerably in the literature across the areas of study design, measurement, data processing, and data analysis. Many of these varied approaches have substantial effects on what sleep discrepancy means as a concept and sometimes are associated with methodological problems that may not be immediately clear. Sleep discrepancy research holds promise for advancing understanding of sleep, its disorders such as insomnia, and mechanisms at play in psychiatric and other disorders. Clear concepts and appropriate methodology is essential to ensure that work in this area remains a progressive science. Measuring discrepancy or congruence is often a deceptively complex undertaking and we hope that this scoping review will prove helpful and informative to those interested in designing or interpreting sleep discrepancy studies.
 
+# Data availability statement
+
+All code and data underlying this article are available from https://github.com/tfwalton/sleep-discrepancy-review.
+
 # Acknowledgements
 
 We would like to thank the librarians at the University of Western Australia library for their assistance with the development of the search strategy.
