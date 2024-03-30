@@ -17,10 +17,11 @@ always_allow_html: yes
 csl: american-medical-association.csl
 ---
 
-```{r initial code, echo = FALSE, warnings = FALSE}
+```{r initial code, echo = FALSE, warning = FALSE, message = FALSE}
 
 ################################ Initial code ##################################
 
+# Check for and load necessary packages
 packagelist <- c("tidyverse",
                "bookdown",
                "knitr",
@@ -43,7 +44,7 @@ screen <- filter(full_screen, fulltext_include=="Yes" | fulltext_include=="Secon
 
 #========  Functions to make inline code easier to read (enclose arguments in "")  =========
 
-# catg counts string values equal to second arg in column name (first arg)
+# catg counts string values equal to second arg in column name (first argument)
 
 catg <- function(x, y, brackets = TRUE) {
   i <- which(colnames(screen) == x)
