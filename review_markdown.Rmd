@@ -604,7 +604,7 @@ vec <- vector(length = length(sleep_variables[ ,1]))
 for (x in sleep_variables[ ,1]) {
   i <- which(colnames(screen) == x)
   q <- q + 1
-  vec[q] <- sum(screen[ ,i], na.rm = TRUE)
+  vec[q] <- sum(as.numeric(screen[ ,i], na.rm = TRUE))
 }
 
 # Add new vector to existing template table
