@@ -1,20 +1,26 @@
 ---
 title: 'Approaches to Measuring and Conceptualising Sleep Discrepancy: A Scoping Review'
 author:
-  - name: Tom F. Walton
-    affiliation: School of Psychological Science, The University of Western Australia
-  - name: Melissa J. Ree
-    affiliation: School of Psychological Science, The University of Western Australia
-  - name: Simone N. Fueggle
-    affiliation: CALHN Neuropsychology, Royal Adelaide Hospital
-  - name: Romola S. Bucks
-    affiliation: School of Psychological Science, The University of Western Australia
+- name: Tom F. Walton
+  affiliation: School of Psychological Science, The University of Western Australia
+- name: Melissa J. Ree
+  affiliation: School of Psychological Science, The University of Western Australia
+- name: Simone N. Fueggle
+  affiliation: CALHN Neuropsychology, Royal Adelaide Hospital
+- name: Romola S. Bucks
+  affiliation: School of Psychological Science, The University of Western Australia
 date: "2024-05-3"
 output:
-  bookdown::html_document2:
-bibliography: ["references_body.bib", "references_review.bib", "references_acti.bib", "references_packages.bib"]
-always_allow_html: yes
-csl: american-medical-association.csl
+  rticles::arxiv_article:
+    latex_engine: xelatex
+    keep_tex: true
+bibliography:
+- references_body.bib
+- references_review.bib
+- references_acti.bib
+- references_packages.bib
+csl: "american-medical-association.csl"
+always_allow_html: true
 ---
 
 ```{r initial code, echo = FALSE, warning = FALSE, message = FALSE}
@@ -28,7 +34,9 @@ library("bookdown")
 library("knitr")
 library("kableExtra")
 library("english")
-library("DiagrammeR")
+library("DiagrammeR")   # for PRISMA flowchart
+library("networkD3")
+library("webshot")
 
 # Read data set into data frame
 full_screen <- read.csv("../data/review_data.csv")
@@ -145,11 +153,14 @@ col3 <- c(488, 193243, 1676, 9362, 193302, 1234, 1569)
 df <- data.frame("Step" = col1, "Terms and operators" = col2, "Records" = col3)
 
 kable(df,
-      format = "html",
+      format = "latex",
+      booktabs = TRUE,
       col.names = c("Step","Terms and Operators", "Records"),
       caption = "Search strategy for Embase (Ovid)"
       ) %>%
-  kable_styling(font_size = 11, full_width = F)
+  kable_styling(font_size = 10, full_width = FALSE) %>%
+  column_spec(1, width = "1cm") %>%
+  column_spec(2, width = "13cm")
 ```
 
 ## Sources of evidence selection {#item9}
@@ -170,9 +181,9 @@ This manuscript, including all tables and figures summarising data were generate
 
 # Results {#item14}
 
-The initial search of databases returned `r total_records %>% format(nsmall=0, big.mark=",")` from which `r duplicates %>% format(nsmall=0, big.mark=",")` duplicate articles were removed. Details of the review process from article identification, screening, and selection are available in the PRISMA flowchart depicted in \@ref(fig:PRISMA) below.
+The initial search of databases returned `r total_records %>% format(nsmall=0, big.mark=",")` from which `r duplicates %>% format(nsmall=0, big.mark=",")` duplicate articles were removed. Details of the review process from article identification, screening, and selection are available in the PRISMA flowchart depicted in Figure \@ref(fig:PRISMA) below.
 
-```{r PRISMA, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PRISMA flowchart"}
+```{r PRISMA, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PRISMA flowchart", fig.height = 12}
 ###############################################################################
 ############################# PRISMA flowchart ################################
 #-----------------------------------------------------------------------------#
@@ -312,15 +323,17 @@ assessed -> total
     [9]: list_total
 "
 grViz(graph, height = "100%")
-
 ```
 
 ## Article characteristics
 A total of `r nrow(screen)` studies were identified from `r catg("fulltext_include", "Yes", brackets = FALSE) ` records, with `r catg("fulltext_include", "Second study", brackets = FALSE) %>% english()` records reporting two studies or experiments within a single text. Records spanned `r unique(c(screen$country, screen$country2)) %>% length()` countries, with the majority originating from the USA (n = `r length(which(screen$country == "USA" | screen$country2 == "USA"))`).
+
 ```{r sample sizes, echo = FALSE, warning = FALSE, message = FALSE}
 sample_size <- as.numeric(screen$sample_size)
 ```
+
 Sample sizes for studies ranged from `r min(sample_size, na.rm=TRUE)` to `r max(sample_size, na.rm=TRUE) %>% format(nsmall=0, big.mark=",")` (median = `r median(sample_size, na.rm=TRUE)`, IQR = `r IQR(sample_size, na.rm=TRUE)`). Most studies included both sexes in their samples (n = `r length(which(screen$sample_sex == ""))`), whereas `r  length(which(screen$sample_sex == "men"))` and `r length(which(screen$sample_sex == "women"))` comprised only males or females, respectively. Most studies contained samples of adults of all ages `r catg("sample_age", "adults")`. Others reported specific age groups: older adults (n = `r length(which(screen$sample_age == "older adults"))`), younger adults (n = `r length(which(screen$sample_age == "young adults"))`), adolescents (n = `r length(which(screen$sample_age == "adolescents"))`), and children (n = `r length(which(screen$sample_age == "children"))`). Sample characteristics for studies are included in Figure \@ref(fig:samplechar). For a full list of article characteristics, see the appendices (\@ref(tab:studychar))
+
 ```{r samplechar, results = 'asis', collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sample characteristics", fig.height = 8}
 
 # generate a frequency table for the three columnns
@@ -378,12 +391,12 @@ ggplot(data = df, mapping = aes(x = objective, y = count)) +
   geom_text(aes(label=count),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
   scale_y_continuous(limit=c(0,170)) +
   coord_flip()
-
 ```
 
 #### Polysomnography
 
 Methodological features charted for PSG included scoring criteria, setting, and recording period. See Figure \@ref(fig:scoring) for scoring criteria of included studies.
+
 ``` {r scoring, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG scoring methods", fig.height = 2.5}
 
 df <- screen$psg_scoring %>% as.data.frame()
@@ -421,9 +434,8 @@ ggplot(data = df, aes(x = scoring %>% fct_rev())) +
     strip.placement = "outside"
   ) +
   coord_flip()
-
-
 ```
+
 Methods for scoring PSG were mostly divided between American Academy of Sleep Medicine (AASM) and Rechtschaffen & Kales (R&K) guidelines. Rogers et al [@rogers_reliability_1993] used an automated system for sleep staging, the SS90-III Sleep Stager System (Oxford Medicals, Oxford). Vanable et al [@vanable_sleep_2000] used Mendelson's [@mendelson2012human] guidelines in addition to R&K. Edinger [@edinger_1995] used combined audio and visual criteria for sleep staging [@erwin1989]. Settings for PSG varied and are depicted in Figure \@ref(fig:setting). 
 
 ``` {r setting, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG setting", fig.height = 3}
@@ -467,10 +479,10 @@ ggplot(data = df, aes(x = setting %>% fct_rev())) +
     strip.placement = "outside"
   ) +
   coord_flip()
-
-
 ```
+
 In-lab and home-based tests comprised the substantial majority of PSG settings with a handful of more unusual settings noted. As for recording periods, PSG most often occurred during the night although a number of alternative periods were noted. See Figure \@ref(fig:period) for a depiction of PSG recording periods.
+
 ``` {r period, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG recording period", fig.height = 3}
 
 df <- screen$psg_period %>% as.data.frame()
@@ -514,6 +526,7 @@ ggplot(data = df, aes(x = period %>% fct_rev())) +
 
 
 ```
+
 Note, MSLT refers to the multiple sleep latency test.
 
 #### Actigraphy
@@ -787,6 +800,7 @@ ggplot(data = df, aes(x = measure, y = studies)) +
   coord_flip()
 
 ```
+
 Sleep diaries and questionnaires on awakening were the most common measure of self-report sleep, followed by habitual sleep questionnaires including the Pittsburgh Sleep Quality Index (PSQI)[@buysse1989]. Note, habitual sleep refers to questionnaires that require participants to provide global judgements about their sleep that correspond to a period of time longer than a single night such as a week or a month. Graphical response formats for sleep diaries and questionnaires on awakening required participants to draw their sleep on scales comprising discrete blocks of time. We also recorded whether self-report measures overall attempted to capture habitual sleep or rather *episodic* sleep that occurred night-by-night/episode-by-sleep episode at the same time as objective measures. Results are depicted in Figure \@ref(fig:habitual) below.
 
 ``` {r habitual, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Habitual or episodic sleep", fig.height = 1.5}
@@ -855,9 +869,10 @@ kable(sleep_variables[ ,1:4],
       caption = "Sleep variables used for operationalising sleep discrepancy",
       escape = FALSE,
 ) %>%
-  kable_styling(font_size = 11, full_width = F) %>% footnote(footnote_as_chunk = TRUE, general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.", symbol = "TWAK was not used to define sleep discrepancy directly by any of the included studies but is included in the table for clarity")
+  kable_styling(font_size = 10, full_width = FALSE) %>% footnote(footnote_as_chunk = TRUE, general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.", symbol = "TWAK was not used to define sleep discrepancy directly by any of the included studies but is included in the table for clarity")
 
 ```
+
 The number of studies that used each sleep variable are depicted below in Figure \@ref(fig:vargraph).
 
 ```{r vargraph, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sleep variables"}
@@ -892,6 +907,7 @@ ggplot(data = df, mapping = aes(x = variable, y = studies)) +
   coord_flip()
 
 ```
+
 The sleep variables TST, SOL, WASO, and SE were most common and formed the majority of identified parameters. Direct sleep-wake agreement was measured by a small subset of studies. Almost all identified sleep variables were measures related to sleep time or awakenings, although we did note some more unconventional parameters listed below separately from the figure above. Allawati et al [@allawati_2021] compared self-report and actigraphic measures of sleep patterns including monophasic, biphasic dawn, biphasic siesta, and polyphasic. Lockley et el [@lockley_comparison_1999], Dautovich et al [@dautovich_subjective_2008], Hanisch et al [@hanisch_sleep_2011], and Nguyen-Michel et al [@nguyen-michel_underperception_2015] reported discrepancy for naps specifically, including variables such as number of naps, number of days napped, mean duration of naps, and total nap time. Baek et al [@baek_2020] and Chan et al [@chan_sleep_2018] compared self-report and actigraphic assessments of variability in TST and other sleep parameters. Thun et al [@thun_actigraphic_2012] compared self-report and actigraphic measures of morningness-eveningness. Finally, McIntyre et al [@mcintyre_2016] investigated self-report-objective discrepancy across a range of sleep behaviours including position at sleep onset, position at wake, number of positional changes, and the presence of leg twitches or jerks. 
 
 ### Self-report sleep variable definitions
@@ -943,6 +959,7 @@ ggplot(data = df, mapping = aes(x = definition, y = studies)) +
   coord_flip()
 
 ```
+
 Note, FA--LO indicates lights off to final awakening. By conventional definitions of SPT, SPT--SOL--WASO is equal to TIB--SOL--WASO--TWAK, but is listed separately above to reflect differences in terminology. Definitions for WASO also varied and these are depicted in \@ref(fig:wasodef) below.
 
 ``` {r wasodef, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Self-report WASO definitions", fig.height = 3}
@@ -978,6 +995,7 @@ ggplot(data = df, mapping = aes(x = definition, y = studies)) +
   coord_flip()
 
 ```
+
 Definitions for self-report TIB used in operationalising sleep discrepancy are depicted Figure \@ref(fig:tibdef).
 
 ``` {r tibdef, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Self-report TIB definitions", fig.height = 2.5}
@@ -1016,6 +1034,7 @@ ggplot(data = df, mapping = aes(x = definition, y = studies)) +
   coord_flip()
 
 ```
+
 Note, RT--LO refers to the time between lights off and rise time. SE was almost unanimously calculated as TST/TIB\*100 , although varying definitions for the TST and TIB components affect this outcome. One study [@neu_sleep_2007] used two definitions of SE, one comprising TST/TIB and the other TST/sleep period time (SPT).
 
 ### Objective sleep variable definitions
@@ -1084,6 +1103,7 @@ ggplot(data = df, mapping = aes(x = sol, y = studies)) +
   coord_flip()
 
 ```
+
 Note that SWS = slow wave sleep, LPS = latency to persistent sleep, AASM = American Academy of Sleep Medicine guidelines, R&K = Rechstaffen & Kales guidelines. Parameter varied in model indicates that the definition of sleep onset was varied within the context of a predictive model. Among PSG studies, the two most common approaches were dependent on standard definitions provided by the R&K [@rechtschaffen1968] and AASM [@berry2012aasm] scoring guidelines.
 
 Most studies used standard PSG or actigraphy criteria for defining objective number of awakenings (i.e., a single epoch of wakefulness). A single exception was Lewis et al [@lewis_1969], who stipulated that a period last over a minute to count as an awakening. Neu et al [@neu_sleep_2007] used the same definitions for objective SE as they did for self-report SE. 
@@ -1136,6 +1156,7 @@ ggplot(data = df, mapping = aes(x = methods, y = studies)) +
 
 
 ```
+
 Note that pooled observations involved collapsing data across multiple instances of recording. Separate analyses indicate that analyses were conducting separately for each instance of recording. In addition to the above, some studies measuring naturalistic sleep in the home environment took day of week into consideration for analyses. `r (catg("weekend", "weighted average", brackets = FALSE) + catg("weekend2", "weighted average", brackets = FALSE)) %>% english %>% str_to_title()` studies calculated a weighted average for sleep variables equal to 5/7* (mean weekday sleep) + 2/7* (mean weekend sleep), and `r (catg("weekend", "split", brackets = FALSE) + catg("weekend2", "split", brackets = FALSE)) %>% english()` performed analyses for weeknights and weekends separately.
 
 ## Direct comparisons of self-report and objective sleep
@@ -1183,6 +1204,7 @@ ggplot(data = group_variables, aes(x = variable_name, y = studies)) +
   coord_flip()
 
 ```
+
 Note, Bland Altman analyses include Bland Altman plots and the reporting of 95% limits of agreement [ @blandaltman1999]. Pitman's test (also known as the Pitman-Morgan test) is a test of differences of variances between dependent samples [@pitman1939; @morgan1939] and was used to compare the variability of self-report and objective sleep. 
 One-sample *t*-tests of difference scores are equivalent to paired *t*-tests but are included separately in the figure to reflect differences in reporting. Classification performance measures include percentage agreement, accuracy, sensitivity, specificity, positive predictive value (PPV), and negative predictive value (NPV). Formulae used for the intra-class correlation coefficient varied across studies. Spearman correlations and Wilcoxon Signed Rank Tests were often used to handle the skew of variables such as SOL and WASO. Other methods included the delta coefficient [@girschik_2012], partial correlation and factor analysis [@regestein_2004], errors-in-variables regression [@lauderdale_2008], repeated measures correlation [@gibson_2023], non-parametric limits of agreement [@thurman_2018], survival agreement [@guedes_2016], latent correlations for testing associations at within-subjects and between-subjects level [@fengsvetnik_2018], and structural equation modelling [@friedmann_2022].
 
@@ -1298,6 +1320,7 @@ ggplot(data = df, mapping = aes(x = method, y = studies)) +
 
 
 ```
+
 ## Miscellaneous methodological features
 
 Lastly, we recorded some other methodological features of studies that appeared pertinent to the study of sleep discrepancy. `r onehot("misc_cbti", brackets = FALSE) %>% english() %>% str_to_title()` studies investigated sleep discrepancy during, as a predictor of response to, or as an outcome of, cognitive behaviour therapy for insomnia (CBT-I). `r onehot("misc_exp_awakenings", brackets = FALSE) %>% english() %>% str_to_title()` studies used an experimental awakening paradigm where participants were monitored in-lab and woken by sound probes or technician interventions. A total of `r onehot("aim_validation", brackets = FALSE)` studies were conducted with the aim of validating or assessing a particular sleep instrument.
@@ -1435,10 +1458,10 @@ df <- data.frame("step" = col1, "terms" = col2, "records" = col3)
 colnames(df) <- c("Step", "Terms and operators", "Records")
 
 kable(df,
-      format = "html",
+      format = "latex",
       caption = "Search strategy for Ovid databases"
 ) %>%
-  kable_styling(font_size = 11, full_width = F) %>%
+  kable_styling(font_size = 10, full_width = FALSE) %>%
   pack_rows("Embase", 1,7) %>%
   pack_rows("PsycINFO", 8,14) %>%
   pack_rows("Medline", 15,21)
@@ -1464,7 +1487,7 @@ AND (sleep* AND ("over estimat*" OR "over report*" OR "under estimat*" OR "under
 
 'noft(("sleep discrepancy" OR "paradoxical insomnia" OR "subjective insomnia") OR (sleep AND misperception) OR
 ((("self report*" or diary or subjective*) AND (objective* or actigraph* or polysomnograph* or polygraph*))
-AND (sleep* AND ("over estimat*" OR "over report*" OR "under estimat*" OR "under report*" OR overestimat* OR overreport* OR underestimat* OR underreport* 
+AND (sleep* AND ("over estimat*" OR "over report*" OR "under estimat*" OR "under report*" OR overestimat* OR overreport* OR underestimat* OR underreport*
 OR discrepan* OR concordan* OR agreement OR disagreement OR discordan* OR congruen* OR incongruen*))))'
 )
 
@@ -1473,15 +1496,17 @@ df <- data.frame("terms" = col1, "records" = col2)
 colnames(df) <- c("Terms and operators", "Records")
 
 kable(df,
-      format = "html",
+      format = "latex",
+      booktabs = TRUE,
       caption = "Search strategy for other databases"
       ) %>%
-  kable_styling(font_size = 11, full_width = F) %>%
-  pack_rows("Pubmed", 1,1) %>%
-  pack_rows("CINAHL Plus", 2,2) %>%
-  pack_rows("Scopus", 3,3) %>%
-  pack_rows("Web of Science", 4,4) %>%
-  pack_rows("Proquest Theses and Dissertations Global", 5,5)
+  kable_styling(font_size = 10, full_width = FALSE) %>%
+  column_spec(1, width = "15cm")
+#   pack_rows("Pubmed", 1,1) %>%
+#   pack_rows("CINAHL Plus", 2,2) %>%
+#   pack_rows("Scopus", 3,3) %>%
+#   pack_rows("Web of Science", 4,4) %>%
+#   pack_rows("Proquest Theses and Dissertations Global", 5,5)
 
 ```
 
@@ -1562,10 +1587,10 @@ df <- data.frame("section" = col1, "item_no" = col2, "item" = col3, "page" = col
 colnames(df) <- c("Section", "Item", "PRISMA-ScR Checklist Item", "Location reported")
 
 kable(df,
-      format = "html",
+      format = "latex",
       caption = "Preferred Reporting Items for Systematic reviews and Meta-Analyses extension for Scoping Reviews (PRISMA-ScR) Checklist."
 ) %>%
-  kable_styling(font_size = 11, full_width = F) %>%
+  kable_styling(font_size = 10, full_width = FALSE) %>%
   pack_rows("Title", 1,1) %>%
   pack_rows("Abstract", 2,2) %>%
   pack_rows("Introduction", 3,4) %>%
@@ -1579,6 +1604,7 @@ kable(df,
 ## Additional tables
 
 Full descriptions of study characteristics are available in Table \@ref(tab:studychar).
+
 ``` {r studychar, echo = FALSE, warning = FALSE, message = FALSE}
 df <- subset(screen, select = c(ama_cite, bibkey_ama, country, country2,
                                 sample_characteristics,
@@ -1606,11 +1632,12 @@ colnames(df) <- c("Study", "Country of origin", "Sample characteristics", "Sampl
 # reorder rows
 df <- arrange(df, Study)
 
-kable(df, format = "html", caption = "Characteristics of included studies") %>%
-  kable_styling(font_size = 11, full_width = F)
+kable(df, format = "latex", caption = "Characteristics of included studies") %>%
+  kable_styling(font_size = 10, full_width = FALSE)
 ```
 
 Full qualitative methodological details for actigraphy studies are available in Table \@ref(tab:bigacti).
+
 ``` {r bigacti, echo = FALSE, warning = FALSE, message = FALSE}
 
 df <- subset(screen, select = c(ama_cite,
@@ -1696,13 +1723,14 @@ df$acti_interval_description <- paste0(toupper(substring(df$acti_interval_descri
 
 colnames(df) <- c("Study", "Actigraph device", "Software", "Algorithm", "Algorithm reference", "Rest interval definition")
 
-kable(df, format = "html", caption = "Qualitative actigraphy characteristics") %>%
-  kable_styling(font_size = 11, full_width = F) %>% 
+kable(df, format = "latex", caption = "Qualitative actigraphy characteristics") %>%
+  kable_styling(font_size = 10, full_width = FALSE) %>% 
   footnote(footnote_as_chunk = TRUE, general = "The --> arrow designates the priority given to methods of calculating the rest interval. For example, event markers –> activity, sleep diary, indicates that event marker presses were first used to calculate rest intervals, followed by sleep diary and activity when event marker presses were not available.")
 
 ```
 
 A full list of studies that recorded sleep-wake agreement is available in Table \@ref(tab:sleepwake) below.
+
 ``` {r sleepwake, echo = FALSE, warning = FALSE, message = FALSE}
 
 # create dataframe of relevant variables
@@ -1731,8 +1759,8 @@ df <- df %>% relocate(sleep_wake, .after = sleepvar_list)
 
 colnames(df) <- c("Study", "Sample characteristics", "Sleep variables", "Sleep-wake agreement type", "PSG setting")
 
-kable(df, format = "html", caption = "Direct sleep-wake agreement studies") %>%
-  kable_styling(font_size = 11, full_width = F) %>% 
+kable(df, format = "latex", caption = "Direct sleep-wake agreement studies") %>%
+  kable_styling(font_size = 10, full_width = FALSE) %>% 
   footnote(footnote_as_chunk = TRUE, general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.")
 ```
 
