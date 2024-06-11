@@ -21,21 +21,14 @@ csl: american-medical-association.csl
 
 ################################ Initial code ##################################
 
-# Check for and load necessary packages
+# packages
 
-packagelist <- c("tidyverse",
-               "bookdown",
-               "knitr",
-               "kableExtra",
-               "english",
-               "DiagrammeR")
-
-installed_packages <- packagelist %in% rownames(installed.packages())
-if (any(installed_packages == FALSE)) {
-  install.packages(packagelist[!installed_packages])
-}
-
-invisible(lapply(packagelist, library, character.only = TRUE))
+library("tidyverse")
+library("bookdown")
+library("knitr")
+library("kableExtra")
+library("english")
+library("DiagrammeR")
 
 # Read data set into data frame
 full_screen <- read.csv("../data/review_data.csv")
@@ -118,7 +111,7 @@ There are diverse ways to conceptualise and measure sleep discrepancy. It may be
 
 To date, there have been few systematic attempts to synthesise or evaluate the varied approaches to investigating sleep discrepancy. Three reviews have been conducted in this area. Castelnovo et al [@Castelnovo2019] conducted a systematic review of quantitative definitions of paradoxical insomnia, an insomnia subvariant defined, in part, by the presence of sleep discrepancy. This excluded studies where sleep discrepancy was not used to form diagnostic criteria. Two subsequent reviews were conducted by Rezaie et al [@Rezaie2018] and Stephan et al [@stephan2023] focussing on paradoxical insomnia and the correlates of sleep misperception, respectively. Whilst informative discussions of research findings, these studies excluded a focus on concepts or methodology and did not incorporate a systematic search---potentially underrepresenting the breadth of the literature.
 
-Presently, it is not clear how sleep discrepancy should best be defined and the diversity in its measurement and conceptualisation may present a challenge to theory-building for research in insomnia and other areas. A scoping review is a method of research synthesis that aims to map existing literature in a field of interest and identify types of evidence available in a given topic [@Arksey2005]. We used a scoping review strategy to examine how sleep discrepancy has been conceptualised in the literature and identify and evaluate the methods used to investigate it. A preliminary search of MEDLINE (Ovid), the Cochrane Library, Embase (Ovid), and PsycINFO (Ovid) was conducted to identify existing or in-progress systematic or scoping reviews on the topic. Except for the two reviews mentioned above, no records were identified.
+Presently, it is not clear how sleep discrepancy should best be defined and the diversity in its measurement and conceptualisation may present a challenge to theory-building for research in insomnia and other areas. A scoping review is a method of research synthesis that aims to map existing literature in a field of interest and identify types of evidence available in a given topic [@Arksey2005]. We used a scoping review strategy to examine how sleep discrepancy has been conceptualised in the literature and identify and evaluate the methods used to investigate it. A preliminary search of MEDLINE (Ovid), the Cochrane Library, Embase (Ovid), and PsycINFO (Ovid) was conducted to identify existing or in-progress systematic or scoping reviews on the topic. Except for the three reviews mentioned above, no records were identified.
 
 # Methods
 
@@ -161,7 +154,7 @@ kable(df,
 
 ## Sources of evidence selection {#item9}
 
-Records identified from searches were exported to EndNote 20 [@EndNote20] for collation and then uploaded to Rayyan [@Ouzzani2016] for deduplication and title and abstract screening. Two independent reviewers (TW and SF) screened titles and abstracts to identify studies for full-text retrieval using the inclusion criteria. Percentage of agreement between reviewers was 87.6% and conflicts were resolved via discussion. The full-texts of articles passing title and abstract screening were screened independently by TW with reasons for exclusion reported. Due to the unanticipated size of the literature, articles from sources other than peer-reviewed journals were added to exclusion criteria post-hoc.
+Records identified from searches were exported to EndNote 20 [@EndNote20] for collation and then uploaded to Rayyan [@Ouzzani2016] for deduplication and title and abstract screening. Two independent reviewers (TW and SF) screened titles and abstracts to identify studies for full-text retrieval using the inclusion criteria. Percentage of agreement between reviewers was 87.6% and conflicts were resolved via discussion. The full-texts of articles passing title and abstract screening were screened by TW with reasons for exclusion reported. Due to the unanticipated size of the literature, articles from sources other than peer-reviewed journals were added to exclusion criteria post-hoc.
 
 ## Charting the data {#item10}
 
