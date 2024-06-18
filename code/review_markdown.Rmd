@@ -1,5 +1,5 @@
 ---
-title: 'Approaches to Measuring and Conceptualising Sleep Discrepancy: A Scoping Review'
+title: 'A scoping review of sleep discrepancy methodology: do we know what we are measuring?'
 author:
 - name: Tom F. Walton
   affiliation: School of Psychological Science, The University of Western Australia
@@ -113,7 +113,7 @@ Sleep discrepancy, the discordance between self-report and objective measures of
 
 # Introduction {#introduction}
 
-Sleep is measured in two principal ways: objectively through polysomnography or actigraphy, and by self-report through questionnaires or sleep diaries. The discordance that can exist between these two forms of measurement is known as subjective-objective sleep discrepancy, or more simply, sleep discrepancy. Sleep discrepancy is a common feature of insomnia disorder, where it is also referred to as sleep misperception or paradoxical insomnia. Individuals with insomnia tend to underestimate total sleep time (TST), and overestimate sleep onset latency (SOL) and wake after sleep onset (WASO) relative to objective measures [@Baglioni2014; @edinger_1995; @means_2003].
+Sleep is measured in two principal ways: objectively through polysomnography or actigraphy, and by self-report through questionnaires or sleep diaries. The discordance that can exist between these two forms of measurement is known as subjective-objective sleep discrepancy, or more simply, sleep discrepancy. Sleep discrepancy is a common feature of insomnia disorder, where it is also referred to as sleep misperception or paradoxical insomnia. Individuals with insomnia tend to underestimate total sleep time (TST), and overestimate sleep onset latency (SOL) and wake after sleep onset (WASO) relative to objective measures [@Baglioni2014; @edinger_1995; @means_2003] and are more likely to report prior wakefulness after being woken in laboratory studies [@mendelson_1986; @mercer_2002].
 
 There are diverse ways to conceptualise and measure sleep discrepancy. It may be considered as a spectrum [@trajanovic_2007], ranging from positive (self-report exceeds objective) to negative (objective exceeds self-report), or as a measure of absolute sleep agreement [@baillet_2016]. Any number of sleep variables such as TST, SOL, or WASO can used to operationalise sleep discrepancy, each differing conceptually and carrying varying theoretical implications. Sleep discrepancy may even be considered beyond these sleep time-based metrics and represent discordance in self-report and objective sleep patterns [@allawati_2021], or sleep quality. Sleep discrepancy can be characterised in a sample by directly comparing self-report and objective sleep with a range of statistical techniques. Other studies may derive variables to define sleep discrepancy quantitatively to measure its relationship with other variables, for example using a difference score of self-report TST -- objective TST.
 
