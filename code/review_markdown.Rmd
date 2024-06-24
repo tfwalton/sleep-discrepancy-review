@@ -88,6 +88,7 @@ duplicates <- 3903 %>% format(nsmall=0, big.mark=",")
 total_records <- 6190 %>% format(nsmall=0, big.mark=",")
 
 # Chunk options
+knitr::opts_chunk$set(cache = FALSE)
 
 # knitr::knit_hooks$set(plot = function(x, options)  {
 #   paste0(knitr::hook_plot_tex(x, options), "\n\\FloatBarrier\n")
@@ -126,7 +127,7 @@ Sleep is measured in two principal ways: objectively through polysomnography or 
 
 There are diverse ways to conceptualise, and measure sleep discrepancy. It may be considered as a spectrum [@trajanovic_2007], ranging from positive (self-report exceeds objective) to negative (objective exceeds self-report), or as a measure of absolute sleep agreement [@baillet_2016]. Any number of sleep variables such as TST, SOL, or WASO can used to operationalise sleep discrepancy, each differing conceptually and carrying varying theoretical implications. Sleep discrepancy may even be considered beyond these sleep time-based metrics and represent discordance in self-report and objective sleep patterns [@allawati_2021], or sleep quality. Sleep discrepancy can be characterised in a sample by directly comparing self-report and objective sleep with a range of statistical techniques. Other studies may derive variables to define sleep discrepancy quantitatively to measure its relationship with other variables, for example using a difference score of self-report TST -- objective TST.
 
-To date, there have been few systematic attempts to synthesise or evaluate the varied approaches to investigating sleep discrepancy. Three reviews have been conducted in this area. Castelnovo et al [@Castelnovo2019] conducted a systematic review of quantitative definitions of paradoxical insomnia, an insomnia subvariant defined, in part, by the presence of sleep discrepancy. This excluded studies where sleep discrepancy was not used to form diagnostic criteria. Two subsequent reviews were conducted by Rezaie et al [@Rezaie2018] and Stephan et al [@stephan2023] focussing on paradoxical insomnia and the correlates of sleep misperception, respectively. Whilst informative discussions of research findings, these studies excluded a focus on concepts or methodology.
+To date, there have been few systematic attempts to synthesise or evaluate the varied approaches to investigating sleep discrepancy. Three reviews have been conducted in this area. Castelnovo et al [-@Castelnovo2019] conducted a systematic review of quantitative definitions of paradoxical insomnia, an insomnia subvariant defined, in part, by the presence of sleep discrepancy. This excluded studies where sleep discrepancy was not used to form diagnostic criteria. Two subsequent reviews were conducted by Rezaie et al [-@Rezaie2018] and Stephan et al [-@stephan2023] focussing on paradoxical insomnia and the correlates of sleep misperception, respectively. Whilst informative discussions of research findings, these studies excluded a focus on concepts or methodology.
 
 Consequently, sleep discrepancy remains an ambiguous construct, with conceptual and methodological sources of variation that are yet to be formally delineated. This threatens the development of theory in research areas such as insomnia as it can be unclear whether sleep discrepancy studies are measuring or operationalising the same or different phenomena. The replicability of findings can also be affected where the proliferation of varying analysis strategies introduces uncertainty into the data analysis process [@hoffmann2021]. Research is needed to integrate and evaluate the varied approaches to sleep discrepancy, clarify its conceptual boundaries, and facilitate comparisons across studies.
 
@@ -345,7 +346,7 @@ sample_size <- as.numeric(screen$sample_size)
 
 Sample sizes for studies ranged from `r min(sample_size, na.rm=TRUE)` to `r max(sample_size, na.rm=TRUE) %>% format(nsmall=0, big.mark=",")` (median = `r median(sample_size, na.rm=TRUE)`, IQR = `r IQR(sample_size, na.rm=TRUE)`). Most studies included both sexes in their samples (n = `r length(which(screen$sample_sex == ""))`), whereas `r  length(which(screen$sample_sex == "men"))` and `r length(which(screen$sample_sex == "women"))` comprised only males or females, respectively. Most studies contained samples of adults of all ages `r catg("sample_age", "adults")`. Others reported specific age groups: older adults (n = `r length(which(screen$sample_age == "older adults"))`), younger adults (n = `r length(which(screen$sample_age == "young adults"))`), adolescents (n = `r length(which(screen$sample_age == "adolescents"))`), and children (n = `r length(which(screen$sample_age == "children"))`). Sample characteristics for studies are included in Figure \@ref(fig:samplechar). For a full list of article characteristics, see the appendices (\@ref(tab:studychar))
 
-```{r samplechar, results = 'asis', collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sample characteristics", fig.height = 8, fig.pos="H"}
+```{r samplechar, results = 'asis', collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sample characteristics", fig.pos="H", fig.height = 8}
 
 # generate a frequency table for the three columnns
 samplechar <- c(screen$sample_clinical, screen$sample_clinical2, screen$sample_clinical3)
@@ -385,7 +386,7 @@ ggplot(data = samplechar, aes(x = fct_infreq(sample) %>% fct_rev())) +
 
 Objective methods of recording sleep formed two major groups: EEG-based methods and movement-based methods. See Figure \@ref(fig:measures) for number of studies using each method. All movement-based methods involved tri-axial accelerometry through actigraphs or similar devices. PSG was the predominant EEG-based method (n = `r sum(screen$obj_PSG, na.rm=TRUE)`), however a handful of studies used EEG alone, in either single channel (n = `r length(which(screen$obj_EEG_other == "single channel EEG"))`), standard (n = `r length(which(screen$obj_EEG_other == "EEG"))`), or high-definition formats (n = `r length(which(screen$obj_EEG_other == "HD-EEG"))`). A single study used a method of sleep recording that involved recording verbal responses from participants elicited by soft tones played at intervals throughout the night [@espie_1989].
 
-``` {r measures, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Measures of objective sleep", fig.height = 1.0, fig.pos="H"}
+``` {r measures, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Measures of objective sleep", fig.pos="H", fig.height = 1}
 
 df <- data.frame("objective" = c("EEG (including PSG)", "Movement (including actigraphy)"), "count" = c(screen$obj_EEG %>% sum(na.rm=TRUE), screen$obj_movement %>% sum(na.rm=TRUE)))
 
@@ -408,7 +409,7 @@ ggplot(data = df, mapping = aes(x = objective, y = count)) +
 
 Methodological features charted for PSG included scoring criteria, setting, and recording period. See Figure \@ref(fig:scoring) for scoring criteria of included studies.
 
-``` {r scoring, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG scoring methods", fig.height = 2.5, fig.pos="H"}
+``` {r scoring, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG scoring methods", fig.pos="H", fig.height = 1.75}
 
 df <- screen$psg_scoring %>% as.data.frame()
 
@@ -447,9 +448,9 @@ ggplot(data = df, aes(x = scoring %>% fct_rev())) +
   coord_flip()
 ```
 
-Methods for scoring PSG were mostly divided between American Academy of Sleep Medicine (AASM) and Rechtschaffen & Kales (R&K) guidelines. Rogers et al [@rogers_reliability_1993] used an automated system for sleep staging, the SS90-III Sleep Stager System (Oxford Medicals, Oxford). Vanable et al [@vanable_sleep_2000] used Mendelson's [@mendelson2012human] guidelines in addition to R&K. Edinger [@edinger_1995] used combined audio and visual criteria for sleep staging [@erwin1989]. Settings for PSG varied and are depicted in Figure \@ref(fig:setting). 
+Methods for scoring PSG were mostly divided between American Academy of Sleep Medicine (AASM) and Rechtschaffen & Kales (R&K) guidelines. Rogers et al [-@rogers_reliability_1993] used an automated system for sleep staging, the SS90-III Sleep Stager System (Oxford Medicals, Oxford). Vanable et al [-@vanable_sleep_2000] used Mendelson's [-@mendelson2012human] guidelines in addition to R&K. Edinger [-@edinger_1995] used combined audio and visual criteria for sleep staging [-@erwin1989]. Settings for PSG varied and are depicted in Figure \@ref(fig:setting). 
 
-``` {r setting, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG setting", fig.height = 3, fig.pos="H"}
+``` {r setting, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG setting", fig.pos="H", fig.height = 2}
 
 df <- screen$psg_setting %>% as.data.frame()
 
@@ -494,7 +495,7 @@ ggplot(data = df, aes(x = setting %>% fct_rev())) +
 
 In-lab and home-based tests comprised the substantial majority of PSG settings with a handful of more unusual settings noted. As for recording periods, PSG most often occurred during the night although a number of alternative periods were noted. See Figure \@ref(fig:period) for a depiction of PSG recording periods.
 
-``` {r period, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG recording period", fig.height = 3, fig.pos="H"}
+``` {r period, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG recording period", fig.pos="H", fig.height = 2.25}
 
 df <- screen$psg_period %>% as.data.frame()
 
@@ -588,7 +589,7 @@ Note, MSLT refers to the multiple sleep latency test.
 <!-- ============                     end of hack                     ===============-->
 We recorded features of actigraphy including device name, scoring algorithm, software, and rest interval definition. See Table \@ref(tab:bigacti) in the appendices for full tabulations of actigraphy characteristics. Actigraphy scoring algorithms are responsible for determining wakefulness and sleep from accelerometer-derived motor activity. Scoring algorithms varied across studies and included (ref:boyne), (ref:motionware), (ref:sensewear), (ref:gorny), (ref:cole), (ref:kripke), (ref:sadeh), (ref:barreira), (ref:hagheyegh), (ref:ucsd), (ref:actilife), (ref:actillume), (ref:mems), (ref:ssa), (ref:im), (ref:john), (ref:fatiguescience), (ref:barouni), (ref:choi), (ref:tudorlocke), and (ref:troiano). The frequencies of these algorithms are depicted in Figure \@ref(fig:algorithms).
 
-```{r algorithms, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Actigraphy algorithms"}
+```{r algorithms, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Actigraphy algorithms", fig.height = 4}
 
 graph <- screen %>% select("acti_algorithm":"acti_algorithm3")
 
@@ -639,7 +640,7 @@ ggplot(data = graph, mapping = aes(x = algo, y = freq)) +
 
 Studies using Actiware algorithms varied in their selection of thresholds for scoring wakefulness. These are depicted in Figure \@ref(fig:actiware) below.
 
-```{r actiware, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Actiware algorithm threshold settings", fig.height = 3}
+```{r actiware, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Actiware algorithm threshold settings", fig.height = 2}
 acti <- c(screen$acti_algorithm, screen$acti_algorithm2, screen$acti_algorithm3) %>% as.data.frame()
 
 acti <- acti[apply(acti, 1, function(x) grepl("Actiware", x)), ] %>% as.data.frame()
@@ -674,7 +675,7 @@ ggplot(data = acti, aes(reorder(threshold, -as.integer(threshold)))) +
 
 The rest interval in actigraphy is the period of time where activity is assessed for sleep and is usually intended to coincide with the time the wearer is in bed, attempting to sleep. Information used to define rest intervals varied across reviewed studies and included, singly or in combination, are depicted below in Figure \@ref(fig:intervals).
 
-```{r intervals, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Methods for defining rest intervals in actigraphy"}
+```{r intervals, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Methods for defining rest intervals in actigraphy", fig.height = 3}
 #----------------   one-hot encoded rest interval data   ----------------------|
 
 interval <- c("interval_marker",
@@ -757,7 +758,7 @@ The precise combination and order of priority of methods in each study varied ma
 
 Self-report sleep measures comprised seven major types. See Figure \@ref(fig:srmeasure) for the number of studies including each of these.
 
-``` {r srmeasure, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Measures of self-report sleep", fig.height = 4}
+``` {r srmeasure, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Measures of self-report sleep", fig.height = 3.75}
 
 df <- data.frame("measure" = c(
                                "Sleep diary (including the consensus sleep diary)",
@@ -813,7 +814,7 @@ ggplot(data = df, aes(x = measure, y = studies)) +
 
 ```
 
-Sleep diaries and questionnaires on awakening were the most common measure of self-report sleep, followed by habitual sleep questionnaires including the Pittsburgh Sleep Quality Index (PSQI)[@buysse1989]. Note, habitual sleep refers to questionnaires that require participants to provide global judgements about their sleep that correspond to a period of time longer than a single night such as a week or a month. Graphical response formats for sleep diaries and questionnaires on awakening required participants to draw their sleep on scales comprising discrete blocks of time. We also recorded whether self-report measures overall attempted to capture habitual sleep or rather *episodic* sleep that occurred night-by-night/episode-by-sleep episode at the same time as objective measures. Results are depicted in Figure \@ref(fig:habitual) below.
+Sleep diaries and questionnaires on awakening were the most common measure of self-report sleep, followed by habitual sleep questionnaires including the Pittsburgh Sleep Quality Index [PSQI; @buysse1989]. Note, habitual sleep refers to questionnaires that require participants to provide global judgements about their sleep that correspond to a period of time longer than a single night such as a week or a month. Graphical response formats for sleep diaries and questionnaires on awakening required participants to draw their sleep on scales comprising discrete blocks of time. We also recorded whether self-report measures overall attempted to capture habitual sleep or rather *episodic* sleep that occurred night-by-night/episode-by-sleep episode at the same time as objective measures. Results are depicted in Figure \@ref(fig:habitual) below.
 
 ``` {r habitual, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Habitual or episodic sleep", fig.height = 1.5}
 
@@ -889,7 +890,7 @@ kable(sleep_variables[ ,1:4],
 
 The number of studies that used each sleep variable are depicted below in Figure \@ref(fig:vargraph).
 
-```{r vargraph, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sleep variables"}
+```{r vargraph, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sleep variables", fig.height = 6}
 
 # Remove TWAK
 df <- sleep_variables[-which(sleep_variables[ ,2] == "TWAK"), ]
@@ -922,13 +923,13 @@ ggplot(data = df, mapping = aes(x = variable, y = studies)) +
 
 ```
 
-The sleep variables TST, SOL, WASO, and SE were most common and formed the majority of identified parameters. Direct sleep-wake agreement was measured by a small subset of studies. Almost all identified sleep variables were measures related to sleep time or awakenings, although we did note some more unconventional parameters listed below separately from the figure above. Allawati et al [@allawati_2021] compared self-report and actigraphic measures of sleep patterns including monophasic, biphasic dawn, biphasic siesta, and polyphasic. Lockley et el [@lockley_comparison_1999], Dautovich et al [@dautovich_subjective_2008], Hanisch et al [@hanisch_sleep_2011], and Nguyen-Michel et al [@nguyen-michel_underperception_2015] reported discrepancy for naps specifically, including variables such as number of naps, number of days napped, mean duration of naps, and total nap time. Baek et al [@baek_2020] and Chan et al [@chan_sleep_2018] compared self-report and actigraphic assessments of variability in TST and other sleep parameters. Thun et al [@thun_actigraphic_2012] compared self-report and actigraphic measures of morningness-eveningness. Finally, McIntyre et al [@mcintyre_2016] investigated self-report-objective discrepancy across a range of sleep behaviours including position at sleep onset, position at wake, number of positional changes, and the presence of leg twitches or jerks. 
+The sleep variables TST, SOL, WASO, and SE were most common and formed the majority of identified parameters. Direct sleep-wake agreement was measured by a small subset of studies. Almost all identified sleep variables were measures related to sleep time or awakenings, although we did note some more unconventional parameters listed below separately from the figure above. Allawati et al [-@allawati_2021] compared self-report and actigraphic measures of sleep patterns including monophasic, biphasic dawn, biphasic siesta, and polyphasic. Lockley et el [-@lockley_comparison_1999], Dautovich et al [@dautovich_subjective_2008], Hanisch et al [@hanisch_sleep_2011], and Nguyen-Michel et al [@nguyen-michel_underperception_2015] reported discrepancy for naps specifically, including variables such as number of naps, number of days napped, mean duration of naps, and total nap time. Baek et al [-@baek_2020] and Chan et al [-@chan_sleep_2018] compared self-report and actigraphic assessments of variability in TST and other sleep parameters. Thun et al [-@thun_actigraphic_2012] compared self-report and actigraphic measures of morningness-eveningness. Finally, McIntyre et al [-@mcintyre_2016] investigated self-report-objective discrepancy across a range of sleep behaviours including position at sleep onset, position at wake, number of positional changes, and the presence of leg twitches or jerks. 
 
 ### Self-report sleep variable definitions
 
 Calculation of self-report TST, WASO, SE, and TIB varied across studies. Variations across three major types of self-report TST were observed: TST queried directly (e.g., "how many minutes did you sleep last night", TST calculated from other parameters such as TIB, SOL, and WASO, and TST calculated from graphical responses. The results for TST definitions are depicted in Figure \@ref(fig:tstdefinitions) below.
 
-``` {r tstdefinitions, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Self-report TST definitions", fig.height = 4}
+``` {r tstdefinitions, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Self-report TST definitions", fig.height = 3}
 
 # concatenate the two TST type columns into a single vector
 vec <- c(screen$subj_TST_t, screen$subj_TST_t2)
@@ -976,7 +977,7 @@ ggplot(data = df, mapping = aes(x = definition, y = studies)) +
 
 Note, FA--LO indicates lights off to final awakening. By conventional definitions of SPT, SPT--SOL--WASO is equal to TIB--SOL--WASO--TWAK, but is listed separately above to reflect differences in terminology. Definitions for WASO also varied and these are depicted in \@ref(fig:wasodef) below.
 
-``` {r wasodef, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Self-report WASO definitions", fig.height = 3}
+``` {r wasodef, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Self-report WASO definitions", fig.height = 2}
 
 df <- data.frame("definition" = c("Direct query", "TIB-TST-SOL", "Number of awakenings * average length of awakenings", "Calculated (not reported)", "Graphical responses", "Definition not reported"), "studies" = c(
   grepl("direct question", screen$subj_waso) %>% which() %>% length(),
@@ -1012,7 +1013,7 @@ ggplot(data = df, mapping = aes(x = definition, y = studies)) +
 
 Definitions for self-report TIB used in operationalising sleep discrepancy are depicted Figure \@ref(fig:tibdef).
 
-``` {r tibdef, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Self-report TIB definitions", fig.height = 2.5}
+``` {r tibdef, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Self-report TIB definitions", fig.height = 2}
 
 df <- data.frame(
   "definition" = c("RT--LO",
@@ -1053,9 +1054,9 @@ Note, RT--LO refers to the time between lights off and rise time. SE was almost 
 
 ### Objective sleep variable definitions
 
-Objective TST was defined very consistently with the exception of Sinclair et al [@sinclair_2014] who, in addition to providing a standard definition for TST, measured TST across a 24-hour period, such that time spent asleep outside the usual nocturnal period (i.e., naps) contributed to this measurement. Objective definitions for SOL varied considerably and these are depicted in Figure \@ref(fig:SOL) below.\
+Objective TST was defined very consistently with the exception of Sinclair et al [-@sinclair_2014] who, in addition to providing a standard definition for TST, measured TST across a 24-hour period, such that time spent asleep outside the usual nocturnal period (i.e., naps) contributed to this measurement. Objective definitions for SOL varied considerably and these are depicted in Figure \@ref(fig:SOL) below.\
 
-```{r SOL, echo = FALSE, warning = FALSE, message = FALSE, fig.width = 10, fig.cap = "SOL definitions"}
+```{r SOL, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "SOL definitions", fig.height = 4}
 #-------------------------------- SOL Bar Plot --------------------------------|
 
 sol <- c(screen$obj_SOL_t,
@@ -1120,7 +1121,7 @@ ggplot(data = df, mapping = aes(x = sol, y = studies)) +
 
 Note that SWS = slow wave sleep, LPS = latency to persistent sleep, AASM = American Academy of Sleep Medicine guidelines, R&K = Rechstaffen & Kales guidelines. Parameter varied in model indicates that the definition of sleep onset was varied within the context of a predictive model. Among PSG studies, the two most common approaches were dependent on standard definitions provided by the R&K [@rechtschaffen1968] and AASM [@berry2012aasm] scoring guidelines.
 
-Most studies used standard PSG or actigraphy criteria for defining objective number of awakenings (i.e., a single epoch of wakefulness). A single exception was Lewis et al [@lewis_1969], who stipulated that a period last over a minute to count as an awakening. Neu et al [@neu_sleep_2007] used the same definitions for objective SE as they did for self-report SE. 
+Most studies used standard PSG or actigraphy criteria for defining objective number of awakenings (i.e., a single epoch of wakefulness). A single exception was Lewis et al [-@lewis_1969], who stipulated that a period last over a minute to count as an awakening. Neu et al [-@neu_sleep_2007] used the same definitions for objective SE as they did for self-report SE. 
 
 ### Sleep quality
 
@@ -1130,7 +1131,7 @@ Sleep quality discrepancy was measured by `r onehot("sleep_quality_measured", br
 
 Sleep data often involves repeated measurements of the same individual. Actigraphy and sleep diaries usually involve data collection across 7 to 14 days and multiple consecutive nights of PSG are sometimes recorded. Methods for handling repeated measurements are depicted below in Figure \@ref(fig:methodrm)
 
-``` {r methodrm, echo = FALSE, warning = FALSE, message = FALSE, fig.width = 10, fig.cap = "Methods for handling repeated measurements"}
+``` {r methodrm, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Methods for handling repeated measurements", fig.height = 5}
 
 df <- data.frame(
   "methods" = c("Mean values", "Modal values", "Median values",  "Means of derived indices", "Standard deviations of derived indices", "Repeated measures ANOVA", "Linear mixed models", "Generalised estimating equations", "Structural equation modelling", "Repeated measures correlation", "Pooled observations", "Separate analyses", "Single recording instance"),
@@ -1174,7 +1175,7 @@ Note that pooled observations involved collapsing data across multiple instances
 
 A total of `r onehot("aim_agreement", brackets=FALSE)` studies measured sleep discrepancy at the group level by directly comparing self-report and objective sleep. Methods for achieving this varied and are depicted below in Figure \@ref(fig:group)
 
-```{r group, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Statistical methods for comparing self-report and objective sleep"}
+```{r group, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Statistical methods for comparing self-report and objective sleep", fig.height = 5}
 
 group_variables <- read.csv("../data/group_variables.csv")
 
@@ -1216,7 +1217,7 @@ ggplot(data = group_variables, aes(x = variable_name, y = studies)) +
 
 ```
 
-Note, Bland Altman analyses include Bland Altman plots and the reporting of 95% limits of agreement [ @blandaltman1999]. Pitman's test (also known as the Pitman-Morgan test) is a test of differences of variances between dependent samples [@pitman1939; @morgan1939] and was used to compare the variability of self-report and objective sleep. 
+Note, Bland Altman analyses include Bland Altman plots and the reporting of 95% limits of agreement [@blandaltman1999]. Pitman's test (also known as the Pitman-Morgan test) is a test of differences of variances between dependent samples [@pitman1939; @morgan1939] and was used to compare the variability of self-report and objective sleep. 
 One-sample *t*-tests of difference scores are equivalent to paired *t*-tests but are included separately in the figure to reflect differences in reporting. Classification performance measures include percentage agreement, accuracy, sensitivity, specificity, positive predictive value (PPV), and negative predictive value (NPV). Formulae used for the intra-class correlation coefficient varied across studies. Spearman correlations and Wilcoxon Signed Rank Tests were often used to handle the skew of variables such as SOL and WASO. Other methods included the delta coefficient [@girschik_2012], partial correlation and factor analysis [@regestein_2004], errors-in-variables regression [@lauderdale_2008], repeated measures correlation [@gibson_2023], non-parametric limits of agreement [@thurman_2018], survival agreement [@guedes_2016], latent correlations for testing associations at within-subjects and between-subjects level [@fengsvetnik_2018], and structural equation modelling [@friedmann_2022].
 
 ## Methods for investigating the relationship of sleep discrepancy with other variables
@@ -1227,7 +1228,7 @@ A total of `r onehot("aim_construct", brackets=FALSE)` studies aimed to investig
 
 Approximately half `r onehot("index_present")` of included studies calculated a derived index (e.g., self-report TST--objective TST) to operationalise sleep discrepancy. Some studies used indices directly in statistical analyses `r catg("index_groups", "0")` whilst others used indices to divide samples into groups (n =`r length(which(screen$index_groups == "binary")) + length(which(screen$index_groups == "trichotomy"))`) either dichotomising `r catg("index_groups", "binary")` or trichotomising `r catg("index_groups", "trichotomy")` derived score values. Methods for deriving indices varied across studies and can be broadly categorised into four groups: arithmetic difference scores, where one measure is simply subtracted from the other (e.g., sTST--oTST); absolute difference scores, composed of the absolute value of algebraic difference scores (e.g., \|sTST--oTST\|); ratio scores, when one measure is divided by the other (e.g., sTST/oTST); and combination scores that incorporate both subtraction and division of component measures (e.g., oTST--sTST/oTST). A list of indices including the number of studies that used them are provided in Figure \@ref(fig:derived) below.
 
-```{r derived, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Derived indices used for operationalising sleep discrepancy", fig.height = 8, fig.width = 9}
+```{r derived, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Derived indices used for operationalising sleep discrepancy", fig.height = 8}
 
 #------------------------   Derived indices plot   ----------------------------|
 
@@ -1292,13 +1293,13 @@ ggplot(data = derived, aes(x = reorder(variable_name, variable_name, function(x)
 
 Overall, the sleep variables TST, SOL, and WASO represented the substantial majority of derived indices. Arithmetic difference scores were the most common derived index and with these objective sleep was subtracted from self-report sleep considerably more often than vice-versa. By contrast, ratio scores did not differ in directionality, and all that were recorded featured self-report sleep as the numerator and objective sleep as the denominator. Absolute differences are unique amongst derived indices for operationalising negative sleep discrepancy as equal to positive sleep discrepancy. With the relatively few absolute difference scores noted here it appears that the literature has mostly conceived of sleep discrepancy as a directional concept. All the combination scores identified followed the general format of an arithmetic difference score divided by a component of the difference.
 
-A handful of more atypical derived scores were identified. Jackowska et al [@jackowska_psychosocial_2011] created a sleep quality discrepancy index by subtracting a z-transformed self-report sleep quality rating from z-transformed objective SE. Kay et al [@kay_variability_2013] derived a nightly variability index for sSOL--oSOL and sWASO--oWASO by dividing intra-individual standard deviations by the sample-wise standard deviation for each variable. Mendelson et al [@mendelson_1986] divided self-report sleep following experimental awakenings by objective sleep following experimental awakenings. Winer et al [@winer_tau_2021] derived a difference score from subtracting composite scores composed of the average of z scores of TST, SE, and sleep fragmentation (number of awakenings/SPT\*100) from z-transformed PSQI total scores.
+A handful of more atypical derived scores were identified. Jackowska et al [-@jackowska_psychosocial_2011] created a sleep quality discrepancy index by subtracting a z-transformed self-report sleep quality rating from z-transformed objective SE. Kay et al [-@kay_variability_2013] derived a nightly variability index for sSOL--oSOL and sWASO--oWASO by dividing intra-individual standard deviations by the sample-wise standard deviation for each variable. Mendelson et al [-@mendelson_1986] divided self-report sleep following experimental awakenings by objective sleep following experimental awakenings. Winer et al [-@winer_tau_2021] derived a difference score from subtracting composite scores composed of the average of z scores of TST, SE, and sleep fragmentation (number of awakenings/SPT\*100) from z-transformed PSQI total scores.
 
 ### Other methods for operationalising sleep discrepancy {#altdisc}
 
-A number of other ways to characterise the relationship of sleep discrepancy with other variables of interest were identified and are depicted in Figure \@ref(fig:otherm) below. Some studies operationalised sleep discrepancy using an interaction term within an ANOVA or other linear model such that the other variable(s) of interest was/were instantiated as the moderator of the relationship between self-report and objective sleep. Others used percentage agreement for sleep or other classification performance metrics in subsequent statistical analyses with other variables. Differences between correlations amongst self-report and objective sleep between groups were also tested with bootstrapped confidence intervals [@jackson_2018, @jackson_2020], or the Fisher transformation [@defrancesco_2021]. studies operationalised sleep discrepancy with the Sleep Fragment Perception Index (SFPI), an index that exploits the fact that longer sleep fragments are more likely to be identified as sleep by individuals than shorter fragments [@hermans_modeling_2020]. The SPFI is a parameter modelled to assume the shortest length of objective sleep that is perceived as subjective sleep. For the SFPI, a higher value corresponds to a longer sleep fragment necessary for subjective awareness of sleep and hence greater sleep discrepancy.
+A number of other ways to characterise the relationship of sleep discrepancy with other variables of interest were identified and are depicted in Figure \@ref(fig:otherm) below. Some studies operationalised sleep discrepancy using an interaction term within an ANOVA or other linear model such that the other variable(s) of interest was/were instantiated as the moderator of the relationship between self-report and objective sleep. Others used percentage agreement for sleep or other classification performance metrics in subsequent statistical analyses with other variables. Differences between correlations amongst self-report and objective sleep between groups were also tested with bootstrapped confidence intervals [@jackson_2018, @jackson_2020], or the Fisher transformation [@defrancesco_2021]. Some operationalised sleep discrepancy with the Sleep Fragment Perception Index (SFPI), an index that exploits the fact that longer sleep fragments are more likely to be identified as sleep by individuals than shorter fragments [@hermans_modeling_2020]. The SPFI is a parameter modelled to assume the shortest length of objective sleep that is perceived as subjective sleep. For the SFPI, a higher value corresponds to a longer sleep fragment necessary for subjective awareness of sleep and hence greater sleep discrepancy.
 
-``` {r otherm, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Other methods for operationalising sleep discrepancy", fig.height = 2.0}
+``` {r otherm, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Other methods for operationalising sleep discrepancy", fig.height = 1.75}
 
 # Create data frame with each one-hot encoded column
 df <- data.frame("method" = c("Interaction", "Classification performance in statistical analysis", "Differences between correlations", "Modelled parameter"),
@@ -1346,9 +1347,9 @@ This study systematically reviewed ways of measuring, conceptualising, and analy
 
 ## Methodological diversity in sleep discrepancy research represents a conceptual problem
 
-In attempting to measure the discrepancy between two concepts it is useful to know the discrepancy---or variability---within each concept itself. This is so that it can be certain that the discrepancy being measured cannot be accounted for by the amount of variation within each concept. Our results indicate that "self-report sleep" or "objective sleep" are not monolithic entities but variegated in ways that may be important. Take, for example, the simplest methodological distinction in objective sleep measurement: polysomnography versus actigraphy. In comparison with PSG, actigraphy generally overestimates sleep and underestimates wake time, and can have trouble distinguishing sleep from quiescent periods of wakefulness [@marino2013]. These trends have been observed to be greater for samples experiencing chronic medical or psychiatric conditions [@conley2019agreement]. Tryon [@tryon2004] has emphasised that these differences between polysomnography and actigraphy are systematic, rather than random, and it follows from this that the two forms of objective sleep measurement will form distinct kinds of sleep discrepancy.
+In attempting to measure the discrepancy between two concepts it is useful to know the discrepancy---or variability---within each concept itself. This is so that it can be certain that the discrepancy being measured cannot be accounted for by the amount of variation within each concept. Our results indicate that "self-report sleep" or "objective sleep" are not monolithic entities but variegated in ways that may be important. Take, for example, the simplest methodological distinction in objective sleep measurement: polysomnography versus actigraphy. In comparison with PSG, actigraphy generally overestimates sleep and underestimates wake time, and can have trouble distinguishing sleep from quiescent periods of wakefulness [@marino2013]. These trends have been observed to be greater for samples experiencing chronic medical or psychiatric conditions [@conley2019agreement]. Tryon [-@tryon2004] has emphasised that these differences between polysomnography and actigraphy are systematic, rather than random, and it follows from this that the two forms of objective sleep measurement will form distinct kinds of sleep discrepancy.
 
-This issue continues through finer methodological distinctions. For example, within actigraphy, estimation of sleep can vary substantially across the various scoring algorithms identified in this review. There is ample evidence indicating that the concordance of actigraphy to PSG by algorithm can vary according to the sample in question [@gao2022actigraphy;@desouza2003; @quante2018actigraphy; @haghayegh2019] and algorithm performance can even vary based on the actigraph device used [@kripke2010wrist]. A further example can be represented by the sheer range of sleep variables available to operationalise sleep discrepancy. Discrepancy within each variable is likely to have a distinct theoretical meaning. For example, Castelnovo et al [@Castelnovo2019] noted that little overlap was found between individuals that misperceive TST and misperceive SOL. Important distinctions continue even within sleep variables themselves. We identified a range of self-report TST definitions, with the most common being direct queries (e.g., "how many hours did you sleep last night?") and calculated parameters (e.g., TST = TIB--SOL--WASO--TWAK). Alameddine et al [@alameddine_2015] compared these two definitions and found that calculated estimates tended to exceed those from direct queries. TST discrepancy was overall negative across their sample for those with and without insomnia and so it is possible that indirect queries produce self-report TST that is closer to objective estimates.
+This issue continues through finer methodological distinctions. For example, within actigraphy, estimation of sleep can vary substantially across the various scoring algorithms identified in this review. There is ample evidence indicating that the concordance of actigraphy to PSG by algorithm can vary according to the sample in question [@gao2022actigraphy;@desouza2003; @quante2018actigraphy; @haghayegh2019] and algorithm performance can even vary based on the actigraph device used [@kripke2010wrist]. A further example can be represented by the sheer range of sleep variables available to operationalise sleep discrepancy. Discrepancy within each variable is likely to have a distinct theoretical meaning. For example, Castelnovo et al [-@Castelnovo2019] noted that little overlap was found between individuals that misperceive TST and misperceive SOL. Important distinctions continue even within sleep variables themselves. We identified a range of self-report TST definitions, with the most common being direct queries (e.g., "how many hours did you sleep last night?") and calculated parameters (e.g., TST = TIB--SOL--WASO--TWAK). Alameddine et al [-@alameddine_2015] compared these two definitions and found that calculated estimates tended to exceed those from direct queries. TST discrepancy was overall negative across their sample for those with and without insomnia and so it is possible that indirect queries produce self-report TST that is closer to objective estimates.
 
 For each of these examples, there are differences in sleep discrepancy across methodological approaches that evidence indicates is likely to be systematic. This is a significant issue for studies investigating the relationship between sleep discrepancy and another construct as the variance accounted for by the span of possible approaches may well exceed that of the effect the researchers are looking for. Addressing this issue may take a number of approaches. A stronger research focus on methods, investigating the impact of changes in methodology would be helpful overall. Specific tools such as structural equation modelling could be used to account for the variance represented by various methodological choices alone or in relation to other constructs. Theoretical justification or some rational account should also be provided for selection of sleep variables where possible, as many are likely to be conceptually distinct. A standardised approach to conducting and scoring actigraphy would reduce methodological variance in this particular area.
 
@@ -1358,21 +1359,21 @@ Methodological diversity may also have consequences on the rate of false-positiv
 
 ## Definitions of objective sleep onset latency are multifarious and mostly arbitrary {#sol}
 
-Definitions of objective SOL vary considerably in the sleep discrepancy literature. Self-report sleep onset is more likely to coincide with the occurrence of the first sleep spindle, an EEG waveform associated with stage 2 sleep, than with the first incidence of stage 1 sleep [@bonnetmoore_1982]. As such, R&K SOL is likely to have greater correspondence to self-report SOL than AASM SOL. This disparity would be expected to increase with greater sleep fragmentation in the early sleep period and substantial differences in AASM and R&K sleep discrepancy should be expected in samples with disrupted initial sleep. Stricter/longer SOL definitions including the Latency to Persistent Sleep (LPS) [@bianchi_sleep_2012] and complex definitions from Means et al [@means_2003] and Lehrer et al [@lehrer_2022] are expected to have the closest correspondence to self-report SOL, as research indicates 22-minutes of uninterrupted sleep is needed for healthy adults to perceive a bout of sleep during the beginning of the night [@hermans_sleep_2020]. 
+Definitions of objective SOL vary considerably in the sleep discrepancy literature. Self-report sleep onset is more likely to coincide with the occurrence of the first sleep spindle, an EEG waveform associated with stage 2 sleep, than with the first incidence of stage 1 sleep [@bonnetmoore_1982]. As such, R&K SOL is likely to have greater correspondence to self-report SOL than AASM SOL. This disparity would be expected to increase with greater sleep fragmentation in the early sleep period and substantial differences in AASM and R&K sleep discrepancy should be expected in samples with disrupted initial sleep. Stricter/longer SOL definitions including the Latency to Persistent Sleep (LPS) [@bianchi_sleep_2012] and complex definitions from Means et al [-@means_2003] and Lehrer et al [-@lehrer_2022] are expected to have the closest correspondence to self-report SOL, as research indicates 22-minutes of uninterrupted sleep is needed for healthy adults to perceive a bout of sleep during the beginning of the night [@hermans_sleep_2020]. 
 
 Sleep onset is a continuous process for which it is difficult to identify a clear start-point [@tryon2004]. For example, with PSG scored by AASM criteria, 50% of a 30-second epoch is needed to exhibit sleep for the scoring of a first sleep stage. This means sleep latency is defined as the number of epochs preceding the first uninterrupted \~16 seconds of an EEG depicting activity consistent with sleep. An individual could conceivably achieve this 16-second threshold within two minutes, wake up, and not return for another two hours (SOL = 2 minutes). Equally, an individual could spend a two hour period getting 14-second blocks of sleep before achieving a consolidated bout of sleep (SOL = 120 minutes). These are extreme examples, but they highlight the difficulty with defining a single point of sleep onset. Of course, a line needs to be drawn somewhere, but the position of this line appears to be an arbitrary decision.
 
-Saline et al [@saline_sleep_2016] noted another problem although only for studies that investigate both TST and SOL concurrently. In the estimation of TST, individuals may attempt to judge the length of time between their subjective sleep onset and final wake time---anchoring their TST estimate to their SOL estimate. In measuring TST and SOL discrepancy, SOL discrepancy is thus being tested for twice: once in SOL and again implicitly in TST. Their solution to this problem was to obtain independent measurements by estimating the amount of objective sleep measured during the subjective sleep latency period (sleep during subjective latency; SDSL) and the amount of objective sleep measured following the subjective sleep latency period (latency adjusted total sleep time; LA-TST).
+Saline et al [-@saline_sleep_2016] noted another problem although only for studies that investigate both TST and SOL concurrently. In the estimation of TST, individuals may attempt to judge the length of time between their subjective sleep onset and final wake time---anchoring their TST estimate to their SOL estimate. In measuring TST and SOL discrepancy, SOL discrepancy is thus being tested for twice: once in SOL and again implicitly in TST. Their solution to this problem was to obtain independent measurements by estimating the amount of objective sleep measured during the subjective sleep latency period (sleep during subjective latency; SDSL) and the amount of objective sleep measured following the subjective sleep latency period (latency adjusted total sleep time; LA-TST).
 
-In view of these issues, three options are recommended in the context of sleep discrepancy research. The first is to proceed with defining objective SOL using latency to persistent sleep (LPS)---the first 20 consecutive epochs of sleep. Due to the considerable time it takes to perceive a bout of sleep and the rarity and limited magnitude of SOL underestimation [@saline_sleep_2016; @hermans_sleep_2020] it makes sense to use a longer criterion than a shorter one. LPS also has the advantage of being simpler than many of the alternatives we identified. The second option is to use SDSL for the reasons described in the previous paragraph. It should be noted, however, positive discrepancy (i.e., SOL underestimation) is not measurable with this method. The third option is to avoid SOL as a sleep variable and to model sleep perception parameters during the sleep onset period according to Hermans et al [@hermans_sleep_2020]. The latter two options have the added advantage of operationalising sleep discrepancy without the use of derived scores---the problems with which are discussed briefly in a following paragraph.
+In view of these issues, three options are recommended in the context of sleep discrepancy research. The first is to proceed with defining objective SOL using latency to persistent sleep (LPS)---the first 20 consecutive epochs of sleep. Due to the considerable time it takes to perceive a bout of sleep and the rarity and limited magnitude of SOL underestimation [@saline_sleep_2016; @hermans_sleep_2020] it makes sense to use a longer criterion than a shorter one. LPS also has the advantage of being simpler than many of the alternatives we identified. The second option is to use SDSL for the reasons described in the previous paragraph. It should be noted, however, positive discrepancy (i.e., SOL underestimation) is not measurable with this method. The third option is to avoid SOL as a sleep variable and to model sleep perception parameters during the sleep onset period according to Hermans et al [-@hermans_sleep_2020]. The latter two options have the added advantage of operationalising sleep discrepancy without the use of derived scores---the problems with which are discussed briefly in a following paragraph.
 
 ## Sleep discrepancy is mostly restricted to sleep states or sleep time and varies in its conceptual distance to sleep misperception {#misp}
 
 To map the boundaries of the concept of sleep discrepancy, we included any studies comparing objective sleep with an equivalent measure of self-report sleep. From the very few studies identified investigating sleep patterns or other sleep-related behaviours it appears that sleep discrepancy is mostly restricted to discordance in sleep states (e.g., wakefulness versus sleep) or discordance in sleep time parameters (e.g., total sleep time). It may be helpful to consider sleep discrepancy, as so defined, in relationship to sleep misperception. These two terms have been used interchangeable in the past and the problems with doing this have been noted by a number of authors [@Moul2004; @tryon2004]. Stated simply, sleep is a complex process for which there no one perfectly valid measure, and using the term *sleep misperception* brings a status to objective measures of sleep that may not be warranted. For example, sleep-like EEG activity can occur during waking consciousness in a phenomenon known as local sleep [@krueger2019local], and other dissociations between the EEG and sleep-related physiological processes, have been observed under some conditions [@krueger2013sleep]. Moreover, conventional sleep scoring is but one way of classifying EEG data and subtler systems exist, including the cyclic alternative pattern [@Parrino2012].
 
-Whilst it may not be possible to directly measure sleep misperception for these reasons, sleep discrepancy can be closer or further to sleep misperception conceptually depending on its operational definition. Closest are studies measuring sleep-wake agreement or classification using EEG under laboratory conditions. In a case where a participant who, being asleep for five minutes, is woken by a technician and reports complete wakefulness for the preceding period, only the fallibility of objective recording can account for a conceptual distinction between sleep discrepancy and true sleep-state misperception. This fundamental sleep discrepancy represented by direct sleep-wake agreement can be contrasted with sleep discrepancy represented by sleep time variables (e.g., TST, SOL). Moving from sleep-wake agreement to sleep time variables introduces additional factors that may account for the incongruence between self-report and objective sleep and hence provides a broader definition of sleep discrepancy. On the objective side, PSG potentially introduces artefact from transient (e.g., \<15 second) awakenings [@smith2000] and the arbitrary nature of SOL definitions (see section \@ref(sol)). Actigraphy introduces the potential for immobile wake to be scored as sleep [@desouza2003; @paquet2007] and variance contributed by methodological factors such as choices in scoring algorithms. On the self-report side, sleep diaries and questionnaires introduce memory or reporting biases [@clegg2023real] as potential factors contributing to sleep discrepancy. See Harvey et al [@Harvey2012] for a discussion of these factors in the context of insomnia. In the present review, we reported a key distinction between *habitual* and *episodic* measures of self-report sleep.
+Whilst it may not be possible to directly measure sleep misperception for these reasons, sleep discrepancy can be closer or further to sleep misperception conceptually depending on its operational definition. Closest are studies measuring sleep-wake agreement or classification using EEG under laboratory conditions. In a case where a participant who, being asleep for five minutes, is woken by a technician and reports complete wakefulness for the preceding period, only the fallibility of objective recording can account for a conceptual distinction between sleep discrepancy and true sleep-state misperception. This fundamental sleep discrepancy represented by direct sleep-wake agreement can be contrasted with sleep discrepancy represented by sleep time variables (e.g., TST, SOL). Moving from sleep-wake agreement to sleep time variables introduces additional factors that may account for the incongruence between self-report and objective sleep and hence provides a broader definition of sleep discrepancy. On the objective side, PSG potentially introduces artefact from transient (e.g., \<15 second) awakenings [@smith2000] and the arbitrary nature of SOL definitions (see section \@ref(sol)). Actigraphy introduces the potential for immobile wake to be scored as sleep [@desouza2003; @paquet2007] and variance contributed by methodological factors such as choices in scoring algorithms. On the self-report side, sleep diaries and questionnaires introduce memory or reporting biases [@clegg2023real] as potential factors contributing to sleep discrepancy. See Harvey et al [-@Harvey2012] for a discussion of these factors in the context of insomnia. In the present review, we reported a key distinction between *habitual* and *episodic* measures of self-report sleep.
 
-Moving from episodic to habitual measures broadens the concept of yet sleep discrepancy further. A more global sleep discrepancy may be represented by comparisons of habitual self-report sleep with aggregated objective sleep (e.g., mean sleep variables values across 14 nights of actigraphy), the underlying processes for which are likely different to those of individual nights. Where habitual self-report sleep is compared to objective estimates spanning one to a few nights, intra-individual variation in sleep patterns is introduced to sleep discrepancy. In other words, some component of the difference between objective and self-report sleep can be accounted for by the difference between habitual sleep and the circumstances of testing---which may be substantial. If the objective measure is PSG, effects of the laboratory/testing environment (i.e., the first night effect[@Agnew1966; @newell2012one]) are additionally introduced.
+Moving from episodic to habitual measures broadens the concept of yet sleep discrepancy further. A more global sleep discrepancy may be represented by comparisons of habitual self-report sleep with aggregated objective sleep (e.g., mean sleep variables values across 14 nights of actigraphy), the underlying processes for which are likely different to those of individual nights. Where habitual self-report sleep is compared to objective estimates spanning one to a few nights, intra-individual variation in sleep patterns is introduced to sleep discrepancy. In other words, some component of the difference between objective and self-report sleep can be accounted for by the difference between habitual sleep and the circumstances of testing---which may be substantial. If the objective measure is PSG, effects of the laboratory/testing environment [i.e., the first night effect @Agnew1966; @newell2012one] are additionally introduced.
 
 ## Derived indices are common and the use of these as an operational measure of sleep discrepancy is problematic {#dvar}
 
@@ -1388,7 +1389,7 @@ Despite being the most common approach to comparing self-report and objective sl
 
 ## Sleep quality discrepancy is conceptually unclear
 
-Sleep quality discrepancy was measured by a small number of studies in this review, according to varying strategies. Sleep quality discrepancy is a difficult topic for two reasons. First, there is no consensus approach to operationalising sleep quality. A recent review of methods for measuring sleep quality identified an immense range in strategies, especially for objective measures[@mendoncca2019review]. Second, there are no clear self-report analogues for objective measures of sleep quality, or vice-versa. An individual is unable to directly estimate their number of EEG arousals, quantity or proportion of N3 sleep, or other features of sleep macro or microstructure unavailable to consciousness. Equally, it is not clear how to compare a sleep quality rating judgement (e.g., on a Likert scale) with objective measures (see Krystal & Edinger [@krystaledinger2008]). Overall, investigating the relationships of sleep quality discrepancy to other variables is unlikely to be profitable until the conceptual status of self-report and objective sleep quality is clearer.
+Sleep quality discrepancy was measured by a small number of studies in this review, according to varying strategies. Sleep quality discrepancy is a difficult topic for two reasons. First, there is no consensus approach to operationalising sleep quality. A recent review of methods for measuring sleep quality identified an immense range in strategies, especially for objective measures [@mendoncca2019review]. Second, there are no clear self-report analogues for objective measures of sleep quality, or vice-versa. An individual is unable to directly estimate their number of EEG arousals, quantity or proportion of N3 sleep, or other features of sleep macro or microstructure unavailable to consciousness. Equally, it is not clear how to compare a sleep quality rating judgement (e.g., on a Likert scale) with objective measures [see @krystaledinger2008]. Overall, investigating the relationships of sleep quality discrepancy to other variables is unlikely to be profitable until the conceptual status of self-report and objective sleep quality is clearer.
 
 <!-- Generally, self-report and objective measures of sleep quality do not cohere well @kaplan2017 -->
 <!-- As stated by @krystal2008quality "it seems unlikely that such a global rating would be consistently related to a single physiological aspect of sleep".  -->
@@ -1400,7 +1401,7 @@ Sleep quality discrepancy was measured by a small number of studies in this revi
 
 ## Sleep diaries should not be used to define rest intervals in sleep discrepancy research {#actidiary}
 
-Sleep diaries were the most commonly identified method of rest interval definition in this review. Sleep diaries were classified by this review as a self-report measure of sleep. By using sleep diaries to define actigraphic rest intervals, self-report sleep is being used to partially define an objective sleep measure. In this case, the measured discrepancy between the two forms of sleep measurement will not be an accurate representation of their actual incongruence. The high frequency at which sleep diaries are back-filled or misreported [@clegg2023real] highlights the significance of this issue. We noted that a single study in the present review addressed this problem directly. Krahn et al [@krahn_assessing_1997] ensured that manual scorers of the rest intervals for their actigraphy data were blinded to the sleep diary. It may be helpful for further research that alternatives such as these are sought for defining rest interval periods.
+Sleep diaries were the most commonly identified method of rest interval definition in this review. Sleep diaries were classified by this review as a self-report measure of sleep. By using sleep diaries to define actigraphic rest intervals, self-report sleep is being used to partially define an objective sleep measure. In this case, the measured discrepancy between the two forms of sleep measurement will not be an accurate representation of their actual incongruence. The high frequency at which sleep diaries are back-filled or misreported [@clegg2023real] highlights the significance of this issue. We noted that a single study in the present review addressed this problem directly. Krahn et al [-@krahn_assessing_1997] ensured that manual scorers of the rest intervals for their actigraphy data were blinded to the sleep diary. It may be helpful for further research that alternatives such as these are sought for defining rest interval periods.
 
 ## The scope of sleep discrepancy research is likely to have been underestimated
 
@@ -1470,6 +1471,7 @@ colnames(df) <- c("Step", "Terms and operators", "Records")
 
 kable(df,
       format = "latex",
+      booktabs = TRUE,
       caption = "Search strategy for Ovid databases"
 ) %>%
   kable_styling(font_size = 10, full_width = FALSE) %>%
@@ -1599,6 +1601,7 @@ colnames(df) <- c("Section", "Item", "PRISMA-ScR Checklist Item", "Location repo
 
 kable(df,
       format = "latex",
+      booktabs = TRUE,
       caption = "Preferred Reporting Items for Systematic reviews and Meta-Analyses extension for Scoping Reviews (PRISMA-ScR) Checklist."
 ) %>%
   kable_styling(font_size = 10, full_width = FALSE) %>%
@@ -1617,7 +1620,7 @@ kable(df,
 Full descriptions of study characteristics are available in Table \@ref(tab:studychar).
 
 ``` {r studychar, echo = FALSE, warning = FALSE, message = FALSE}
-df <- subset(screen, select = c(ama_cite, bibkey_ama, country, country2,
+df <- subset(screen, select = c(ama_cite, bibkey_apalatex, country, country2,
                                 sample_characteristics,
                                 sample_size))
 
@@ -1629,7 +1632,7 @@ df$country <- ifelse(df$country2 != "", paste(df$country, df$country2, sep = ", 
 df <- df[ ,-4]
 
 # add citations for each study
-df$ama_cite <- paste0(df$ama_cite, df$bibkey_ama)
+df$ama_cite <- paste0(df$ama_cite, df$bibkey_apalatex)
 
 # remove bibkey column
 df <- df[,-2]
@@ -1643,7 +1646,10 @@ colnames(df) <- c("Study", "Country of origin", "Sample characteristics", "Sampl
 # reorder rows
 df <- arrange(df, Study)
 
-kable(df, format = "latex", caption = "Characteristics of included studies") %>%
+kable(df,
+      format = "latex",
+      booktabs = TRUE,
+      caption = "Characteristics of included studies") %>%
   kable_styling(font_size = 10, full_width = FALSE)
 ```
 
@@ -1652,7 +1658,7 @@ Full qualitative methodological details for actigraphy studies are available in 
 ``` {r bigacti, echo = FALSE, warning = FALSE, message = FALSE}
 
 df <- subset(screen, select = c(ama_cite,
-                                bibkey_ama,
+                                bibkey_apalatex,
                                 obj_movement,
                                 acti_device,
                                 acti_device2,
@@ -1717,7 +1723,7 @@ df$algo_ref1 <- ifelse(df$algo_ref2 != "", paste(df$algo_ref1, df$algo_ref2, sep
                             df$algo_ref1)
 
 # Collapse citation column with study column
-df$ama_cite <- paste(df$ama_cite, df$bibkey_ama)
+df$ama_cite <- paste(df$ama_cite, df$bibkey_apalatex)
 df <- df[,-2]
 
 # keep actigraphy studies
@@ -1734,7 +1740,10 @@ df$acti_interval_description <- paste0(toupper(substring(df$acti_interval_descri
 
 colnames(df) <- c("Study", "Actigraph device", "Software", "Algorithm", "Algorithm reference", "Rest interval definition")
 
-kable(df, format = "latex", caption = "Qualitative actigraphy characteristics") %>%
+kable(df,
+      format = "latex",
+      booktabs = TRUE,
+      caption = "Qualitative actigraphy characteristics") %>%
   kable_styling(font_size = 10, full_width = FALSE) %>% 
   footnote(footnote_as_chunk = TRUE, general = "The --> arrow designates the priority given to methods of calculating the rest interval. For example, event markers –> activity, sleep diary, indicates that event marker presses were first used to calculate rest intervals, followed by sleep diary and activity when event marker presses were not available.")
 
@@ -1746,7 +1755,7 @@ A full list of studies that recorded sleep-wake agreement is available in Table 
 
 # create dataframe of relevant variables
 df <- subset(screen, binary_sw_I == 1 | binary_sw_II == 1, select = c(ama_cite,
-                                                                      bibkey_ama,
+                                                                      bibkey_apalatex,
                                                                       sample_characteristics,
                                                                       binary_sw_I,
                                                                       binary_sw_II,
@@ -1758,7 +1767,7 @@ df <- subset(screen, binary_sw_I == 1 | binary_sw_II == 1, select = c(ama_cite,
 df$sleep_wake <- ifelse(df$binary_sw_I %>% is.na(), "Confusion matrix", "Binary")
 
 # collapse bibkey column with study column
-df$ama_cite <- paste(df$ama_cite, df$bibkey_ama)
+df$ama_cite <- paste(df$ama_cite, df$bibkey_apalatex)
 
 # remove bibkey column
 df <- df[ ,-2]
@@ -1770,7 +1779,10 @@ df <- df %>% relocate(sleep_wake, .after = sleepvar_list)
 
 colnames(df) <- c("Study", "Sample characteristics", "Sleep variables", "Sleep-wake agreement type", "PSG setting")
 
-kable(df, format = "latex", caption = "Direct sleep-wake agreement studies") %>%
+kable(df,
+      format = "latex",
+      booktabs = TRUE,
+      caption = "Direct sleep-wake agreement studies") %>%
   kable_styling(font_size = 10, full_width = FALSE) %>% 
   footnote(footnote_as_chunk = TRUE, general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.")
 ```
