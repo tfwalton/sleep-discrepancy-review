@@ -21,6 +21,9 @@ bibliography:
 - references_packages.bib
 csl: "apa.csl"
 always_allow_html: true
+header-includes:
+  \usepackage{float}
+  \floatplacement{figure}{H}
 ---
 
 ```{r initial code, echo = FALSE, warning = FALSE, message = FALSE}
@@ -83,6 +86,12 @@ onehot <- function(x, brackets = TRUE) {
 # Assign some screening variables
 duplicates <- 3903 %>% format(nsmall=0, big.mark=",")
 total_records <- 6190 %>% format(nsmall=0, big.mark=",")
+
+# Chunk options
+
+# knitr::knit_hooks$set(plot = function(x, options)  {
+#   paste0(knitr::hook_plot_tex(x, options), "\n\\FloatBarrier\n")
+# })
 ```
 
 # Abstract {#abstract}
@@ -336,7 +345,7 @@ sample_size <- as.numeric(screen$sample_size)
 
 Sample sizes for studies ranged from `r min(sample_size, na.rm=TRUE)` to `r max(sample_size, na.rm=TRUE) %>% format(nsmall=0, big.mark=",")` (median = `r median(sample_size, na.rm=TRUE)`, IQR = `r IQR(sample_size, na.rm=TRUE)`). Most studies included both sexes in their samples (n = `r length(which(screen$sample_sex == ""))`), whereas `r  length(which(screen$sample_sex == "men"))` and `r length(which(screen$sample_sex == "women"))` comprised only males or females, respectively. Most studies contained samples of adults of all ages `r catg("sample_age", "adults")`. Others reported specific age groups: older adults (n = `r length(which(screen$sample_age == "older adults"))`), younger adults (n = `r length(which(screen$sample_age == "young adults"))`), adolescents (n = `r length(which(screen$sample_age == "adolescents"))`), and children (n = `r length(which(screen$sample_age == "children"))`). Sample characteristics for studies are included in Figure \@ref(fig:samplechar). For a full list of article characteristics, see the appendices (\@ref(tab:studychar))
 
-```{r samplechar, results = 'asis', collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sample characteristics", fig.height = 8}
+```{r samplechar, results = 'asis', collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sample characteristics", fig.height = 8, fig.pos="H"}
 
 # generate a frequency table for the three columnns
 samplechar <- c(screen$sample_clinical, screen$sample_clinical2, screen$sample_clinical3)
@@ -376,7 +385,7 @@ ggplot(data = samplechar, aes(x = fct_infreq(sample) %>% fct_rev())) +
 
 Objective methods of recording sleep formed two major groups: EEG-based methods and movement-based methods. See Figure \@ref(fig:measures) for number of studies using each method. All movement-based methods involved tri-axial accelerometry through actigraphs or similar devices. PSG was the predominant EEG-based method (n = `r sum(screen$obj_PSG, na.rm=TRUE)`), however a handful of studies used EEG alone, in either single channel (n = `r length(which(screen$obj_EEG_other == "single channel EEG"))`), standard (n = `r length(which(screen$obj_EEG_other == "EEG"))`), or high-definition formats (n = `r length(which(screen$obj_EEG_other == "HD-EEG"))`). A single study used a method of sleep recording that involved recording verbal responses from participants elicited by soft tones played at intervals throughout the night [@espie_1989].
 
-``` {r measures, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Measures of objective sleep", fig.height = 1.0}
+``` {r measures, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Measures of objective sleep", fig.height = 1.0, fig.pos="H"}
 
 df <- data.frame("objective" = c("EEG (including PSG)", "Movement (including actigraphy)"), "count" = c(screen$obj_EEG %>% sum(na.rm=TRUE), screen$obj_movement %>% sum(na.rm=TRUE)))
 
@@ -399,7 +408,7 @@ ggplot(data = df, mapping = aes(x = objective, y = count)) +
 
 Methodological features charted for PSG included scoring criteria, setting, and recording period. See Figure \@ref(fig:scoring) for scoring criteria of included studies.
 
-``` {r scoring, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG scoring methods", fig.height = 2.5}
+``` {r scoring, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG scoring methods", fig.height = 2.5, fig.pos="H"}
 
 df <- screen$psg_scoring %>% as.data.frame()
 
@@ -440,7 +449,7 @@ ggplot(data = df, aes(x = scoring %>% fct_rev())) +
 
 Methods for scoring PSG were mostly divided between American Academy of Sleep Medicine (AASM) and Rechtschaffen & Kales (R&K) guidelines. Rogers et al [@rogers_reliability_1993] used an automated system for sleep staging, the SS90-III Sleep Stager System (Oxford Medicals, Oxford). Vanable et al [@vanable_sleep_2000] used Mendelson's [@mendelson2012human] guidelines in addition to R&K. Edinger [@edinger_1995] used combined audio and visual criteria for sleep staging [@erwin1989]. Settings for PSG varied and are depicted in Figure \@ref(fig:setting). 
 
-``` {r setting, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG setting", fig.height = 3}
+``` {r setting, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG setting", fig.height = 3, fig.pos="H"}
 
 df <- screen$psg_setting %>% as.data.frame()
 
@@ -485,7 +494,7 @@ ggplot(data = df, aes(x = setting %>% fct_rev())) +
 
 In-lab and home-based tests comprised the substantial majority of PSG settings with a handful of more unusual settings noted. As for recording periods, PSG most often occurred during the night although a number of alternative periods were noted. See Figure \@ref(fig:period) for a depiction of PSG recording periods.
 
-``` {r period, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG recording period", fig.height = 3}
+``` {r period, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "PSG recording period", fig.height = 3, fig.pos="H"}
 
 df <- screen$psg_period %>% as.data.frame()
 
@@ -533,6 +542,7 @@ Note, MSLT refers to the multiple sleep latency test.
 
 #### Actigraphy
 <!-- ============  text reference hack to generate citations for algorithms ===============-->
+
 (ref:boyne) Actiware [@boyne2013]
 
 (ref:motionware) MotionWare (CamNTech, UK)
@@ -869,9 +879,11 @@ sleep_variables[which(sleep_variables[ ,2] == "TWAK"),5] <- paste0(sleep_variabl
 # Generate table
 kable(sleep_variables[ ,1:4],
       caption = "Sleep variables used for operationalising sleep discrepancy",
-      escape = FALSE,
-) %>%
-  kable_styling(font_size = 10, full_width = FALSE) %>% footnote(footnote_as_chunk = TRUE, general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.", symbol = "TWAK was not used to define sleep discrepancy directly by any of the included studies but is included in the table for clarity")
+      format = "latex",
+      booktabs = TRUE) %>%
+  kable_styling(font_size = 10, full_width = FALSE) %>% footnote(
+    footnote_as_chunk = TRUE, general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.", symbol = "TWAK was not used to define sleep discrepancy directly by any of the included studies but is included in the table for clarity"
+                                                            )
 
 ```
 
@@ -1153,9 +1165,6 @@ ggplot(data = df, mapping = aes(x = methods, y = studies)) +
   ) +
   geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
   coord_flip()
-
-
-
 
 ```
 
