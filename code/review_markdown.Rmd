@@ -784,8 +784,6 @@ ggplot(data = df, mapping = aes(x = sleep, y = studies)) +
 
 ## Sleep variables
 
-A range of variables were used to operationalise sleep discrepancy. These are listed below in Table \@ref(tab:variables) with their usual definitions and equivalent terms.
-
 ```{r variables, echo = FALSE}
 # Read template table from folder
 sleep_variables <- read.csv("../data/sleep_variables.csv")
@@ -832,8 +830,6 @@ sleep_variables[which(sleep_variables[ ,2] == "TWAK"),5] <- paste0(sleep_variabl
 #                                                             )
 
 ```
-
-The number of studies that used each sleep variable are depicted below in Figure \@ref(fig:vargraph).
 
 A range of variables were used to operationalise sleep discrepancy. These are listed below in Figure \@ref(fig:vargraph).
 
