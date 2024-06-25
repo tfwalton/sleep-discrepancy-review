@@ -39,6 +39,7 @@ library("english")
 library("DiagrammeR")   # for PRISMA flowchart
 library("networkD3")
 library("webshot")
+library("scales") # for wrapping the plot text
 
 # Read data set into data frame
 full_screen <- read.csv("../data/review_data.csv")
@@ -119,8 +120,6 @@ bar_numbers_column <- geom_text(
     hjust=-0.5,
     size=2
   )
-
-
 
 ```
 
@@ -988,7 +987,7 @@ Note, RT--LO refers to the time between lights off and rise time. SE was almost 
 
 Objective TST was defined very consistently with the exception of Sinclair et al [-@sinclair_2014] who, in addition to providing a standard definition for TST, measured TST across a 24-hour period, such that time spent asleep outside the usual nocturnal period (i.e., naps) contributed to this measurement. Objective definitions for SOL varied considerably and these are depicted in Figure \@ref(fig:SOL) below.\
 
-```{r SOL, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "SOL definitions", fig.height = 4}
+```{r SOL, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "SOL definitions", fig.height = 6}
 #-------------------------------- SOL Bar Plot --------------------------------|
 
 sol <- c(screen$obj_SOL_t,
@@ -1036,12 +1035,12 @@ level_order <- c(
 
 # Generate graph
 ggplot(data = df, mapping = aes(x = sol, y = studies)) +
-  geom_bar(stat="identity") +
+  geom_bar(stat="identity", width = 0.8) +
   labs(x = "SOL definition", y = "Number of studies") +
   review_theme +
   bar_numbers_column +
   scale_y_continuous(limit=c(0,80)) +
-  scale_x_discrete(limits=level_order) +
+  scale_x_discrete(limits=level_order, labels = label_wrap(60)) +
   coord_flip()
 
 ```
@@ -1058,7 +1057,7 @@ Sleep quality discrepancy was measured by `r onehot("sleep_quality_measured", br
 
 Sleep data often involves repeated measurements of the same individual. Actigraphy and sleep diaries usually involve data collection across 7 to 14 days and multiple consecutive nights of PSG are sometimes recorded. Methods for handling repeated measurements are depicted below in Figure \@ref(fig:methodrm)
 
-``` {r methodrm, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Methods for handling repeated measurements", fig.height = 5}
+``` {r methodrm, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Methods for handling repeated measurements", fig.height = 4}
 
 df <- data.frame(
   "methods" = c("Mean values", "Modal values", "Median values",  "Means of derived indices", "Standard deviations of derived indices", "Repeated measures ANOVA", "Linear mixed models", "Generalised estimating equations", "Structural equation modelling", "Repeated measures correlation", "Pooled observations", "Separate analyses", "Single recording instance"),
@@ -1097,7 +1096,7 @@ Note that pooled observations involved collapsing data across multiple instances
 
 A total of `r onehot("aim_agreement", brackets=FALSE)` studies measured sleep discrepancy at the group level by directly comparing self-report and objective sleep. Methods for achieving this varied and are depicted below in Figure \@ref(fig:group)
 
-```{r group, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Statistical methods for comparing self-report and objective sleep", fig.height = 5}
+```{r group, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Statistical methods for comparing self-report and objective sleep", fig.height = 4}
 
 group_variables <- read.csv("../data/group_variables.csv")
 
@@ -1204,7 +1203,7 @@ A handful of more atypical derived scores were identified. Jackowska et al [-@ja
 
 A number of other ways to characterise the relationship of sleep discrepancy with other variables of interest were identified and are depicted in Figure \@ref(fig:otherm) below. Some studies operationalised sleep discrepancy using an interaction term within an ANOVA or other linear model such that the other variable(s) of interest was/were instantiated as the moderator of the relationship between self-report and objective sleep. Others used percentage agreement for sleep or other classification performance metrics in subsequent statistical analyses with other variables. Differences between correlations amongst self-report and objective sleep between groups were also tested with bootstrapped confidence intervals [@jackson_2018, @jackson_2020], or the Fisher transformation [@defrancesco_2021]. Some operationalised sleep discrepancy with the Sleep Fragment Perception Index (SFPI), an index that exploits the fact that longer sleep fragments are more likely to be identified as sleep by individuals than shorter fragments [@hermans_modeling_2020]. The SPFI is a parameter modelled to assume the shortest length of objective sleep that is perceived as subjective sleep. For the SFPI, a higher value corresponds to a longer sleep fragment necessary for subjective awareness of sleep and hence greater sleep discrepancy.
 
-``` {r otherm, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Other methods for operationalising sleep discrepancy", fig.height = 1.75}
+``` {r otherm, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Other methods for operationalising sleep discrepancy", fig.height = 1.5}
 
 # Create data frame with each one-hot encoded column
 df <- data.frame("method" = c("Interaction", "Classification performance in statistical analysis", "Differences between correlations", "Modelled parameter"),
