@@ -1,5 +1,6 @@
 ---
-title: 'A scoping review of sleep discrepancy methodology: do we know what we are measuring?'
+title: 'A scoping review of sleep discrepancy methodology: do we know what we are
+  measuring?'
 author:
 - name: Tom F. Walton
   affiliation: School of Psychological Science, The University of Western Australia
@@ -11,7 +12,7 @@ author:
   affiliation: School of Psychological Science, The University of Western Australia
 date: "2024-05-3"
 output:
-  rticles::arxiv_article:
+  bookdown::pdf_document2:
     latex_engine: xelatex
     keep_tex: true
 bibliography:
@@ -19,11 +20,9 @@ bibliography:
 - references_review.bib
 - references_acti.bib
 - references_packages.bib
-csl: "apa.csl"
+csl: apa.csl
 always_allow_html: true
-header-includes:
-  \usepackage{float}
-  \floatplacement{figure}{H}
+header-includes: \usepackage{float} \floatplacement{figure}{H}
 ---
 
 ```{r initial code, echo = FALSE, warning = FALSE, message = FALSE}
@@ -93,6 +92,28 @@ knitr::opts_chunk$set(cache = FALSE)
 # knitr::knit_hooks$set(plot = function(x, options)  {
 #   paste0(knitr::hook_plot_tex(x, options), "\n\\FloatBarrier\n")
 # })
+
+#================  ggplot2 theme  =========================
+
+review_theme <- theme(
+    legend.position = "none",
+    panel.background = element_rect(fill = "transparent", colour = "grey"),
+    panel.border = element_rect(fill = NA, colour = "grey"),
+    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "solid"),
+    strip.placement = "outside",
+    axis.title = element_text(size = 8),
+    axis.text = element_text(size = 8)
+  )
+
+bar_numbers <- geom_text(
+    aes(label = after_stat(count)),
+    stat = "count",
+    position=position_dodge(width=0.9),
+    hjust=-0.5,
+    size=2
+  )
+
+
 ```
 
 # Abstract {#abstract}
@@ -362,20 +383,8 @@ ggplot(data = samplechar, aes(x = fct_infreq(sample) %>% fct_rev())) +
   geom_bar() +
   scale_fill_grey() +
   labs(x = "Sample characteristics", y = "Number of studies") +
-  geom_text(
-    aes(label = after_stat(count)),
-    stat = "count",
-    position=position_dodge(width=0.9),
-    hjust=-0.5,
-    size=3.25
-  ) +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted"),
-    strip.placement = "outside"
-  ) +
+  bar_numbers +
+  review_theme +
   coord_flip()
 
 ```
@@ -394,13 +403,8 @@ df <- data.frame("objective" = c("EEG (including PSG)", "Movement (including act
 ggplot(data = df, mapping = aes(x = objective, y = count)) +
   geom_bar(stat="identity") +
   labs(x = "", y = "Number of studies") +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  ) +
-  geom_text(aes(label=count),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
+  review_theme +
+  bar_numbers +
   scale_y_continuous(limit=c(0,170)) +
   coord_flip()
 ```
@@ -431,20 +435,8 @@ ggplot(data = df, aes(x = scoring %>% fct_rev())) +
   geom_bar() +
   scale_fill_grey() +
   labs(x = "Scoring Criteria", y = "Number of studies") +
-  geom_text(
-    aes(label = after_stat(count)),
-    stat = "count",
-    position=position_dodge(width=0.9),
-    hjust=-0.5,
-    size=3.25
-  ) +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted"),
-    strip.placement = "outside"
-  ) +
+  bar_numbers +
+review_theme +
   coord_flip()
 ```
 
@@ -476,20 +468,8 @@ ggplot(data = df, aes(x = setting %>% fct_rev())) +
   geom_bar() +
   scale_fill_grey() +
   labs(x = "Setting", y = "Number of studies") +
-  geom_text(
-    aes(label = after_stat(count)),
-    stat = "count",
-    position=position_dodge(width=0.9),
-    hjust=-0.5,
-    size=3.25
-  ) +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted"),
-    strip.placement = "outside"
-  ) +
+  bar_numbers +
+  review_theme +
   coord_flip()
 ```
 
@@ -519,20 +499,8 @@ ggplot(data = df, aes(x = period %>% fct_rev())) +
   geom_bar() +
   scale_fill_grey() +
   labs(x = "Period", y = "Number of studies") +
-  geom_text(
-    aes(label = after_stat(count)),
-    stat = "count",
-    position=position_dodge(width=0.9),
-    hjust=-0.5,
-    size=3.25
-  ) +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted"),
-    strip.placement = "outside"
-  ) +
+  bar_numbers +
+review_theme +
   scale_y_continuous(limit=c(0,110)) +
   coord_flip()
 
@@ -626,13 +594,8 @@ ggplot(data = graph, mapping = aes(x = algo, y = freq)) +
   geom_bar(stat="identity") +
   labs(x = "Algorithm", y = "Number of studies") +
   scale_x_discrete(limits=unique(graph$algo)) +  # This keeps the order of the data frame
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  ) +
-  geom_text(aes(label=graph$freq), position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
+review_theme +
+  geom_text(aes(label=graph$freq), position=position_dodge(width=0.9), hjust=-0.5, size=2.00) +
   scale_y_continuous(limit=c(0,60)) +
   coord_flip()
 
@@ -656,20 +619,8 @@ ggplot(data = acti, aes(reorder(threshold, -as.integer(threshold)))) +
   geom_bar() +
   scale_fill_grey() +
   labs(x = "Actiware threshold", y = "Number of studies") +
-  geom_text(
-    aes(label = after_stat(count)),
-    stat = "count",
-    position=position_dodge(width=0.9),
-    hjust=-0.5,
-    size=3.25
-    ) +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted"),
-    strip.placement = "outside"
-    ) +
+  bar_numbers +
+review_theme +
   coord_flip()
 ```
 
@@ -741,13 +692,8 @@ ggplot(data = interval, mapping = aes(x = interval, y = studies)) +
   geom_bar(stat="identity") +
   labs(x = "Rest interval", y = "Number of studies") +
   scale_x_discrete(limits=unique(interval$interval)) +  # This keeps the order of the data frame
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  ) +
-  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
+review_theme +
+  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=2.00) +
   scale_y_continuous(limit=c(0,70)) +
   coord_flip()
 ```
@@ -795,14 +741,8 @@ ggplot(data = df, aes(x = measure, y = studies)) +
   geom_bar(stat = "identity") +
   scale_fill_grey() +
   labs(x = " ", y = "Number of studies") +
-  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted"),
-    strip.placement = "outside"
-    ) +
+  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=2.00) +
+review_theme +
   facet_grid(rows = vars(facet),
              scales = "free_y",
              space = "free_y",
@@ -828,13 +768,8 @@ df <- df[rev(rownames(df)),]
 ggplot(data = df, mapping = aes(x = sleep, y = studies)) +
   geom_bar(stat="identity") +
   labs(x = "", y = "Number of studies") +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  ) +
-  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
+review_theme +
+  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=2.00) +
   scale_y_continuous(limit=c(0,190)) +
   coord_flip()
 
@@ -911,13 +846,8 @@ ggplot(data = df, mapping = aes(x = variable, y = studies)) +
   geom_bar(stat="identity") +
   labs(x = "Sleep variable", y = "Number of studies") +
   scale_x_discrete(limits=unique(df$variable)) +  # This keeps the order of the data frame
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  ) +
-  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
+review_theme +
+  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=2.00) +
   scale_y_continuous(limit=c(0,220)) +
   coord_flip()
 
@@ -963,13 +893,8 @@ ggplot(data = df, mapping = aes(x = definition, y = studies)) +
   geom_bar(stat="identity") +
   scale_x_discrete(limits=unique(df$definition)) +  # This keeps the order of the data frame
   labs(x = "Variable definitions", y = "Number of studies") +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  ) +
-  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
+review_theme +
+  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=2.00) +
   scale_y_continuous(limit=c(0,130)) +
   coord_flip()
 
@@ -999,13 +924,8 @@ ggplot(data = df, mapping = aes(x = definition, y = studies)) +
   geom_bar(stat="identity") +
   scale_x_discrete(limits=unique(df$definition)) +  # This keeps the order of the data frame
   labs(x = "Variable definitions", y = "Number of studies") +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  ) +
-  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
+review_theme +
+  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=2.00) +
   scale_y_continuous(limit=c(0,50)) +
   coord_flip()
 
@@ -1038,13 +958,8 @@ ggplot(data = df, mapping = aes(x = definition, y = studies)) +
   geom_bar(stat="identity") +
   scale_x_discrete(limits=unique(df$definition)) +  # This keeps the order of the data frame
   labs(x = "Variable definitions", y = "Number of studies") +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  ) +
-  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
+review_theme +
+  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=2.00) +
   scale_y_continuous(limit=c(0,50)) +
   coord_flip()
 
@@ -1106,13 +1021,8 @@ level_order <- c(
 ggplot(data = df, mapping = aes(x = sol, y = studies)) +
   geom_bar(stat="identity") +
   labs(x = "SOL definition", y = "Number of studies") +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  ) +
-  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
+review_theme +
+  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=2.00) +
   scale_y_continuous(limit=c(0,80)) +
   scale_x_discrete(limits=level_order) +
   coord_flip()
@@ -1158,13 +1068,8 @@ ggplot(data = df, mapping = aes(x = methods, y = studies)) +
   geom_bar(stat="identity") +
   labs(x = "Method of handling repeated measurements", y = "Number of studies") +
   scale_x_discrete(limits=unique(df$methods)) +  # This keeps the order of the data frame
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  ) +
-  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
+review_theme +
+  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=2.00) +
   coord_flip()
 
 ```
@@ -1206,13 +1111,8 @@ ggplot(data = group_variables, aes(x = variable_name, y = studies)) +
   scale_fill_grey() +
   scale_y_continuous(limit=c(0,110)) +
   scale_x_discrete(limits=unique(group_variables$variable_name)) +  # This keeps the order of the data frame
-  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.25) +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  )+
+  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=2) +
+review_theme +
   coord_flip()
 
 ```
@@ -1267,20 +1167,8 @@ ggplot(data = derived, aes(x = reorder(variable_name, variable_name, function(x)
   geom_bar() +
   scale_fill_grey() +
   labs(x = " ", y = "Number of studies") +
-  geom_text(
-    aes(label = after_stat(count)),
-    stat = "count",
-    position=position_dodge(width=0.9),
-    hjust=-0.5,
-    size=3.25
-    ) +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted"),
-    strip.placement = "outside"
-    ) +
+  bar_numbers +
+review_theme +
   facet_grid(rows = vars(variable_group),
              scales = "free_y",
              space = "free_y",
@@ -1319,14 +1207,9 @@ ggplot(data = df, mapping = aes(x = method, y = studies)) +
   geom_bar(stat="identity") +
   scale_x_discrete(limits=unique(df$method)) +  # This keeps the order of the data frame
   labs(x = "Method", y = "Number of studies") +
-  theme(
-    legend.position = "none",
-    panel.background = element_rect(fill = "transparent", colour = "grey"),
-    panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "dotted")
-  ) +
+review_theme +
     scale_y_continuous(limit=c(0,12)) +
-  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=3.00) +
+  geom_text(aes(label=studies),position=position_dodge(width=0.9), hjust=-0.5, size=2.00) +
   coord_flip()
 
 
