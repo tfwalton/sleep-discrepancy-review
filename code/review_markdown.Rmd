@@ -23,6 +23,259 @@ bibliography:
 csl: apa.csl
 always_allow_html: true
 header-includes: \usepackage{float} \floatplacement{figure}{H}
+nocite: |
+  @chou_comparison_2020,
+  @hermans_modeling_2020,
+  @janku_subjectiveobjective_2020,
+  @king_sleep_2017,
+  @lehrer_2022,
+  @provencher_patterns_2020,
+  @segura_agreement_2015,
+  @slightam_assessing_2018,
+  @trimmel_misperception_2021,
+  @williams_sleep_2013,
+  @allawati_2021,
+  @ansok_objective_2020,
+  @argyropoulos_correlation_2003,
+  @auger_total_2013,
+  @baillet_2016,
+  @baker_comparison_1999,
+  @bianchi_mismatch_2013,
+  @billings_firefighter_2022,
+  @brychta_longitudinal_2019,
+  @cederberg_discrepancies_2022,
+  @chan_sleep_2018,
+  @choi_sleep_2016,
+  @combertaldi_healthy_2020,
+  @conroy_perception_2006,
+  @currie_agreement_2004,
+  @dietch_evaluation_2021,
+  @dittoni_psychological_2013,
+  @dunican_effects_2017,
+  @facco_association_2018,
+  @feige_does_2008,
+  @franklin_accuracy_2000,
+  @ghadami_ptsd_2014,
+  @girschik_2012,
+  @gooneratne_casecontrol_2011,
+  @hermans_sleep_2020,
+  @herring_pregnant_2013,
+  @hoogerhoud_ect_2015,
+  @ihler_misperception_2020,
+  @jackowska_psychosocial_2011,
+  @kang_sleep_2018,
+  @kaplan_evaluating_2012,
+  @kawada_agreement_2008,
+  @kay_discrepancy_2015,
+  @kay_variability_2013,
+  @keklund_objective_1997,
+  @kennedy_screening_2020,
+  @khou_evaluation_2018,
+  @kong_associations_2011,
+  @krahn_assessing_1997,
+  @lastella_athletes_2018,
+  @lee_smartphone_2021,
+  @liu_preliminary_2019,
+  @lockley_comparison_1999,
+  @lund_2013,
+  @ma_profile_2021,
+  @maes_sleep_2014,
+  @majer_perception_2007,
+  @mazza_objective_2020,
+  @means_2003,
+  @mendelson_1986,
+  @moore_actigraphy_2015,
+  @most_discrepancy_2012,
+  @mundt_measuring_2016,
+  @nam_sleep_2016,
+  @nazem_actigraphic_2016,
+  @normand_sleep_2016,
+  @okifuji_nightly_2011,
+  @orta_associations_2016,
+  @ouellet_subjective_2006,
+  @perlis_alpha_1997,
+  @regestein_2004,
+  @ritter_comparison_2016,
+  @rogers_reliability_1993,
+  @sato_clinical_2010,
+  @sharkey_assessing_2011,
+  @sharman_presleep_2022,
+  @silva_relationship_2007,
+  @spielmanns_measuring_2019,
+  @spinweber_disqualified_1985,
+  @trajanovic_2007,
+  @tsuchiyama_discrepancy_2003,
+  @wang_measuring_2022,
+  @werner_objective_2016,
+  @wilson_subjective_2013,
+  @xu_sleep_2022,
+  @alameddine_2015,
+  @barbosa_assessment_2017,
+  @bastien_information_2013,
+  @bianchi_sleep_2012,
+  @broomfield_initial_2003,
+  @caia_rugby_2018,
+  @campanini_agreement_2017,
+  @carter_subjective_2020,
+  @castelnovo_extreme_2021,
+  @castillo_sleepwake_2014,
+  @chervin_overestimation_1996,
+  @chung_discrepancy_2020,
+  @dautovich_subjective_2008,
+  @de_jaeger_does_2019,
+  @dean_trajectory_2019,
+  @dorsey_subjective_1997,
+  @edinger_1995,
+  @espie_1989,
+  @gonzalez_comparison_2013,
+  @goudman_backsurgery_2018,
+  @goulart_sleepdeprivation_2014,
+  @hanisch_sleep_2011,
+  @hermans_sleep_2019,
+  @hermans_assessing_2021,
+  @huang_sleep_2012,
+  @hughes_measuring_2018,
+  @kaufmann_inaccuracy_2019,
+  @kreutz_comparison_2021,
+  @krishnamurthy_subjective_2018,
+  @kryger_subjective_1991,
+  @krystal_sleep_2010,
+  @krystal_spectral_2002,
+  @lauderdale_2008,
+  @lubas_concordance_2022,
+  @maich_psychometric_2018,
+  @martinez_light_2010,
+  @mccall_subjective_1995,
+  @mendelson_perception_1998,
+  @mercer_insomniacs_2002,
+  @neu_sleep_2007,
+  @okun_comparison_2021,
+  @park_sleeplatency_2007,
+  @perlis_eeg_2001,
+  @reess_perception_2010,
+  @saline_sleep_2016,
+  @scarlett_discrepancies_2021,
+  @schokman_agreement_2018,
+  @stout_sleep_2017,
+  @tang_arousal_2004,
+  @thun_actigraphic_2012,
+  @tomita_comparison_2013,
+  @tremaine_subjective_2010,
+  @trimmel_misperception_2021,
+  @usui_naps_2003,
+  @valko_misperception_2021,
+  @vanable_sleep_2000,
+  @wilson_daily_1998,
+  @wolfson_sleephabits_2003,
+  @yamakita_questionnaire_2014,
+  @yeung_acupuncture_2015,
+  @zinkhan_agreement_2014,
+  @zou_thalamic_2021,
+  @baek_2020,
+  @chan_cbti_2021,
+  @chen_osteoarthritis_2015,
+  @cronlein_cbti_2019,
+  @downey_training_1992,
+  @finan_multimodal_2020,
+  @heath_cognitions_2018,
+  @hita-yanez_polysomnographic_2013,
+  @kobayashi_ptsd_2012,
+  @mccall_depression_2012,
+  @sprajcer_perception_2021,
+  @vallieres_actigraphy_2003,
+  @zhu_sleep_2018,
+  @arditte_ptsd_2023,
+  @aritake-okada_diurnal_2010,
+  @kolling_multisensory_2016,
+  @locihova_sleep_2020,
+  @nguyen-michel_underperception_2015,
+  @pinto_sleep_2009,
+  @winer_tau_2021,
+  @daoust_depression_2015,
+  @dinapoli_mci_2017,
+  @dorrian_predicting_2012,
+  @manconi_measuring_2010,
+  @matousek_subjective_2004,
+  @obrien_discrepancies_2016,
+  @st-onge_2019,
+  @ahn_2022,
+  @arora_2013,
+  @bensen-boakes_2022,
+  @bian_2016,
+  @cho_2022,
+  @curtis_2019,
+  @devine_2020,
+  @duarte_2020,
+  @dzierzewski_2019,
+  @etain_2022,
+  @fernandez-mendoza_2011,
+  @gibson_2023,
+  @gokce_2020,
+  @herbert_2017,
+  @hodges_2017,
+  @hsiao_2018,
+  @jackson_2018,
+  @kay_2017,
+  @kung_2015,
+  @lanchunyang_2021,
+  @lecci_2020,
+  @lee_validation_2022,
+  @lee_misperception_2022,
+  @maric_2019,
+  @meyer_2018,
+  @nishikawa_2021,
+  @santos_2022,
+  @schneider-helmert_1995,
+  @smagula_2021,
+  @telindert_2020,
+  @thurman_2018,
+  @topalidis_2021,
+  @vandenberg_2008,
+  @zak_2022,
+  @defrancesco_2021,
+  @gaina_2004,
+  @guedes_2016,
+  @mcintyre_2016,
+  @sinclair_2014,
+  @takano_2016,
+  @tang_2007,
+  @tangharvey_2006,
+  @wang_2011,
+  @bonnetmoore_1982,
+  @creti_2010,
+  @dejaeger_2019,
+  @duarte_2022,
+  @fengsvetnik_2018,
+  @he_2021,
+  @herring_2013,
+  @huang_2012,
+  @hur_2022,
+  @jungquist_2016,
+  @kundu_2022,
+  @laranjeira_2018,
+  @lewis_1969,
+  @liu_analysis_2020,
+  @lund_2013,
+  @schulz_2017,
+  @short_2012,
+  @so_2021,
+  @somma_2020,
+  @sun-suslow_2022,
+  @tremaine_2010,
+  @jackson_2020,
+  @lipinska_2017,
+  @bean_2021,
+  @miner_2022,
+  @richardson_2019,
+  @feige_2021,
+  @friedmann_2022,
+  @yoon_2022,
+  @signal_2005,
+  @narisawa_2015,
+  @tang_arousal_2004,
+  @manconi_measuring_2010,
+  @lecci_2020,
+  @tang_2007
 ---
 
 ```{r initial code, echo = FALSE, warning = FALSE, message = FALSE}
@@ -1534,8 +1787,8 @@ kable(df,
 
 Full descriptions of study characteristics are available in Table \@ref(tab:studychar).
 
-``` {r studychar, echo = FALSE, warning = FALSE, message = FALSE}
-df <- subset(screen, select = c(ama_cite, bibkey_apalatex, country, country2,
+``` {r studychar, echo = FALSE, warning = FALSE, message = FALSE, results = "asis"}
+df <- subset(screen, select = c(apa_cite, country, country2,
                                 sample_characteristics,
                                 sample_size))
 
@@ -1544,13 +1797,10 @@ df$country <- ifelse(df$country2 != "", paste(df$country, df$country2, sep = ", 
                      df$country)
 
 # Remove country2
-df <- df[ ,-4]
-
-# add citations for each study
-df$ama_cite <- paste0(df$ama_cite, df$bibkey_apalatex)
+df <- df[ ,-3]
 
 # remove bibkey column
-df <- df[,-2]
+# df <- df[,-2]
 
 # capitalise first letter of sample characteristics column
 df$sample_characteristics <- paste0(toupper(substring(df$sample_characteristics,1,1)), substring(df$sample_characteristics,2,last = 1000L))
@@ -1561,7 +1811,7 @@ colnames(df) <- c("Study", "Country of origin", "Sample characteristics", "Sampl
 # reorder rows
 df <- arrange(df, Study)
 
-kable(df,
+knitr::kable(df,
       format = "latex",
       booktabs = TRUE,
       longtable = TRUE,
@@ -1582,8 +1832,7 @@ Full qualitative methodological details for actigraphy studies are available in 
 
 ``` {r bigacti, echo = FALSE, warning = FALSE, message = FALSE}
 
-df <- subset(screen, select = c(ama_cite,
-                                bibkey_apalatex,
+df <- subset(screen, select = c(apa_cite,
                                 obj_movement,
                                 acti_device,
                                 acti_device2,
@@ -1614,6 +1863,13 @@ df$algo_ref3 <- sapply(df$acti_algorithm3, collapseActiware)
 algo_citations <- read.csv("../data/algorithm_citations.csv")
 
 # Search the table for a citation that matches the algorithm and paste it into each cell
+for (x in df[ ,11]) {
+  i <- which(df[ ,11] == x)
+  ref <- which(algo_citations[ ,1] == x)
+  df[i,11] <- paste0(algo_citations[ref,3], "")
+}
+
+# Search the table for a citation that matches the algorithm and paste it into each cell
 for (x in df[ ,12]) {
   i <- which(df[ ,12] == x)
   ref <- which(algo_citations[ ,1] == x)
@@ -1625,13 +1881,6 @@ for (x in df[ ,13]) {
   i <- which(df[ ,13] == x)
   ref <- which(algo_citations[ ,1] == x)
   df[i,13] <- paste0(algo_citations[ref,3], "")
-}
-
-# Search the table for a citation that matches the algorithm and paste it into each cell
-for (x in df[ ,14]) {
-  i <- which(df[ ,14] == x)
-  ref <- which(algo_citations[ ,1] == x)
-  df[i,14] <- paste0(algo_citations[ref,3], "")
 }
 
 df$acti_algorithm2 <- ifelse(df$acti_algorithm3 != "", paste(df$acti_algorithm2, df$acti_algorithm3, sep = ", "),
@@ -1647,15 +1896,10 @@ df$algo_ref2 <- ifelse(df$algo_ref3 != "", paste(df$algo_ref2, df$algo_ref3, sep
 df$algo_ref1 <- ifelse(df$algo_ref2 != "", paste(df$algo_ref1, df$algo_ref2, sep = "^;^ "),
                             df$algo_ref1)
 
-# Collapse citation column with study column
-df$ama_cite <- paste(df$ama_cite, df$bibkey_apalatex)
-df <- df[,-2]
-
 # keep actigraphy studies
 df <- df[which(df$obj_movement == 1), ]
 
-# remove surplus columns
-df <- df[ , -c(2, 4,5, 8, 9, 12, 13)]
+df <- df %>% select(apa_cite, acti_device, acti_software_short, )
 
 # move the algorithm references after the algorithm column
 df <- df %>% relocate(algo_ref1, .after = acti_algorithm)
@@ -1694,7 +1938,7 @@ A full list of studies that recorded sleep-wake agreement is available in Table 
 
 # create dataframe of relevant variables
 df <- subset(screen, binary_sw_I == 1 | binary_sw_II == 1, select = c(ama_cite,
-                                                                      bibkey_apalatex,
+                                                                      bibkey_apa,
                                                                       sample_characteristics,
                                                                       binary_sw_I,
                                                                       binary_sw_II,
@@ -1706,7 +1950,7 @@ df <- subset(screen, binary_sw_I == 1 | binary_sw_II == 1, select = c(ama_cite,
 df$sleep_wake <- ifelse(df$binary_sw_I %>% is.na(), "Confusion matrix", "Binary")
 
 # collapse bibkey column with study column
-df$ama_cite <- paste(df$ama_cite, df$bibkey_apalatex)
+df$ama_cite <- paste(df$ama_cite, df$bibkey_apa)
 
 # remove bibkey column
 df <- df[ ,-2]
