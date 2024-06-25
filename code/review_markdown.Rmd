@@ -87,7 +87,7 @@ duplicates <- 3903 %>% format(nsmall=0, big.mark=",")
 total_records <- 6190 %>% format(nsmall=0, big.mark=",")
 
 # Chunk options
-knitr::opts_chunk$set(cache = FALSE)
+knitr::opts_chunk$set(cache = FALSE, fig.pos = "H")
 
 # knitr::knit_hooks$set(plot = function(x, options)  {
 #   paste0(knitr::hook_plot_tex(x, options), "\n\\FloatBarrier\n")
@@ -119,6 +119,7 @@ bar_numbers_column <- geom_text(
     hjust=-0.5,
     size=2
   )
+
 
 
 ```
@@ -761,7 +762,7 @@ ggplot(data = df, aes(x = measure, y = studies)) +
 
 ```
 
-Sleep diaries and questionnaires on awakening were the most common measure of self-report sleep, followed by habitual sleep questionnaires including the Pittsburgh Sleep Quality Index [PSQI; @buysse1989]. Note, habitual sleep refers to questionnaires that require participants to provide global judgements about their sleep that correspond to a period of time longer than a single night such as a week or a month. Graphical response formats for sleep diaries and questionnaires on awakening required participants to draw their sleep on scales comprising discrete blocks of time. We also recorded whether self-report measures overall attempted to capture habitual sleep or rather *episodic* sleep that occurred night-by-night/episode-by-sleep episode at the same time as objective measures. Results are depicted in Figure \@ref(fig:habitual) below.
+Sleep diaries and questionnaires on awakening were the most common measure of self-report sleep, followed by habitual sleep questionnaires including the Pittsburgh Sleep Quality Index [PSQI\; @buysse1989]. Note, habitual sleep refers to questionnaires that require participants to provide global judgements about their sleep that correspond to a period of time longer than a single night such as a week or a month. Graphical response formats for sleep diaries and questionnaires on awakening required participants to draw their sleep on scales comprising discrete blocks of time. We also recorded whether self-report measures overall attempted to capture habitual sleep or rather *episodic* sleep that occurred night-by-night/episode-by-sleep episode at the same time as objective measures. Results are depicted in Figure \@ref(fig:habitual) below.
 
 ``` {r habitual, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Habitual or episodic sleep", fig.height = 1.5}
 
@@ -820,17 +821,22 @@ colnames(sleep_variables) <- c("Variable", "Abbreviation", "Calculation", "Equiv
 sleep_variables[which(sleep_variables[ ,2] == "TWAK"),5] <- paste0(sleep_variables[which(sleep_variables[ ,2] == "TWAK"),5], footnote_marker_symbol(1))
 
 # Generate table
-kable(sleep_variables[ ,1:4],
-      caption = "Sleep variables used for operationalising sleep discrepancy",
-      format = "latex",
-      booktabs = TRUE) %>%
-  kable_styling(font_size = 10, full_width = FALSE) %>% footnote(
-    footnote_as_chunk = TRUE, general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.", symbol = "TWAK was not used to define sleep discrepancy directly by any of the included studies but is included in the table for clarity"
-                                                            )
+# kable(sleep_variables[ ,1:4],
+#       caption = "Sleep variables used for operationalising sleep discrepancy",
+#       format = "latex",
+#       booktabs = TRUE) %>%
+#   kable_styling(font_size = 10,
+#                 full_width = FALSE,
+#                 latex_options = c("hold_position", "scale_down")) %>% footnote(
+#     footnote_as_chunk = TRUE, general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.", symbol = "TWAK was not used to define sleep discrepancy directly by any of the included studies but is included in the table for clarity",
+#     threeparttable = TRUE
+#                                                             )
 
 ```
 
 The number of studies that used each sleep variable are depicted below in Figure \@ref(fig:vargraph).
+
+A range of variables were used to operationalise sleep discrepancy. These are listed below in Figure \@ref(fig:vargraph).
 
 ```{r vargraph, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Sleep variables", fig.height = 6}
 
@@ -859,6 +865,10 @@ ggplot(data = df, mapping = aes(x = variable, y = studies)) +
   coord_flip()
 
 ```
+*Note.* TST was considered equivalent to sleep duration in this review. Calculation of TST and SE varied across studies in both objective and self-report form. SOL (also referred to as sleep latency; SL) varied only in its objective form whilst WASO varied only in its self-report form. TIB was calculated as the time between bedtime BT and RT. BT and and polysomnographic lights off time for PSG studies were considered equivalent in this review. RT was considered equivalent to actigraphic sleep offset and polsomnographic lights on. Sleep mid-point was calculated as (FWT--BT)/2. LPS was defined as latency to 10 minutes of uninterrupted sleep. SDSL was defined objective total sleep time following the point of subjective sleep onset. EST was defined as TST--WASO--SOL. SWT was defined as WASO + SOL. TWAK was defined as the length of time between RT and FWT. No definition was reported for IWT. Binary sleep-wake involved measuring at one or multiple instances whether a participant’s reported sleep state matched the objective sleep state upon which the query
+was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple
+instances whether a participant’s reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain
+time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.
 
 The sleep variables TST, SOL, WASO, and SE were most common and formed the majority of identified parameters. Direct sleep-wake agreement was measured by a small subset of studies. Almost all identified sleep variables were measures related to sleep time or awakenings, although we did note some more unconventional parameters listed below separately from the figure above. Allawati et al [-@allawati_2021] compared self-report and actigraphic measures of sleep patterns including monophasic, biphasic dawn, biphasic siesta, and polyphasic. Lockley et el [-@lockley_comparison_1999], Dautovich et al [@dautovich_subjective_2008], Hanisch et al [@hanisch_sleep_2011], and Nguyen-Michel et al [@nguyen-michel_underperception_2015] reported discrepancy for naps specifically, including variables such as number of naps, number of days napped, mean duration of naps, and total nap time. Baek et al [-@baek_2020] and Chan et al [-@chan_sleep_2018] compared self-report and actigraphic assessments of variability in TST and other sleep parameters. Thun et al [-@thun_actigraphic_2012] compared self-report and actigraphic measures of morningness-eveningness. Finally, McIntyre et al [-@mcintyre_2016] investigated self-report-objective discrepancy across a range of sleep behaviours including position at sleep onset, position at wake, number of positional changes, and the presence of leg twitches or jerks. 
 
@@ -1322,11 +1332,13 @@ This work forms part of PhD project funded by the Australian Government Research
 
 The authors declared that they had no conflicts of interest with respect to their authorship or the publication of this article.
 
+\newpage
+
 # Appendices
 
 ## Search strategies
 
-Search strategies for databases searched using the Ovid system are available in Table \@ref(tab:ovid). Search strategies for other databases are listed in Table \@ref(tab:databases).
+Search strategies for databases searched using the Ovid system are available in Table \@ref(tab:ovid).
 
 ``` {r ovid, echo = FALSE, warning = FALSE, message = FALSE}
 col1 <- c(seq(1:7), seq(1:7), seq(1:7))
@@ -1361,12 +1373,20 @@ kable(df,
       booktabs = TRUE,
       caption = "Search strategy for Ovid databases"
 ) %>%
-  kable_styling(font_size = 10, full_width = FALSE) %>%
+  kable_styling(font_size = 8,
+                latex_options = "hold_position") %>%
   pack_rows("Embase", 1,7) %>%
   pack_rows("PsycINFO", 8,14) %>%
-  pack_rows("Medline", 15,21)
+  pack_rows("Medline", 15,21) %>%
+  column_spec(1, width = "5em") %>%
+  column_spec(2, width = "40em") %>%
+  column_spec(3, width = "6em")
 
 ```
+
+\newpage
+
+Search strategies for other databases are listed in Table \@ref(tab:databases).
 
 ``` {r databases, echo = FALSE, warning = FALSE, message = FALSE}
 
@@ -1392,23 +1412,24 @@ OR discrepan* OR concordan* OR agreement OR disagreement OR discordan* OR congru
 )
 
 col2 <- c(761, 310, 826, 1288, 90)
-df <- data.frame("terms" = col1, "records" = col2)
-colnames(df) <- c("Terms and operators", "Records")
+col3 <- c("Pubmed", "CINAHL", "Scopus", "Web of Science", "Proquest Theses and Dissertations Global")
+df <- data.frame("database" = col3, "terms" = col1, "records" = col2)
+colnames(df) <- c("Database", "Terms and operators", "Records")
 
 kable(df,
       format = "latex",
       booktabs = TRUE,
       caption = "Search strategy for other databases"
       ) %>%
-  kable_styling(font_size = 10, full_width = FALSE) %>%
-  column_spec(1, width = "15cm")
-#   pack_rows("Pubmed", 1,1) %>%
-#   pack_rows("CINAHL Plus", 2,2) %>%
-#   pack_rows("Scopus", 3,3) %>%
-#   pack_rows("Web of Science", 4,4) %>%
-#   pack_rows("Proquest Theses and Dissertations Global", 5,5)
+  kable_styling(font_size = 8,
+                latex_options = "hold_position") %>%
+  column_spec(1, width = "7em") %>%
+  column_spec(2, width = "40em") %>%
+  column_spec(3, width = "4em")
 
 ```
+
+\newpage
 
 ## List of deviations from protocol {#deviations}
 
@@ -1422,7 +1443,11 @@ The following are a list of deviations from the scoping review protocol register
  + study did not include statistical comparison of self-report and objective sleep (e.g., numerical comparisons only, single-case design)
 5. Reference lists were not searched for additional citations as planned in the protocol
 
+\newpage
+
 ## PRISMA-ScR checklist
+
+A PRISMA-ScR checklist is available below with section links to the corresponding checklist item.
 
 ``` {r checklist, echo = FALSE, warning = FALSE, message = FALSE}
 
@@ -1489,19 +1514,27 @@ colnames(df) <- c("Section", "Item", "PRISMA-ScR Checklist Item", "Location repo
 kable(df,
       format = "latex",
       booktabs = TRUE,
+      longtable = TRUE,
       caption = "Preferred Reporting Items for Systematic reviews and Meta-Analyses extension for Scoping Reviews (PRISMA-ScR) Checklist."
 ) %>%
-  kable_styling(font_size = 10, full_width = FALSE) %>%
+  kable_styling(font_size = 8,
+                latex_options = "hold_position") %>%
   pack_rows("Title", 1,1) %>%
   pack_rows("Abstract", 2,2) %>%
   pack_rows("Introduction", 3,4) %>%
   pack_rows("Methods", 5, 13) %>%
   pack_rows("Results", 14, 18) %>%
   pack_rows("Discussion", 19, 21) %>%
-  pack_rows("Funding", 22, 22)
-
+  pack_rows("Funding", 22, 22) %>%
+  column_spec(1, width = "8em") %>%
+  column_spec(2, width = "4em") %>%
+  column_spec(3, width = "35em") %>%
+  column_spec(4, width = "7em")
 
 ```
+
+\newpage
+
 ## Additional tables
 
 Full descriptions of study characteristics are available in Table \@ref(tab:studychar).
@@ -1536,9 +1569,19 @@ df <- arrange(df, Study)
 kable(df,
       format = "latex",
       booktabs = TRUE,
+      longtable = TRUE,
       caption = "Characteristics of included studies") %>%
-  kable_styling(font_size = 10, full_width = FALSE)
+  kable_styling(font_size = 8,
+                full_width = FALSE,
+                latex_options = "hold_position") %>%
+  column_spec(1, width = "12em") %>%
+  column_spec(2, width = "6em") %>%
+  column_spec(3, width = "30em") %>%
+  column_spec(4, width = "4em")
+  
 ```
+
+\newpage
 
 Full qualitative methodological details for actigraphy studies are available in Table \@ref(tab:bigacti).
 
@@ -1630,11 +1673,25 @@ colnames(df) <- c("Study", "Actigraph device", "Software", "Algorithm", "Algorit
 kable(df,
       format = "latex",
       booktabs = TRUE,
+      longtable = TRUE,
       caption = "Qualitative actigraphy characteristics") %>%
-  kable_styling(font_size = 10, full_width = FALSE) %>% 
-  footnote(footnote_as_chunk = TRUE, general = "The --> arrow designates the priority given to methods of calculating the rest interval. For example, event markers –> activity, sleep diary, indicates that event marker presses were first used to calculate rest intervals, followed by sleep diary and activity when event marker presses were not available.")
+  kable_styling(font_size = 8,
+                latex_options = "hold_position") %>% 
+  footnote(footnote_as_chunk = TRUE,
+           threeparttable = TRUE,
+           general = "The --> arrow designates the priority given to methods of calculating the rest interval. For example, event markers –> activity, sleep diary, indicates that event marker presses were first used to calculate rest intervals, followed by sleep diary and activity when event marker presses were not available."
+           ) %>%
+  column_spec(1, width = "2em") %>%
+  column_spec(2, width = "6em") %>%
+  column_spec(3, width = "6em") %>%
+  column_spec(4, width = "6em") %>%
+  column_spec(5, width = "6em") %>%
+  column_spec(6, width = "6em") %>%
+  column_spec(7, width = "12em")
 
 ```
+
+\newpage
 
 A full list of studies that recorded sleep-wake agreement is available in Table \@ref(tab:sleepwake) below.
 
@@ -1670,8 +1727,21 @@ kable(df,
       format = "latex",
       booktabs = TRUE,
       caption = "Direct sleep-wake agreement studies") %>%
-  kable_styling(font_size = 10, full_width = FALSE) %>% 
-  footnote(footnote_as_chunk = TRUE, general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.")
+  kable_styling(font_size = 8,
+                latex_options = "hold_position") %>% 
+  footnote(footnote_as_chunk = TRUE,
+           threeparttable = TRUE, general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.") %>%
+  column_spec(1, width = "2em") %>%
+  column_spec(2, width = "6em") %>%
+  column_spec(3, width = "12em") %>%
+  column_spec(4, width = "16em") %>%
+  column_spec(5, width = "6em") %>%
+  column_spec(6, width = "6em") %>%
+  column_spec(7, width = "6em")
+  
+  
 ```
+
+\newpage
 
 # References
