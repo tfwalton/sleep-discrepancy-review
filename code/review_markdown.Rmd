@@ -1841,68 +1841,38 @@ df <- subset(screen, select = c(apa_cite,
                                 acti_algorithm,
                                 acti_algorithm2,
                                 acti_algorithm3,
+                                algo_citation,
+                                algo_citation2,
+                                algo_citation3,
                                 acti_interval_description))
 
+# Keep actigraphy studies
+df <- df[which(df$obj_movement == 1), ]
+
+# Collapse device columns
 df$acti_device2 <- ifelse(df$acti_device3 != "", paste(df$acti_device2, df$acti_device3, sep = ", "),
                                                     df$acti_device2)
 
 df$acti_device <- ifelse(df$acti_device2 != "", paste(df$acti_device, df$acti_device2, sep = ", "),
                          df$acti_device)
 
-
-collapseActiware <- function(x) {
-  ifelse(grepl("Actiware", x), "Actiware", x)
-}
-
-# Apply function to data frame
-df$algo_ref1 <- sapply(df$acti_algorithm, collapseActiware)
-df$algo_ref2 <- sapply(df$acti_algorithm2, collapseActiware)
-df$algo_ref3 <- sapply(df$acti_algorithm3, collapseActiware)
-
-# Replace names with algorithm bibliography keys
-algo_citations <- read.csv("../data/algorithm_citations.csv")
-
-# Search the table for a citation that matches the algorithm and paste it into each cell
-for (x in df[ ,11]) {
-  i <- which(df[ ,11] == x)
-  ref <- which(algo_citations[ ,1] == x)
-  df[i,11] <- paste0(algo_citations[ref,3], "")
-}
-
-# Search the table for a citation that matches the algorithm and paste it into each cell
-for (x in df[ ,12]) {
-  i <- which(df[ ,12] == x)
-  ref <- which(algo_citations[ ,1] == x)
-  df[i,12] <- paste0(algo_citations[ref,3], "")
-}
-
-# Search the table for a citation that matches the algorithm and paste it into each cell
-for (x in df[ ,13]) {
-  i <- which(df[ ,13] == x)
-  ref <- which(algo_citations[ ,1] == x)
-  df[i,13] <- paste0(algo_citations[ref,3], "")
-}
+# Collapse algo columns 
 
 df$acti_algorithm2 <- ifelse(df$acti_algorithm3 != "", paste(df$acti_algorithm2, df$acti_algorithm3, sep = ", "),
                           df$acti_algorithm2)
 
 df$acti_algorithm <- ifelse(df$acti_algorithm2 != "", paste(df$acti_algorithm, df$acti_algorithm2, sep = ", "),
                          df$acti_algorithm)
+# Collapse algo citations
+
+df$algo_citation2 <- ifelse(df$algo_citation3 != "", paste(df$algo_citation2, df$algo_citation3, sep = "; "),
+                             df$algo_citation2)
+
+df$algo_citation <- ifelse(df$algo_citation2 != "", paste(df$algo_citation, df$algo_citation2, sep = "; "),
+                            df$algo_citation)
 
 
-df$algo_ref2 <- ifelse(df$algo_ref3 != "", paste(df$algo_ref2, df$algo_ref3, sep = "^;^ "),
-                             df$algo_ref2)
-
-df$algo_ref1 <- ifelse(df$algo_ref2 != "", paste(df$algo_ref1, df$algo_ref2, sep = "^;^ "),
-                            df$algo_ref1)
-
-# keep actigraphy studies
-df <- df[which(df$obj_movement == 1), ]
-
-df <- df %>% select(apa_cite, acti_device, acti_software_short, )
-
-# move the algorithm references after the algorithm column
-df <- df %>% relocate(algo_ref1, .after = acti_algorithm)
+df <- df %>% select(apa_cite, acti_device, acti_software_short, acti_algorithm, algo_citation, acti_interval_description)
 
 # capitalise first letter of rest interval column
 df$acti_interval_description <- paste0(toupper(substring(df$acti_interval_description,1,1)), substring(df$acti_interval_description,2,last = 1000L))
