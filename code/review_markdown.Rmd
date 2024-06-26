@@ -1,20 +1,31 @@
 ---
 title: 'A scoping review of sleep discrepancy methodology: do we know what we are
   measuring?'
+header-includes:
+-   \usepackage{float} \floatplacement{figure}{H}
 author:
-- name: Tom F. Walton
-  affiliation: School of Psychological Science, The University of Western Australia
-- name: Melissa J. Ree
-  affiliation: School of Psychological Science, The University of Western Australia
-- name: Simone N. Fueggle
-  affiliation: CALHN Neuropsychology, Royal Adelaide Hospital
-- name: Romola S. Bucks
-  affiliation: School of Psychological Science, The University of Western Australia
+  - Tom. F Walton:
+      institute: [UWA]
+  - Melissa J. Ree:
+      institute: [UWA]
+  - Simone N. Fueggle:
+      institute: [SA]
+  - Romola S. Bucks:
+      institute: [UWA, POP, CH]
+institute:
+  - UWA: School of Psychological Science, The University of Western Australia
+  - SA: CALHN Neuropsychology, Royal Adelaide Hospital
+  - POP: School of Population and Global Health, The University of Western Australia
+  - CH: Office of the Deputy Vice Chancellor, Research, The University of Western Australia
 date: "2024-05-3"
 output:
   bookdown::pdf_document2:
     latex_engine: xelatex
     keep_tex: true
+    toc: false
+    pandoc_args:
+      - '--lua-filter=scholarly-metadata.lua'
+      - '--lua-filter=author-info-blocks.lua'
 bibliography:
 - references_body.bib
 - references_review.bib
@@ -22,7 +33,6 @@ bibliography:
 - references_packages.bib
 csl: apa.csl
 always_allow_html: true
-header-includes: \usepackage{float} \floatplacement{figure}{H}
 nocite: |
   @chou_comparison_2020,
   @hermans_modeling_2020,
@@ -767,7 +777,7 @@ review_theme +
 
 ```
 
-Note, MSLT refers to the multiple sleep latency test.
+*Note.* MSLT refers to the multiple sleep latency test.
 
 #### Actigraphy
 <!-- ============  text reference hack to generate citations for algorithms ===============-->
@@ -1113,6 +1123,7 @@ ggplot(data = df, mapping = aes(x = variable, y = studies)) +
   coord_flip()
 
 ```
+
 *Note.* TST was considered equivalent to sleep duration in this review. Calculation of TST and SE varied across studies in both objective and self-report form. SOL (also referred to as sleep latency; SL) varied only in its objective form whilst WASO varied only in its self-report form. TIB was calculated as the time between bedtime BT and RT. BT and and polysomnographic lights off time for PSG studies were considered equivalent in this review. RT was considered equivalent to actigraphic sleep offset and polsomnographic lights on. Sleep mid-point was calculated as (FWT--BT)/2. LPS was defined as latency to 10 minutes of uninterrupted sleep. SDSL was defined objective total sleep time following the point of subjective sleep onset. EST was defined as TST--WASO--SOL. SWT was defined as WASO + SOL. TWAK was defined as the length of time between RT and FWT. No definition was reported for IWT. Binary sleep-wake involved measuring at one or multiple instances whether a participant’s reported sleep state matched the objective sleep state upon which the query
 was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple
 instances whether a participant’s reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain
@@ -1165,7 +1176,8 @@ ggplot(data = df, mapping = aes(x = definition, y = studies)) +
 
 ```
 
-Note, FA--LO indicates lights off to final awakening. By conventional definitions of SPT, SPT--SOL--WASO is equal to TIB--SOL--WASO--TWAK, but is listed separately above to reflect differences in terminology. Definitions for WASO also varied and these are depicted in \@ref(fig:wasodef) below.
+*Note.* FA--LO indicates lights off to final awakening. By conventional definitions of SPT, SPT--SOL--WASO is equal to TIB--SOL--WASO--TWAK, but is listed separately above to reflect differences in terminology.
+Definitions for WASO also varied and these are depicted in \@ref(fig:wasodef) below.
 
 ``` {r wasodef, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Self-report WASO definitions", fig.height = 2}
 
@@ -1230,7 +1242,7 @@ ggplot(data = df, mapping = aes(x = definition, y = studies)) +
 
 ```
 
-Note, RT--LO refers to the time between lights off and rise time. SE was almost unanimously calculated as TST/TIB\*100 , although varying definitions for the TST and TIB components affect this outcome. One study [@neu_sleep_2007] used two definitions of SE, one comprising TST/TIB and the other TST/sleep period time (SPT).
+*Note.* RT--LO refers to the time between lights off and rise time. SE was almost unanimously calculated as TST/TIB\*100 , although varying definitions for the TST and TIB components affect this outcome. One study [@neu_sleep_2007] used two definitions of SE, one comprising TST/TIB and the other TST/sleep period time (SPT).
 
 ### Objective sleep variable definitions
 
@@ -1294,7 +1306,7 @@ ggplot(data = df, mapping = aes(x = sol, y = studies)) +
 
 ```
 
-Note that SWS = slow wave sleep, LPS = latency to persistent sleep, AASM = American Academy of Sleep Medicine guidelines, R&K = Rechstaffen & Kales guidelines. Parameter varied in model indicates that the definition of sleep onset was varied within the context of a predictive model. Among PSG studies, the two most common approaches were dependent on standard definitions provided by the R&K [@rechtschaffen1968] and AASM [@berry2012aasm] scoring guidelines.
+*Note.* SWS = slow wave sleep, LPS = latency to persistent sleep, AASM = American Academy of Sleep Medicine guidelines, R&K = Rechstaffen & Kales guidelines. Parameter varied in model indicates that the definition of sleep onset was varied within the context of a predictive model. Among PSG studies, the two most common approaches were dependent on standard definitions provided by the R&K [@rechtschaffen1968] and AASM [@berry2012aasm] scoring guidelines.
 
 Most studies used standard PSG or actigraphy criteria for defining objective number of awakenings (i.e., a single epoch of wakefulness). A single exception was Lewis et al [-@lewis_1969], who stipulated that a period last over a minute to count as an awakening. Neu et al [-@neu_sleep_2007] used the same definitions for objective SE as they did for self-report SE. 
 
@@ -1339,7 +1351,7 @@ ggplot(data = df, mapping = aes(x = methods, y = studies)) +
 
 ```
 
-Note that pooled observations involved collapsing data across multiple instances of recording. Separate analyses indicate that analyses were conducting separately for each instance of recording. In addition to the above, some studies measuring naturalistic sleep in the home environment took day of week into consideration for analyses. `r (catg("weekend", "weighted average", brackets = FALSE) + catg("weekend2", "weighted average", brackets = FALSE)) %>% english %>% str_to_title()` studies calculated a weighted average for sleep variables equal to 5/7* (mean weekday sleep) + 2/7* (mean weekend sleep), and `r (catg("weekend", "split", brackets = FALSE) + catg("weekend2", "split", brackets = FALSE)) %>% english()` performed analyses for weeknights and weekends separately.
+*Note.* pooled observations involved collapsing data across multiple instances of recording. Separate analyses indicate that analyses were conducting separately for each instance of recording. In addition to the above, some studies measuring naturalistic sleep in the home environment took day of week into consideration for analyses. `r (catg("weekend", "weighted average", brackets = FALSE) + catg("weekend2", "weighted average", brackets = FALSE)) %>% english %>% str_to_title()` studies calculated a weighted average for sleep variables equal to 5/7* (mean weekday sleep) + 2/7* (mean weekend sleep), and `r (catg("weekend", "split", brackets = FALSE) + catg("weekend2", "split", brackets = FALSE)) %>% english()` performed analyses for weeknights and weekends separately.
 
 ## Direct comparisons of self-report and objective sleep
 
@@ -1382,7 +1394,7 @@ ggplot(data = group_variables, aes(x = variable_name, y = studies)) +
 
 ```
 
-Note, Bland Altman analyses include Bland Altman plots and the reporting of 95% limits of agreement [@blandaltman1999]. Pitman's test (also known as the Pitman-Morgan test) is a test of differences of variances between dependent samples [@pitman1939; @morgan1939] and was used to compare the variability of self-report and objective sleep. 
+*Note.* Bland Altman analyses include Bland Altman plots and the reporting of 95% limits of agreement [@blandaltman1999]. Pitman's test (also known as the Pitman-Morgan test) is a test of differences of variances between dependent samples [@pitman1939; @morgan1939] and was used to compare the variability of self-report and objective sleep. 
 One-sample *t*-tests of difference scores are equivalent to paired *t*-tests but are included separately in the figure to reflect differences in reporting. Classification performance measures include percentage agreement, accuracy, sensitivity, specificity, positive predictive value (PPV), and negative predictive value (NPV). Formulae used for the intra-class correlation coefficient varied across studies. Spearman correlations and Wilcoxon Signed Rank Tests were often used to handle the skew of variables such as SOL and WASO. Other methods included the delta coefficient [@girschik_2012], partial correlation and factor analysis [@regestein_2004], errors-in-variables regression [@lauderdale_2008], repeated measures correlation [@gibson_2023], non-parametric limits of agreement [@thurman_2018], survival agreement [@guedes_2016], latent correlations for testing associations at within-subjects and between-subjects level [@fengsvetnik_2018], and structural equation modelling [@friedmann_2022].
 
 ## Methods for investigating the relationship of sleep discrepancy with other variables
@@ -1732,28 +1744,28 @@ col3 <- c(
 
 # Double backslash so rmarkdown doesn't read it as an escape
 
-col4 <- c("\\@ref(abstract)", #item1
-          "\\@ref(abstract)", #item2
-          "\\@ref(introduction)", #item3
-          "\\@ref(introduction)", #item4
-          "\\@ref(protocol)", #item5
-          "\\@ref(item6)",
-          "\\@ref(item7)",
-          "\\@ref(tab:egsearch)", #item8
-          "\\@ref(item9)",
-          "\\@ref(item10)",
-          "\\@ref(item11)",
+col4 <- c("1", #item1
+          "1", #item2
+          "2", #item3
+          "2", #item4
+          "3.1", #item5
+          "3.2",
+          "3.4",
+          "3.1", #item8
+          "3.5",
+          "3.6",
+          "3.7",
           "Formal quality assessment was not conducted", #item12
-          "\\@ref(item13)",
-          "\\@ref(item14)",
-          "\\@ref(tab:studychar)", #item 15
+          "3.8",
+          "4",
+          "11.4", #item 15
           "Formal quality assessment was not conducted", #item16
-          "\\@ref(resultsandsynthesis)", #item17
-          "\\@ref(resultsandsynthesis)", #item18
-          "\\@ref(item19)",
-          "\\@ref(item20)",
-          "\\@ref(item21)",
-          "\\@ref(item22)"
+          "4.2", #item17
+          "4.2", #item18
+          "5",
+          "5.11",
+          "5.12",
+          "9"
           )
 
 df <- data.frame("section" = col1, "item_no" = col2, "item" = col3, "page" = col4)
@@ -1804,6 +1816,10 @@ df <- df[ ,-3]
 
 # capitalise first letter of sample characteristics column
 df$sample_characteristics <- paste0(toupper(substring(df$sample_characteristics,1,1)), substring(df$sample_characteristics,2,last = 1000L))
+
+# reformat citations
+df$apa_cite <- gsub("\\b(\\d{4})\\b", "(\\1)", df$apa_cite)
+df$apa_cite <- gsub(",", "", df$apa_cite)
 
 # change column names
 colnames(df) <- c("Study", "Country of origin", "Sample characteristics", "Sample size")
@@ -1877,6 +1893,10 @@ df <- df %>% select(apa_cite, acti_device, acti_software_short, acti_algorithm, 
 # capitalise first letter of rest interval column
 df$acti_interval_description <- paste0(toupper(substring(df$acti_interval_description,1,1)), substring(df$acti_interval_description,2,last = 1000L))
 
+# reformat citations
+df$apa_cite <- gsub("\\b(\\d{4})\\b", "(\\1)", df$apa_cite)
+df$apa_cite <- gsub(",", "", df$apa_cite)
+
 colnames(df) <- c("Study", "Actigraph device", "Software", "Algorithm", "Algorithm reference", "Rest interval definition")
 
 kable(df,
@@ -1907,8 +1927,7 @@ A full list of studies that recorded sleep-wake agreement is available in Table 
 ``` {r sleepwake, echo = FALSE, warning = FALSE, message = FALSE}
 
 # create dataframe of relevant variables
-df <- subset(screen, binary_sw_I == 1 | binary_sw_II == 1, select = c(ama_cite,
-                                                                      bibkey_apa,
+df <- subset(screen, binary_sw_I == 1 | binary_sw_II == 1, select = c(apa_cite,
                                                                       sample_characteristics,
                                                                       binary_sw_I,
                                                                       binary_sw_II,
@@ -1919,11 +1938,9 @@ df <- subset(screen, binary_sw_I == 1 | binary_sw_II == 1, select = c(ama_cite,
 # recoding the two sleep-wake variables (they were mutually exclusive)
 df$sleep_wake <- ifelse(df$binary_sw_I %>% is.na(), "Confusion matrix", "Binary")
 
-# collapse bibkey column with study column
-df$ama_cite <- paste(df$ama_cite, df$bibkey_apa)
-
-# remove bibkey column
-df <- df[ ,-2]
+# reformat citations
+df$apa_cite <- gsub("\\b(\\d{4})\\b", "(\\1)", df$apa_cite)
+df$apa_cite <- gsub(",", "", df$apa_cite)
 
 # remove binary_sw columns
 df <- df[ ,-c(3,4)]
