@@ -362,7 +362,7 @@ review_theme <- theme(
     legend.position = "none",
     panel.background = element_rect(fill = "transparent", colour = "grey"),
     panel.border = element_rect(fill = NA, colour = "grey"),
-    panel.grid = element_line(colour = "grey", linewidth = 0.2, linetype = "solid"),
+    panel.grid = element_line(colour = "lightgrey", linewidth = 0.2, linetype = "solid"),
     strip.placement = "outside",
     axis.title = element_text(size = 8),
     axis.text = element_text(size = 8)
