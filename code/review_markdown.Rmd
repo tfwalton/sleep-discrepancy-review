@@ -1580,8 +1580,8 @@ The scope of the literature on sleep discrepancy has been considerably underesti
 <!-- <!-- As a review focussed on concepts and methodology in sleep discrepancy, implications for clinical practice can only be interpreted indirectly. -->
 
 <!-- <!-- Sleep misperception best measured by studies with experimental procedures. -->
-<!-- <!-- There are an abundance of methodological problems associated with sleep-time discrepancy studies --> -->
-<!-- <!-- Studies measuring global sleep discrepancy of habitual self-report and aggregate objective measures --> -->
+<!-- <!-- There are an abundance of methodological problems associated with sleep-time discrepancy studies -->
+<!-- <!-- Studies measuring global sleep discrepancy of habitual self-report and aggregate objective measures -->
 
 ## Strengths and limitations {#item20}
 
