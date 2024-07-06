@@ -479,7 +479,7 @@ Extracted data items numbered in the hundreds and are described comprehensively 
 
 ## Synthesis of results {#item13}
 
-This manuscript, including all tables and figures summarising data were generated using computationally reproducible methods [@piccolo2016; @lindsay2023] in R version 4.3.2 [@r], with R Studio [@rstudio] and R Markdown [@rmarkdown]. Packages used in the code for this manuscript include tidyverse [@tidyverse], bookdown [@bookdown], knitr [@knitr], kableExtra [@kableextra], english [@english], and DiagrammeR [@diagrammer]. All code and data are available through the Github repository: https://github.com/tfwalton/sleep-discrepancy-review.
+This manuscript, including all tables and figures summarising data were generated using computationally reproducible methods [@piccolo2016; @lindsay2023] in `r R.version.string` [@r], with R Studio [@rstudio] and R Markdown [@rmarkdown]. Packages used in the code for this manuscript include tidyverse [@tidyverse], bookdown [@bookdown], knitr [@knitr], kableExtra [@kableextra], english [@english], and DiagrammeR [@diagrammer]. All code and data are available through the Github repository: https://github.com/tfwalton/sleep-discrepancy-review.
 
 # Results {#item14}
 
@@ -1523,7 +1523,13 @@ Sleep onset is a continuous process for which it is difficult to identify a clea
 
 Saline et al. [-@saline_sleep_2016] noted another problem although only for studies that investigate both TST and SOL concurrently. In the estimation of TST, individuals may attempt to judge the length of time between their subjective sleep onset and final wake time---anchoring their TST estimate to their SOL estimate. In measuring TST and SOL discrepancy, SOL discrepancy is thus being tested for twice: once in SOL and again implicitly in TST. Their solution to this problem was to obtain independent measurements by estimating the amount of objective sleep measured during the subjective sleep latency period (sleep during subjective latency; SDSL) and the amount of objective sleep measured following the subjective sleep latency period (latency adjusted total sleep time; LA-TST).
 
-In view of these issues, three options are recommended in the context of sleep discrepancy research: (i), proceed with defining objective SOL using latency to persistent sleep (LPS)---the first 20 consecutive epochs of sleep. Due to the considerable time it takes to perceive a bout of sleep and the rarity and limited magnitude of SOL underestimation [@saline_sleep_2016; @hermans_sleep_2020] it makes sense to use a longer criterion than a shorter one. LPS also has the advantage of being simpler than many of the alternatives we identified. (ii) use SDSL for the reasons described in the previous paragraph. It should be noted, however, positive discrepancy (i.e., SOL underestimation) is not measurable with this method. The third option is to avoid SOL as a sleep variable and to model sleep perception parameters during the sleep onset period according to Hermans et al. [-@hermans_sleep_2020]. The latter two options have the added advantage of operationalising sleep discrepancy without the use of derived scores---the problems with which are discussed briefly in a following paragraph.
+In view of these issues, three options are recommended in the context of sleep discrepancy research:
+
+1. Proceed with defining objective SOL using latency to persistent sleep (LPS)---the first 20 consecutive epochs of sleep. Due to the considerable time it takes to perceive a bout of sleep and the rarity and limited magnitude of  SOL underestimation [@saline_sleep_2016; @hermans_sleep_2020] it makes sense to use a longer criterion than a shorter one. LPS also has the advantage of being simpler than many of the alternatives we identified.
+2. Use SDSL for the reasons described in the previous paragraph. It should be noted, however, positive discrepancy (i.e., SOL underestimation) is not measurable with this method.
+3. Avoid SOL as a sleep variable and to model sleep perception parameters during the sleep onset period according to Hermans et al. [-@hermans_sleep_2020].
+
+Options two and three have the added advantage of operationalising sleep discrepancy without the use of derived scores---the problems with which are discussed briefly in a following paragraph.
 
 ## Sleep discrepancy is mostly restricted to sleep states or sleep time and varies in its conceptual distance to sleep misperception {#misp}
 
@@ -1587,6 +1593,19 @@ The scope of the literature on sleep discrepancy has been considerably underesti
 
 This study represents the largest systematic approach to investigating methodology in the area of sleep discrepancy research. We reported a broad range of methodological features across a large number of studies and provided meaningful syntheses of research methods in a diverse field. Two major changes were made to our own methods during the screening process and following registration of the scoping review protocol that may be viewed as limitations. These changes were both made in response to the unanticipated number of records returned following title and abstract screening and in view of limited resources available for charting and synthesis. First, grey literature was removed from inclusion criteria. Although the issues and recommendations discussed in this paper were limited to published research, our findings remain broadly applicable and no syntheses of empirical findings have been made that could be influenced by publication bias. Second, reference lists were not screened for additional studies and the extent to which this review may be considered an exhaustive representation of the literature may be reduced as a result.
 
+## Practice points
+
+1. Sleep discrepancy has been investigated throughout a broad range of clinical populations outside of insomnia
+2. Many sleep discrepancy studies involve at least one significant methodological problem that may threaten the validity of findings
+3. Available alternatives to operationalising SOL should be employed over traditional approaches
+4. Rest intervals should be defined without the use of sleep diaries if actigraphy is to be used to measure sleep discrepancy
+
+## Research Agenda
+
+1. Further research is necessary to determine where methodological differences in sleep discrepancy approaches indicate meaningful conceptual differences
+2. The impact of varying justified approaches to measuring and operationalising sleep discrepancy should be assessed
+3. Integrated and standardised approaches to conducting actigraphy would benefit sleep discrepancy research by reducing methodological heterogeneity
+4. Open science practices including pre-registration and research transparency have the potential to improve sleep discrepancy research
 
 ## Summary {#item21}
 
