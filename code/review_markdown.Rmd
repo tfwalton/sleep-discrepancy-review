@@ -389,7 +389,7 @@ bar_numbers_column <- geom_text(
 
 ## Study Objectives 
 
-To examine how past studies have conceptualised sleep discrepancy and identify and evaluate the methods used for its measurement.
+To examine how past studies have conceptualised sleep discrepancy and identify and evaluate the methods used for its measurement and analysis.
 
 ## Method
 
@@ -401,7 +401,7 @@ We searched MEDLINE, Embase, PsycINFO, CINAHL Plus, PubMed, Scopus, and Web of S
 
 ## Conclusions
 
-Sleep discrepancy was mostly conceived as discordance in sleep states or sleep time variables, and various forms of this discordance differed in their conceptual distance to sleep misperception. Furthermore, studies varied considerably in methodology with critical conceptual and practical implications that have received little attention to date. Substantive methodological issues were also identified relating to the use of derived indices for operationalising sleep discrepancy, defining objective sleep onset latency, calculating actigraphy rest intervals, measuring correlation and concordance, averaging sleep variables across nights, and defining sleep quality discrepancy. Solutions and recommendations for these issues were dicussed.
+Sleep discrepancy was mostly conceived as discordance in sleep states or sleep time variables, and various forms of this discordance differed in their conceptual distance to sleep misperception. Furthermore, studies varied considerably in methodology with critical conceptual and practical implications that have received little attention to date. Substantive methodological issues were also identified relating to the use of derived indices for operationalising sleep discrepancy, defining objective sleep onset latency, calculating actigraphy rest intervals, measuring correlation and concordance, averaging sleep variables across nights, and defining sleep quality discrepancy. Solutions and recommendations for these issues are discussed.
 
 ## Key words
 
