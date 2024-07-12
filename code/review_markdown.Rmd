@@ -1541,7 +1541,7 @@ In the present review, we reported a key distinction between *habitual* and *epi
 
 ``` {r subtypes, echo=FALSE, fig.cap = "Sleep discrepancy matrix"}
 
-knitr::include_graphics("../data/matrix.jpg")
+knitr::include_graphics("../matrix.jpg")
 
 ```
 
