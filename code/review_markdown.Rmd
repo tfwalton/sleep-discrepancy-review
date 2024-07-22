@@ -1746,7 +1746,7 @@ The following are a list of deviations from the scoping review protocol register
 
 ## PRISMA-ScR checklist
 
-A PRISMA-ScR checklist is available below with section links to the corresponding checklist item.
+A PRISMA-ScR checklist is available in Table \@ref(tab:checklist).
 
 ``` {r checklist, echo = FALSE, warning = FALSE, message = FALSE}
 
@@ -1817,7 +1817,7 @@ kable(df,
       caption = "Preferred Reporting Items for Systematic reviews and Meta-Analyses extension for Scoping Reviews (PRISMA-ScR) Checklist."
 ) %>%
   kable_styling(font_size = 8,
-                latex_options = "hold_position") %>%
+                latex_options = c("hold_position", "repeat_header")) %>%
   pack_rows("Title", 1,1) %>%
   pack_rows("Abstract", 2,2) %>%
   pack_rows("Introduction", 3,4) %>%
@@ -1825,8 +1825,8 @@ kable(df,
   pack_rows("Results", 14, 18) %>%
   pack_rows("Discussion", 19, 21) %>%
   pack_rows("Funding", 22, 22) %>%
-  column_spec(1, width = "8em") %>%
-  column_spec(2, width = "4em") %>%
+  column_spec(1, width = "10em") %>%
+  column_spec(2, width = "2em") %>%
   column_spec(3, width = "35em") %>%
   column_spec(4, width = "7em")
 
@@ -1873,7 +1873,7 @@ knitr::kable(df,
       caption = "Characteristics of included studies") %>%
   kable_styling(font_size = 8,
                 full_width = FALSE,
-                latex_options = "hold_position") %>%
+                latex_options = c("hold_position", "repeat_header")) %>%
   column_spec(1, width = "12em") %>%
   column_spec(2, width = "6em") %>%
   column_spec(3, width = "30em") %>%
@@ -1944,7 +1944,7 @@ kable(df,
       longtable = TRUE,
       caption = "Qualitative actigraphy characteristics") %>%
   kable_styling(font_size = 8,
-                latex_options = "hold_position") %>% 
+                latex_options = c("hold_position", "repeat_header")) %>% 
   footnote(footnote_as_chunk = TRUE,
            threeparttable = TRUE,
            general = "The --> arrow designates the priority given to methods of calculating the rest interval. For example, event markers –> activity, sleep diary, indicates that event marker presses were first used to calculate rest intervals, followed by sleep diary and activity when event marker presses were not available."
@@ -1993,7 +1993,7 @@ kable(df,
       booktabs = TRUE,
       caption = "Direct sleep-wake agreement studies") %>%
   kable_styling(font_size = 8,
-                latex_options = "hold_position") %>% 
+                latex_options = c("hold_position", "repeat_header")) %>% 
   footnote(footnote_as_chunk = TRUE,
            threeparttable = TRUE, general = "Binary sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched the objective sleep state upon which the query was conditional (e.g., participants were only queried during objectively-confirmed sleep). On the other hand, confusion matrix sleep-wake involved measuring at one or multiple instances whether a participant's reported sleep state matched an objective sleep state that was allowed to vary independent of the query (e.g., participants were queried at a certain time point irrespective of sleep state). The states were called so as the former approach produces a binary outcome whereas the latter produces a confusion matrix.") %>%
   column_spec(1, width = "2em") %>%
