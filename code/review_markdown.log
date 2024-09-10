@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.2)  23 JUL 2024 12:47
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.6)  12 AUG 2024 12:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **review_markdown.tex
 (./review_markdown.tex
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-05-27>
+L3 programming layer <2024-07-20>
 (c:/Users/tfioc/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
 (c:/Users/tfioc/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size10.clo
@@ -97,7 +97,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )) (c:/Users/tfioc/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ) (c:/Users/tfioc/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (c:/Users/tfioc/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-05-27 L3 programming layer (loader) 
+Package: expl3 2024-07-20 L3 programming layer (loader) 
 (c:/Users/tfioc/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 \g__graphics_track_int=\count276
@@ -1182,17 +1182,17 @@ Missing character: There is no β (U+03B2) in font [lmroman10-regular]:mapping=t
 [67] (./review_markdown.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-05-27>
+L3 programming layer <2024-07-20>
  ***********
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20906 strings out of 476239
- 389556 string characters out of 5785639
- 2164560 words of memory out of 5000000
- 43134 multiletter control sequences out of 15000+600000
+ 20906 strings out of 476234
+ 389556 string characters out of 5785539
+ 2164612 words of memory out of 5000000
+ 43139 multiletter control sequences out of 15000+600000
  564626 words of font info for 90 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  90i,13n,123p,1958b,523s stack positions out of 10000i,1000n,20000p,200000b,200000s
