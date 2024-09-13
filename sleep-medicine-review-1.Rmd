@@ -1,0 +1,33 @@
+---
+title: "sleep-medicine-review-1"
+author: "Tom Walton"
+date: "2024-09-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+
+# Reviewer 1
+
+The aim of this study is to identify and evaluate the methodology that has been used for conceptualizing sleep discrepancy, and the authors try to focus on the variety of methodology itself rather than clinical significance of sleep misperception and mismeasurement. For this purpose, the authors made the use of various search engines and have shown a thorough list of previous studies. Therefore, this list has a significant value for the researchers who are tackling this theme, but the journal review is not an encyclopedia, and this manuscript is difficult to follow.
+Although sleep discrepancy is not limited in the area of insomnia research, the concept of sleep discrepancy originates from sleep state misperception or paradoxical insomnia. I understand the authors' viewpoint described in 5.10 (The scope of sleep discrepancy research is likely to have been underestimated), however, the whole presentation would have been more organized if they restricted the references to those relating to normative/insomnia data. I guess, for the majority of readers, focus of interest is about the methodology used for this population, and it will be the next step to widen this field.
+Another aspect which made this manuscript difficult to follow is that the authors mixed the two objective methods to measure sleep, one is PSG, and the other actigraphy. The situation of utilizing these two methods is different, which relates to the purpose of each study, and the authors might have made it more clear by the terms of episodic sleep and habitual sleep. From this aspect, I suggest the authors should divide the result section, one for PSG, and the other for actigraphy. In addition, it may be useful if the authors put a table showing the combination of the plural objective and subjective methods.
+
+Response: 
+I appreciate the comments about the breadth of the topic making the manuscript difficult to follow. The amount of information contained within the review is vast and needs to be digestible if it is to be useful to the reader. I am concerned that restricting the results to investigations of normative and insomnia populations would not appreciably reduce the complexity of the results section as the length here is due mainly to the comprehensiveness of recorded methodological features. To enhance readability we have added a hierarchical structure to the results, breaking methodological features into the stages of measurement, data preprocessing, statistical analysis, and study design. We hope that this serves to organise the information better and communicate the research more effectively. 
+In relation to the mixing of PSG and actigraphy, the purposes of using these methods are often separable however the distinction is not always perfect. For instance, whilst PSG is often recorded for one night or two nights, sometimes multiple nights are used. Sometimes another EEG-based method or ambulatory system is used in a naturalistic environment. I believe there were even some cases of using actigraphy for single night sleep esimates. Interrogating the data just now, there appear to be six such examples
+
+``` {r overlap}
+
+# Read data set into data frame
+full_screen <- read.csv("../data/review_data.csv")
+
+# Trim excluded studies from the data frame
+screen <- filter(full_screen, fulltext_include=="Yes" | fulltext_include=="Second study")
+
+# Count single night studies using actigraphy but not PSG (some studies use both)
+length(which(screen["obj_acti"] == 1 & is.na(screen["obj_PSG"]) & screen["rm_singlenight"] == 1))
+```
