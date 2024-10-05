@@ -645,7 +645,46 @@ assessed -> total
 grViz(graph, height = "100%")
 ```
 
-A total of `r nrow(screen)` studies was identified from `r catg("fulltext_include", "Yes", brackets = FALSE) ` records, with `r catg("fulltext_include", "Second study", brackets = FALSE) %>% english()` records reporting two studies or experiments within a single text. Records spanned `r unique(c(screen$country, screen$country2)) %>% length()` countries, with the majority originating from the USA (n = `r length(which(screen$country == "USA" | screen$country2 == "USA"))`). Methodological features of identified studies are described in detail below organised according the research stages study design, measurement and data collection, data preprocessing, variable selection and operational definition, and statistical analysis.
+A total of `r nrow(screen)` studies was identified from `r catg("fulltext_include", "Yes", brackets = FALSE) ` records, with `r catg("fulltext_include", "Second study", brackets = FALSE) %>% english()` records reporting two studies or experiments within a single text. Records spanned `r unique(c(screen$country, screen$country2)) %>% length()` countries, with the majority originating from the USA (n = `r length(which(screen$country == "USA" | screen$country2 == "USA"))`). Methodological features of identified studies are described in detail below organised according the research stages study design, measurement and data collection, data preprocessing, variable selection and definition, and statistical analysis. A complete list recorded characteristics are available in Table \@ref(tab:allvariants).
+
+``` {r allvariants, echo = FALSE, warning = FALSE, message = FALSE}
+
+## Table of recorded variants
+
+# Load readxl package
+library("readxl")
+
+# Read codebook from folder
+codebook <- read_xlsx("codebook.xlsx")
+
+# Keep unique variant descriptions
+cb <- unique(codebook[ ,2])
+
+# Remove first 17 variants relating to review process
+cb <- cb[-c(1:17),]
+
+# Function to capitalise first letter of each string
+capitalise <- function(x) {
+  paste0(substring(x,1,1) %>% toupper(), substring(x,2,last = 1000L))
+}
+
+# Apply function to cb vector
+cb <- sapply(cb, capitalise)
+
+colnames(cb) <- "Description of recorded characteristic"
+
+knitr::kable(cb,
+      format = "latex",
+      booktabs = TRUE,
+      longtable = TRUE,
+      caption = "All recorded variants") %>%
+  kable_styling(font_size = 8,
+                full_width = FALSE,
+                latex_options = c("hold_position", "repeat_header"))
+
+
+```
+
 
 ## Study design {#resultsandsynthesis}
 
@@ -824,7 +863,7 @@ ggplot(data = df, aes(x = measure, y = studies)) +
 
 ```
 
-Sleep diaries and questionnaires on awakening were the most common measure of self-report sleep, followed by habitual sleep questionnaires including the Pittsburgh Sleep Quality Index [PSQI\; @buysse1989]. Note, habitual sleep refers to questionnaires that require participants to provide global judgements about their sleep that correspond to a period of time longer than a single night such as a week or a month. Graphical response formats for sleep diaries and questionnaires on awakening required participants to draw their sleep on scales comprising discrete blocks of time. We also recorded whether self-report measures overall attempted to capture habitual sleep or rather *episodic* sleep that occurred night-by-night/episode-by-sleep episode at the same time as objective measures. Results are depicted in Figure \@ref(fig:habitual) below.
+Sleep diaries and questionnaires on awakening were the most common measure of self-report sleep, followed by habitual sleep questionnaires including the Pittsburgh Sleep Quality Index [PSQI\; @buysse1989]. Note, habitual sleep refers to questionnaires that require participants to provide global judgements about their sleep that correspond to a period of time longer than a single night such as a week or a month. Graphical response formats for sleep diaries and questionnaires on awakening required participants to draw their sleep on scales comprising discrete blocks of time. Two different approaches to matching self-report to objective sleep were identified. Some studies used self-report measures that attempted to capture habitual sleep, whilst others measured sleep on an episodic basis (e.g., night-by-night or nap-by-nap) that occurred concurrently with objective measurement. Results are depicted in Figure \@ref(fig:habitual) below.
 
 ``` {r habitual, collapse = TRUE, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "Habitual or episodic sleep", fig.height = 1.5}
 
@@ -1376,7 +1415,7 @@ ggplot(data = df, mapping = aes(x = methods, y = studies)) +
 
 ```
 
-*Note.* pooled observations involved collapsing data across multiple instances of recording. Separate analyses indicate that analyses were conducting separately for each instance of recording. In addition to the above, some studies measuring naturalistic sleep in the home environment took day of week into consideration for analyses. `r (catg("weekend", "weighted average", brackets = FALSE) + catg("weekend2", "weighted average", brackets = FALSE)) %>% english %>% str_to_title()` studies calculated a weighted average for sleep variables equal to 5/7* (mean weekday sleep) + 2/7* (mean weekend sleep), and `r (catg("weekend", "split", brackets = FALSE) + catg("weekend2", "split", brackets = FALSE)) %>% english()` performed analyses for weeknights and weekends separately.
+*Note.* pooled observations involved collapsing data across multiple instances of recording. Separate analyses indicate that analyses were conducting separately for each instance of recording. In addition to the above, some studies measuring naturalistic sleep in the home environment took day of week into consideration for analyses. `r (catg("weekend", "weighted average", brackets = FALSE) + catg("weekend2", "weighted average", brackets = FALSE)) %>% english %>% str_to_title()` studies calculated a weighted average for sleep variables equal to $\frac{5}{7}* (mean weekday sleep) + \frac{2}{7}* (mean weekend sleep)$, and `r (catg("weekend", "split", brackets = FALSE) + catg("weekend2", "split", brackets = FALSE)) %>% english()` performed analyses for weeknights and weekends separately.
 
 ### Direct comparisons of self-report and objective sleep
 
