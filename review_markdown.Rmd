@@ -1622,7 +1622,29 @@ Despite being the most common approach to comparing self-report and objective sl
 
 ## Sleep quality discrepancy is conceptually unclear
 
-Sleep quality discrepancy was measured by a small number of studies in this review, according to varying strategies. Sleep quality discrepancy is a difficult topic for two reasons. First, there is no consensus approach to operationalising sleep quality. A recent review of methods for measuring sleep quality identified an immense range in strategies, especially for objective measures [@mendoncca2019review]. Second, there are no clear self-report analogues for objective measures of sleep quality, or vice-versa. For any episode of sleep, an individual is unable to directly estimate number of EEG arousals, quantity or proportion of N3 sleep, or other features of sleep macro or microstructure unavailable to consciousness. Equally, it is not clear how to compare a sleep quality rating judgement (e.g., on a Likert scale) with objective measures [see @krystaledinger2008]. Overall, investigating the relationships of sleep quality discrepancy to other variables is unlikely to be profitable until the conceptual status of self-report and objective sleep quality is clearer.
+Sleep quality discrepancy was measured by a small number of studies in this review, according to varying strategies. Sleep quality discrepancy is a difficult topic for two reasons. First, there is no consensus approach to operationalising sleep quality. A recent review of methods for measuring sleep quality identified an immense range in strategies, especially for objective measures [@mendoncca2019review]. Second, there are no clear self-report analogues for objective measures of sleep quality, or vice-versa. For any episode of sleep, an individual is unable to directly estimate number of EEG arousals, quantity or proportion of N3 sleep, or other features of sleep macro or microstructure unavailable to consciousness. Equally, it is not clear how to compare a sleep quality rating judgement (e.g., on a Likert scale) with objective measures [see @krystaledinger2008]. As such, sleep quality discrepancy is not as clear conceptually as, for example, sleep time discrepancy as introduced in a previous paragraph and investigating the relationships of sleep quality discrepancy to other variables is unlikely to be profitable until the conceptual status of self-report and objective sleep quality is clearer. 
+
+In principle, self-reported awakenings should correspond to enhanced objective WASO, non-restorative sleep 
+
+* If you subjectively experience a superficial sleep, your objective N3 should be attenuated.
+* If you subjectively experience a non-restorative sleep, your objective sleep metrics could be apparently normal but are commonly accompanied by increased amounts of EEG arousals and cyclic alternating pattern (CAP). This is what happens in paradoxical insomnia (Parrino et al. 2009).
+
+There are clear identifiable correlates of self-report sleep quality judgements Kaplan 2017, not clear what it means for them NOT to cohere--which is where sleep discrepancy comes in
+
+Whilst a fruitful area of research one that lies just outisde (but adjacent to sleep discrepancy)
+
+For these reasons 
+
+Furthermore, as the present review aimed to investigate discrepancy in only equivalent measures of self-report and objective sleep, studies were only identified when both forms of sleep quality measurement were explicitly stated in the text as operational definitions of the same. It is likely that this review has identified only a fraction of studies investigating the coherence between 
+
+
+There are likely far more studies comparing similar measures that the discussion of which would be outside the scope of this review. 
+
+Overall, investigating the relationships of sleep quality discrepancy to other variables is unlikely to be profitable until the conceptual status of self-report and objective sleep quality is clearer.
+
+In principle, 
+
+
 
 <!-- Generally, self-report and objective measures of sleep quality do not cohere well @kaplan2017 -->
 <!-- As stated by @krystal2008quality "it seems unlikely that such a global rating would be consistently related to a single physiological aspect of sleep".  -->
